@@ -1,3 +1,7 @@
 export default {
-  hello: 'Hola'
-}
+  hello: "Hola",
+
+  programa: {
+    title: "Programa",
+  },
+};
