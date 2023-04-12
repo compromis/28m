@@ -30,10 +30,13 @@ const flaires = computed(() => {
       {{ proposal.subcategory.category[`name_${locale}`] }}
     </span>
 
-    <ProgramaLike :proposal="proposal" />
+    <div class="proposal-actions">
+      <ProgramaLike :proposal="proposal" />
+      <ProgramaShare :proposal="proposal" />
+    </div>
 
     <div class="proposal-flairs">
-      <span class="flair flair-joves" v-if="flaires.includes('joves')">Joves</span>
+      <span class="flair flair-joves sticker circle bg-yellow" v-if="flaires.includes('joves')">Joves</span>
       <span class="flair flair-feminisme" v-if="flaires.includes('feminisme')">Feminisme</span>
     </div>
   </article>
@@ -46,8 +49,9 @@ const flaires = computed(() => {
   background: $white;
   padding: 1.5rem;
   border-radius: $border-radius-sm;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 80px;
   gap: 1rem;
+  min-height: 225px;
 
   &-text {
     line-height: 1.2;
@@ -56,6 +60,24 @@ const flaires = computed(() => {
 
   &-flairs {
     position: absolute;
+    right: 0;
+    top: 130px;
+    transform: translateX(40%);
+
+    .flair {
+      color: $white;
+      font-weight: 900;
+      font-size: 1.25rem;
+      width: 3.25em;
+      height: 3.25em;
+      transform: rotate(15deg);
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
   }
 
   &.highlighted {

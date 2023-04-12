@@ -44,7 +44,7 @@ const { data: top } = await useFetch(config.public.apiBase + 'top')
   }
 
   &-container {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
   }
 }

@@ -111,6 +111,12 @@ const inSection = computed(() => {
 
   &-content {
     background: $red;
+    display: flex;
+
+    & :deep(> *) {
+      height: 100%;
+      flex-grow: 1;
+    }
   }
 }
 
