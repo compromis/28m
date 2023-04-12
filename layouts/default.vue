@@ -5,13 +5,19 @@ const switchLocalePath = useSwitchLocalePath()
 
 <template>
   <div>
-    <div>
+    <nav class="campaign-nav">
       Language switcher:
       <NuxtLink v-for="locale in locales" :key="locale.code" :to="switchLocalePath(locale.code)">
         {{ locale.name }}
       </NuxtLink>
-    </div>
+    </nav>
 
-    Nuxt: <NuxtPage />
+    <NuxtPage />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.campaign-nav {
+  position: fixed;
+}
+</style>

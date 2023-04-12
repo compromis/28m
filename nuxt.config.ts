@@ -41,6 +41,7 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           additionalData: `
+            @import "~/assets/scss/variables";
             @import "@compromis/blobby/scss/variables";
             @import "bootstrap/scss/functions";
             @import "bootstrap/scss/variables";
