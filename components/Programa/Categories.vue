@@ -65,7 +65,7 @@ defineProps({
 
     &:hover {
       text-decoration: none;
-      transform: scale(1.05) rotate(-2deg);
+      transform: scale(1.05);
 
       .proposals {
         padding: .25em .65em;

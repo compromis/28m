@@ -1,19 +1,9 @@
-.bg-yellow {
-  background: $yellow;
-}
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: $color;
+  }
 
-.bg-red {
-  background: $red;
-}
-
-.bg-blue {
-  background: $blue;
-}
-
-.bg-purple {
-  background: $purple;
-}
-
-.bg-pink {
-  background: $pink;
+  .color-#{$name} {
+    color: $color;
+  }
 }

@@ -21,14 +21,15 @@ const flaires = computed(() => {
 </script>
 
 <template>
-  <article :class="['proposal', { highlighted: proposal.highlighted }]">
-    <p class="proposal-text">
-      {{ proposal[`text_${locale}`] }}
-    </p>
-
-    <span v-if="showCategory" :class="['proposal-category', `category-${proposal.subcategory.slug}`]">
-      {{ proposal.subcategory.category[`name_${locale}`] }}
-    </span>
+  <article :class="['proposal', { highlighted: proposal.highlighted, 'with-category': showCategory }]">
+    <div class="proposal-content">
+      <p class="proposal-text">
+        {{ proposal[`text_${locale}`] }}
+      </p>
+      <span v-if="showCategory" :class="['proposal-category', `category-${proposal.subcategory.category.slug}`, `color-${proposal.subcategory.category.color}`]">
+        {{ proposal.subcategory.category[`name_${locale}`] }}
+      </span>
+    </div>
 
     <div class="proposal-actions">
       <ProgramaLike :proposal="proposal" />
@@ -52,6 +53,11 @@ const flaires = computed(() => {
   grid-template-columns: 1fr 80px;
   gap: 1rem;
   min-height: 225px;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+  }
 
   &-text {
     line-height: 1.2;
@@ -80,9 +86,34 @@ const flaires = computed(() => {
     justify-self: end;
   }
 
+  &-category {
+    display: flex;
+    margin-top: auto;
+    font-weight: 900;
+    align-items: center;
+    gap: .5rem;
+    line-height: 1;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 1.25em;
+      height: 1.25em;
+      border-radius: 100%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+  }
+
   &.highlighted {
     .proposal-text {
       @include font-size(1.75rem);
+    }
+  }
+
+  &.with-category {
+    .proposal-text {
+      font-size: 1.35rem !important;
     }
   }
 }

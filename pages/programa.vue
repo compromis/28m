@@ -50,9 +50,10 @@ const inSection = computed(() => {
   --transition-duration: .5s;
 
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: minmax(100px, 3fr) 1fr;
   transition: all ease-in-out var(--transition-duration);
   transition-delay: var(--transition-duration);
+  min-height: 100vh;
 
   &-nav {
     background: $yellow;
@@ -64,6 +65,9 @@ const inSection = computed(() => {
     }
 
     &-cover {
+      height: var(--cover-height);
+      min-height: var(--cover-max-height);
+
       img {
         width: 100%;
         height: var(--cover-height);
@@ -98,6 +102,12 @@ const inSection = computed(() => {
       color: $white;
       writing-mode: vertical-rl;
       text-orientation: mixed;
+      transform: rotate(180deg);
+      position: fixed;
+      bottom: .25em;
+      left: -.25em;
+      @include font-size(5rem);
+      line-height: 1;
 
       a {
         color: inherit;
@@ -105,6 +115,13 @@ const inSection = computed(() => {
         &:hover {
           text-decoration-color: rgba($white, .25);
         }
+      }
+
+      .sticker {
+        position: absolute;
+        font-size: .35em;
+        transform: translate(.25em, -.75em);
+        padding: .5em .25em;
       }
     }
   }
@@ -122,7 +139,7 @@ const inSection = computed(() => {
 
 /* When in a section */
 .programa-in-section {
-  grid-template-columns: 1fr 12fr;
+  grid-template-columns: minmax(150px, .25fr) 12fr;
 
   .programa {
     &-nav {

@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 
   i18n: {
     locales: [
-      { code: 'val', file: 'val.js', name: 'Valencià' },
+      { code: 'val', file: 'val.js', name: 'Valencià', isCatchallLocale: true },
       { code: 'cas', file: 'cas.js', name: 'Castellano' }
     ],
     lazy: true,

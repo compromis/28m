@@ -1,4 +1,14 @@
 <script setup>
+const { t } = useI18n()
+useServerSeoMeta({
+  title: () => 'Categoria',
+  ogTitle: () => t('meta.programa.title'),
+  description: () => t('meta.programa.description'),
+  ogDescription: () => t('meta.programa.description'),
+  ogImage: () => t('meta.programa.ogImage'),
+  twitterCard: 'summary_large_image',
+})
+
 const config = useRuntimeConfig()
 const { data: top } = await useFetch(config.public.apiBase + 'top')
 </script>
@@ -12,7 +22,7 @@ const { data: top } = await useFetch(config.public.apiBase + 'top')
       </h2>
       <ol class="top-proposals-list list-unstyled">
         <li v-for="proposal in top" :key="proposal.id">
-          <ProgramaProposal :proposal="proposal" />
+          <ProgramaProposal :proposal="proposal" show-category />
         </li>
       </ol>
     </div>

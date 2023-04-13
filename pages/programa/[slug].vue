@@ -3,6 +3,15 @@ const { locale } = useI18n()
 const config = useRuntimeConfig()
 const route = useRoute()
 const { data: category } = await useFetch(config.public.apiBase + 'category/' + route.params.slug)
+const { t } = useI18n()
+useServerSeoMeta({
+  title: () => `${category.value[`name_${locale.value}`]} - ${t('meta.programa.title')}`,
+  ogTitle: () => t('meta.programa.title'),
+  description: () => t('meta.programa.description'),
+  ogDescription: () => t('meta.programa.description'),
+  ogImage: () => t('meta.programa.ogImage'),
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>
@@ -30,7 +39,7 @@ const { data: category } = await useFetch(config.public.apiBase + 'category/' + 
 .programa-category {
   h2 {
     color: $white;
-    @include font-size(4rem);
+    @include font-size(5rem);
     line-height: 1;
     margin-bottom: 2rem;
   }
@@ -48,9 +57,12 @@ const { data: category } = await useFetch(config.public.apiBase + 'category/' + 
   }
 
   &-cover {
+    height: var(--cover-height);
+    min-height: var(--cover-max-height);
+
     img {
-      height: 0;
-      max-height: 0;
+      height: var(--cover-height);
+      min-height: var(--cover-max-height);
       object-fit: cover;
       width: 100%;
       transition: all ease-in-out var(--transition-duration);
@@ -72,19 +84,6 @@ const { data: category } = await useFetch(config.public.apiBase + 'category/' + 
 
       .proposal {
         height: 100%;
-      }
-    }
-  }
-}
-</style>
-
-<style lang="scss">
-.programa-in-section {
-  .programa-category {
-    &-cover {
-      img {
-        height: var(--cover-height);
-        max-height: var(--cover-max-height);
       }
     }
   }
