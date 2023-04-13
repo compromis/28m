@@ -8,7 +8,8 @@ export default defineNuxtConfig({
 
   css: [
     '@compromis/blobby/scss/blobby.scss',
-    '~/assets/scss/global.scss'
+    '~/assets/scss/global.scss',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   app: {

@@ -16,6 +16,7 @@ const props = defineProps({
 /* Like functionality */
 const timesLiked = ref(0)
 const newLikes = ref(0)
+const stopAt = 100
 const maxLikes = 15
 const errored = ref(false)
 
@@ -35,19 +36,30 @@ const save = debounce(async () => {
 }, 500)
 
 const like = () => {
+  if (timesLiked.value > stopAt) return
   timesLiked.value++
   newLikes.value++
   props.proposal.likes++
   window.localStorage.setItem('liked_' + props.proposal.id, timesLiked.value)
   save()
+  plusone()
   const glug = new Audio(GlugSound)
   const pop = new Audio(PopSound)
   if (timesLiked.value === maxLikes) {
     pop.play()
     throwConfetti()
-  } else if (timesLiked.value < maxLikes) {
+  } else {
     glug.play()
   }
+}
+
+const plusones = ref(null)
+const plusone = () => {
+  const plusone = document.createElement("span")
+  const text = document.createTextNode("+" + newLikes.value)
+  plusone.classList.add('plus-one')
+  plusone.appendChild(text)
+  plusones.value.appendChild(plusone)
 }
 
 const button = ref(null)
@@ -57,7 +69,6 @@ const throwConfetti = () => {
   const maxHeight = window.innerHeight
   const posX = left / maxWidth
   const posY = top / maxHeight
-  console.log(top, left, maxWidth, maxHeight, posX, posY)
   confetti({
     particleCount: 100,
     spread: 70,
@@ -71,7 +82,10 @@ const formattedLikes = computed(() => new Intl.NumberFormat("es-ES").format(prop
 <template>
   <button ref="button" @click="like" :class="['proposal-like', { liked: timesLiked > 0 }]">
     <div><ProgramaHeart :progress="timesLiked" :max="maxLikes" class="icon" /></div>
-    <span>{{ formattedLikes }}</span>
+    <span class="number">
+      {{ formattedLikes }}
+      <span ref="plusones"></span>
+    </span>
   </button>
 </template>
 
@@ -81,6 +95,10 @@ const formattedLikes = computed(() => new Intl.NumberFormat("es-ES").format(prop
   border: 0;
   background: transparent;
   color: $gray-600;
+
+  .number {
+    font-variant-numeric: tabular-nums;
+  }
 
   .icon {
     width: 2em;
@@ -100,6 +118,32 @@ const formattedLikes = computed(() => new Intl.NumberFormat("es-ES").format(prop
     .icon {
       transform: scale(1) rotate(4deg);
     }
+  }
+}
+
+:deep(.plus-one) {
+  position: absolute;
+  animation: plusone 1s;
+  opacity: 0;
+  background: $white;
+  right: .75em;
+  font-size: .85em;
+}
+
+@keyframes plusone {
+  0% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(-40%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-60%);
+    opacity: 0;
   }
 }
 </style>

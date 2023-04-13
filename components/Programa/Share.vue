@@ -1,6 +1,6 @@
 <template>
   <button class="proposal-share">
-    <div><font-awesome-icon :icon="['far', 'share']" class="icon" /></div>
+    <!--<div><FontAwesomeIcon :icon="['far', 'share']" class="icon" /></div>-->
     <span class="label">Compartir</span>
   </button>
 </template>

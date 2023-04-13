@@ -1,7 +1,8 @@
 <script setup>
+const { $gsap } = useNuxtApp()
 const { t } = useI18n()
 useServerSeoMeta({
-  title: () => 'Categoria',
+  title: () => t('meta.programa.title'),
   ogTitle: () => t('meta.programa.title'),
   description: () => t('meta.programa.description'),
   ogDescription: () => t('meta.programa.description'),
@@ -15,13 +16,14 @@ const { data: top } = await useFetch(config.public.apiBase + 'top')
 
 <template>
   <div class="top-proposals">
+    <div class="top-proposals-cover"></div>
     <div class="top-proposals-container">
       <h2>
         {{ $t('programa.proposals') }}
         <span class="sticker circle bg-yellow">TOP</span>
       </h2>
       <ol class="top-proposals-list list-unstyled">
-        <li v-for="proposal in top" :key="proposal.id">
+        <li v-for="proposal in top" :key="proposal.id" class="top-proposals-item">
           <ProgramaProposal :proposal="proposal" show-category />
         </li>
       </ol>
@@ -51,6 +53,11 @@ const { data: top } = await useFetch(config.public.apiBase + 'top')
     li:not(:last-child) {
       margin-bottom: 2rem;
     }
+  }
+
+  &-cover {
+    height: var(--cover-height);
+    min-height: var(--cover-min-height);
   }
 
   &-container {

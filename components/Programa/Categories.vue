@@ -15,7 +15,7 @@ defineProps({
       <h2>{{ section[`name_${locale}`] }}</h2>
 
       <ul class="list-unstyled programa-categories">
-        <li v-for="category in section.categories" :key="category.id" :class="{ 'category-highlighted': category.highlighted }">
+        <li v-for="category in section.categories" :key="category.id" :class="['programa-category-card', { 'category-highlighted': category.highlighted }]">
           <nuxt-link :to="localePath(`/programa/${category.slug}`)">
             <span class="proposals bg-black">
               {{ category.proposal_count }}

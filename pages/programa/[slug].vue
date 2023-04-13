@@ -12,12 +12,44 @@ useServerSeoMeta({
   ogImage: () => t('meta.programa.ogImage'),
   twitterCard: 'summary_large_image',
 })
+
+/* Cover animation */
+definePageMeta({
+  pageTransition: {
+    onEnter(el, done) {
+      const { $gsap } = useNuxtApp()
+      $gsap.fromTo('.programa-category-cover img', {
+        "--cover-height": 0,
+        "--cover-min-height": 0,
+      },{
+        "--cover-height": "20vh",
+        "--cover-min-height": "300px",
+        duration: .5,
+        delay: .25,
+        onComplete: done
+      })
+    },
+
+    onLeave(el, done) {
+      const { $gsap } = useNuxtApp()
+      $gsap.fromTo('.programa-category-cover img', {
+        "--cover-height": "20vh",
+        "--cover-min-height": "300px",
+      },{
+        "--cover-height": 0,
+        "--cover-min-height": 0,
+        duration: .25,
+        onComplete: done
+      })
+    }
+  }
+})
 </script>
 
 <template>
   <div :class="['programa-category', `bg-${category.color}`]">
     <div class="programa-category-cover">
-      <img :src="category.cover" alt="" />
+      <img :src="category.cover" alt="" ref="cover" />
     </div>
     <div class="programa-category-container">
       <h2>{{ category[`name_${locale}`] }}</h2>
@@ -58,15 +90,13 @@ useServerSeoMeta({
 
   &-cover {
     height: var(--cover-height);
-    min-height: var(--cover-max-height);
+    min-height: var(--cover-min-height);
 
     img {
       height: var(--cover-height);
-      min-height: var(--cover-max-height);
+      min-height: var(--cover-min-height);
       object-fit: cover;
       width: 100%;
-      transition: all ease-in-out var(--transition-duration);
-      transition-delay: var(--transition-duration);
     }
   }
 
