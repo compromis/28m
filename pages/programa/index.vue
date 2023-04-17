@@ -12,6 +12,12 @@ useServerSeoMeta({
 
 const config = useRuntimeConfig()
 const { data: top } = await useFetch(config.public.apiBase + 'top')
+
+definePageMeta({
+  pageTransition: {
+    name: 'fade',
+  }
+})
 </script>
 
 <template>

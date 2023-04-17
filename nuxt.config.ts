@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000/api/'
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://programa2023.compromis.net/api/'
     }
   },
 
@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   ],
 
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
+    pageTransition: { name: 'curtains', mode: 'out-in' },
     head: {
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'https://compromis.net/sub/icons/favicon.ico' },

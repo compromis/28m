@@ -16,6 +16,7 @@ useServerSeoMeta({
 /* Cover animation */
 definePageMeta({
   pageTransition: {
+    name: 'fade',
     onEnter(el, done) {
       const { $gsap } = useNuxtApp()
       $gsap.fromTo('.programa-category-cover img', {
