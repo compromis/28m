@@ -208,6 +208,7 @@ function onLeave(el, done) {
   transition: all ease-in-out var(--transition-duration);
   transition-delay: var(--transition-duration);
   min-height: 100vh;
+  will-change: grid-template-columns;
 
   &-nav {
     background: $yellow;

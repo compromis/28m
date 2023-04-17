@@ -16,8 +16,17 @@ useServerSeoMeta({
 /* Cover animation */
 definePageMeta({
   pageTransition: {
+    name: 'page',
+    mode: 'out-in',
     onEnter(el, done) {
       const { $gsap } = useNuxtApp()
+      $gsap.fromTo(el, {
+        opacity: 0,
+      }, {
+        opacity: 1,
+        duration: .5,
+        delay: .5
+      })
       $gsap.fromTo('.programa-category-cover img', {
         "--cover-height": 0,
         "--cover-min-height": 0,
@@ -25,13 +34,27 @@ definePageMeta({
         "--cover-height": "20vh",
         "--cover-min-height": "300px",
         duration: .5,
-        delay: .25,
+        delay: .5
+      })
+      $gsap.fromTo('.programa-category-container', {
+        opacity: 0,
+      }, {
+        opacity: 1,
+        duration: .5,
+        delay: .5,
         onComplete: done
       })
     },
 
     onLeave(el, done) {
       const { $gsap } = useNuxtApp()
+      $gsap.fromTo(el, {
+        opacity: 1,
+      }, {
+        opacity: 0,
+        duration: .5,
+        onComplete: done
+      })
       $gsap.fromTo('.programa-category-cover img', {
         "--cover-height": "20vh",
         "--cover-min-height": "300px",

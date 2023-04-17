@@ -16,7 +16,7 @@ const props = defineProps({
 /* Like functionality */
 const timesLiked = ref(0)
 const newLikes = ref(0)
-const stopAt = 100
+const stopAt = 15
 const maxLikes = 15
 const errored = ref(false)
 
