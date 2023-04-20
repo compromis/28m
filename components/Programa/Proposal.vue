@@ -10,6 +10,11 @@ const props = defineProps({
   showCategory: {
     type: Boolean,
     default: false
+  },
+
+  highlighted: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -21,7 +26,7 @@ const flaires = computed(() => {
 </script>
 
 <template>
-  <article :class="['proposal', { highlighted: proposal.highlighted, 'with-category': showCategory }]">
+  <article :class="['proposal', { highlighted: proposal.highlighted || highlighted, 'with-category': showCategory }]">
     <div class="proposal-content">
       <p class="proposal-text">
         {{ proposal[`text_${locale}`] }}
@@ -115,6 +120,12 @@ const flaires = computed(() => {
     .proposal-text {
       font-size: 1.35rem !important;
     }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .proposal {
+    gap: 0;
   }
 }
 </style>

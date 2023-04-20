@@ -1,8 +1,17 @@
+<script setup>
+const dialogOpen = ref(false)
+</script>
+
 <template>
-  <button class="proposal-share">
-    <!--<div><FontAwesomeIcon :icon="['far', 'share']" class="icon" /></div>-->
+  <button class="proposal-share" @click="dialogOpen = !dialogOpen">
+    <div><FontAwesomeIcon :icon="['far', 'share']" class="icon" /></div>
     <span class="label">Compartir</span>
   </button>
+  <Transition name="fade-up">
+    <div v-if="dialogOpen" class="proposal-share-dialog">
+      Share dialog
+    </div>
+  </Transition>
 </template>
 
 <style lang="scss" scoped>
@@ -45,6 +54,11 @@
     .icon {
       transform: scale(1) rotate(4deg);
     }
+  }
+
+  &-dialog {
+    position: absolute;
+    background: $white;
   }
 }
 </style>

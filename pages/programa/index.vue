@@ -12,6 +12,41 @@ useServerSeoMeta({
 
 const config = useRuntimeConfig()
 const { data: top } = await useFetch(config.public.apiBase + 'top')
+
+definePageMeta({
+  pageTransition: {
+    css: false,
+    onEnter(el, done) {
+      const { $gsap } = useNuxtApp()
+
+      // Prevent new page from loading on still-narrow right column, making it overflow
+      el.style.display = 'none'
+
+      setTimeout(() => {
+        el.style.display = 'block'
+        $gsap.fromTo(el, {
+          opacity: 0,
+        }, {
+          opacity: 1,
+          duration: .5,
+          onComplete: done
+        })
+      }, 1000)
+    },
+
+    onLeave(el, done) {
+      const { $gsap } = useNuxtApp()
+
+      $gsap.fromTo(el, {
+        opacity: 1,
+      }, {
+        opacity: 0,
+        duration: .25,
+        onComplete: done
+      })
+    }
+  }
+})
 </script>
 
 <template>

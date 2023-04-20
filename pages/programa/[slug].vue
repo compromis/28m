@@ -16,17 +16,23 @@ useServerSeoMeta({
 /* Cover animation */
 definePageMeta({
   pageTransition: {
-    name: 'page',
-    mode: 'out-in',
+    css: false,
     onEnter(el, done) {
       const { $gsap } = useNuxtApp()
-      $gsap.fromTo(el, {
-        opacity: 0,
-      }, {
-        opacity: 1,
-        duration: .5,
-        delay: .5
-      })
+
+      // Prevent new page from loading on still-narrow right column, making it overflow
+      el.style.display = 'none'
+
+      setTimeout(() => {
+        el.style.display = 'block'
+        $gsap.fromTo(el, {
+          opacity: 0,
+        }, {
+          opacity: 1,
+          duration: .5
+        })
+      }, 250)
+
       $gsap.fromTo('.programa-category-cover img', {
         "--cover-height": 0,
         "--cover-min-height": 0,
@@ -36,6 +42,7 @@ definePageMeta({
         duration: .5,
         delay: .5
       })
+
       $gsap.fromTo('.programa-category-container', {
         opacity: 0,
       }, {
@@ -48,6 +55,7 @@ definePageMeta({
 
     onLeave(el, done) {
       const { $gsap } = useNuxtApp()
+
       $gsap.fromTo(el, {
         opacity: 1,
       }, {
@@ -55,6 +63,7 @@ definePageMeta({
         duration: .5,
         onComplete: done
       })
+
       $gsap.fromTo('.programa-category-cover img', {
         "--cover-height": "20vh",
         "--cover-min-height": "300px",
@@ -79,6 +88,8 @@ definePageMeta({
       
       <div v-for="subcategory in category.subcategories" :key="subcategory.id">
         <h3 v-if="!subcategory.hidden">{{ subcategory[`name_${locale}`] }}</h3>
+
+        <NuxtPage />
     
         <ol class="programa-category-proposals list-unstyled">
           <li v-for="proposal in subcategory.proposals" :key="proposal.id" :class="{ highlighted: proposal.highlighted }">

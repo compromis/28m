@@ -8,48 +8,6 @@ const inSection = computed(() => {
   return !['/programa/', '/programa', '/cas/programa', '/cas/programa/'].includes(route.path)
 })
 
-/*
-  $gsap.fromTo('.programa-nav-cover img', {
-    "--cover-height": 0,
-    "--cover-min-height": 0,
-  },{
-    "--cover-height": "20vh",
-    "--cover-min-height": "300px",
-    duration: .5
-  })
-
-  $gsap.fromTo('.programa-nav-title span', {
-    y: -20,
-    opacity: 0,
-  },{
-    duration: .5,
-    opacity: 1,
-    y: 0,
-    stagger: 0.2,
-    delay: .25,
-  })
-
-  $gsap.fromTo('.programa-index', {
-    opacity: 0
-  }, {
-    duration: .25,
-    opacity: 1,
-    y: 0
-  })
-
-  $gsap.fromTo('.programa-category-card', {
-    y: -20,
-    opacity: 0,
-  },{
-    duration: .15,
-    opacity: 1,
-    y: 0,
-    stagger: 0.1,
-    delay: .5,
-  })
-})
-*/
-
 /* Cover animation */
 function beforeEnterCover(el) {
   $gsap.set(el, {
@@ -116,14 +74,14 @@ function onLeavePrograma(el, done) {
 }
 
 /* Categories animations */
-function beforeEnter(el) {
+function beforeEnterCategories(el) {
   $gsap.set(el, {
     opacity: 0,
     y: -50
   })
 }
   
-function onEnter(el, done) {
+function onEnterCategories(el, done) {
   $gsap.to(el, {
     duration: .5,
     opacity: 1,
@@ -144,7 +102,7 @@ function onEnter(el, done) {
   })
 }
 
-function onLeave(el, done) {
+function onLeaveCategories(el, done) {
 	$gsap.to(el, {
     duration: .5,
     opacity: 0,
@@ -164,13 +122,13 @@ function onLeave(el, done) {
   <main :class="['programa', { 'programa-in-section': inSection }]">
     <header class="programa-nav">
       <div class="programa-nav-cover">
-        <Transition @before-enter="beforeEnterCover" @enter="onEnterCover" @leave="onLeaveCover" appear>
+        <Transition @before-enter="beforeEnterCover" @enter="onEnterCover" @leave="onLeaveCover">
           <img v-if="!inSection" src="~/assets/images/programa/cover.jpg" alt="Foto de la Generalitat" />
         </Transition>
       </div>
       
       <div class="programa-nav-container">
-        <Transition @enter="onEnterPrograma" @leave="onLeavePrograma" mode="out-in" appear>
+        <Transition @enter="onEnterPrograma" @leave="onLeavePrograma" mode="out-in">
           <h1 v-if="!inSection" class="programa-nav-title" key="main-title">
             <nuxt-link :to="localePath('/programa')">
               <span class="text">{{ $t('programa.title') }}</span>
@@ -185,7 +143,7 @@ function onLeave(el, done) {
           </h1>
         </Transition>
 
-        <Transition :css="false" @before-enter="beforeEnter" @enter="onEnter" @leave="onLeave" appear>
+        <Transition :css="false" @before-enter="beforeEnterCategories" @enter="onEnterCategories" @leave="onLeaveCategories">
           <ProgramaCategories v-if="!inSection" :sections="sections" />
         </Transition>
       </div>
@@ -204,7 +162,7 @@ function onLeave(el, done) {
   --transition-duration: .5s;
 
   display: grid;
-  grid-template-columns: minmax(100px, 3fr) 1fr;
+  grid-template-columns: minmax(120px, 3fr) 1fr;
   transition: all ease-in-out var(--transition-duration);
   transition-delay: var(--transition-duration);
   min-height: 100vh;
