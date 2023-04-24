@@ -1,9 +1,10 @@
 <script setup>
 import CompromisLogo from '@compromis/blobby/components/logos/CompromisLogo.vue'
-
+const { $gsap } = useNuxtApp()
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
+/* Menu toggler */
 const menuShown = ref(false)
 const menuScrolled = ref(false)
 const showMenu = () => {
@@ -23,15 +24,67 @@ const toggleMenu = () => {
   }
 }
 
+/* Close menu on page navigation */
 const nuxtApp = useNuxtApp()
 nuxtApp.hook('page:start', hideMenu)
 
+/* Set white background when page has scrolled */
 const onScroll = (e) => {
   menuScrolled.value = window.scrollY > 0
 }
 onMounted(() => {
   window.addEventListener('scroll', onScroll)
 })
+
+/* Nav animation */
+const onEnterNav = (el, done) => {
+  $gsap.fromTo(el, {
+    y: '-100%'
+  }, {
+    y: 0,
+    duration: .5,
+    ease: 'Power4.easeOut'
+  })
+
+  $gsap.fromTo('#SiteMenu .animate', {
+    opacity: 0,
+    y: '100%'
+  }, {
+    opacity: 1,
+    y: 0,
+    duration: .5,
+    delay: .25,
+    stagger: .1,
+    onComplete: done,
+    ease: 'Power4.easeOut'
+  })
+}
+
+const onLeaveNav = (el, done) => {
+  $gsap.fromTo(el, {
+    y: 0
+  }, {
+    y: '-100%',
+    delay: .75,
+    duration: .5,
+    onComplete: done,
+    ease: 'Power4.easeOut'
+  })
+
+  $gsap.fromTo('#SiteMenu .animate', {
+    opacity: 1,
+    y: 0
+  }, {
+    opacity: 0,
+    y: '100%',
+    duration: .5,
+    ease: 'Power4.easeOut',
+    stagger: {
+      from: 'end',
+      each: .1
+    }
+  })
+}
 </script>
 
 <template>
@@ -66,7 +119,7 @@ onMounted(() => {
         </div>
       </div>
     </SiteNavTransition>
-    <Transition name="nav">
+    <Transition @enter="onEnterNav" @leave="onLeaveNav">
       <div id="SiteMenu" class="site-nav-menu" v-if="menuShown">
         <SiteMenu />
       </div>

@@ -1,81 +1,128 @@
 <script setup>
-const hover = ref('none')
+// Menu
+const primaryMenu = [
+  { id: 'home', to: '/', image: 'https://images.unsplash.com/photo-1682249301375-5c7f5a286d8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80', offsetX: 50, offsetY: -100 },
+  { id: 'programa', to: '/programa', image: 'https://images.unsplash.com/photo-1682334399851-9c79b3f415d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2019&q=80', offsetX: -50, offsetY: -100 },
+  { id: 'candidatura', to: '/candidatura', image: 'https://images.unsplash.com/photo-1682315700193-dec8f0ce2c81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80', offsetX: 50, offsetY: -100 },
+  { id: 'collabora', to: '/collabora', image: 'https://images.unsplash.com/photo-1656882821118-a63cb5a698a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80', offsetX: -50, offsetY: -100 },
+  { id: 'actes', to: '/actes', image: 'https://images.unsplash.com/photo-1682251167570-db70af09f7a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80', offsetX: 50, offsetY: -100 },
+]
 
-const hoverOver = (section) => {
-  hover.value = section
+const secondaryMenu = [
+  { id: 'info', to: 'https://compromis.net/?override=1' },  
+  { id: 'news', to: 'https://compromis.net/?override=1' },
+  { id: 'transparency', to: 'https://compromis.net/transparencia' },
+  { id: 'campaigns', to: 'https://compromis.net/campanyes' },
+  { id: 'donations', to: 'https://donacions.compromis.net' },
+  { id: 'espai', to: 'https://compromis.net/espai' },
+]
+
+// Hover effects
+const hovering = ref('none')
+const showImage = ref(false)
+const offsetImage = reactive({ x: 50, y: -100 })
+let animationFrame
+const hover = (section, { x, y }) => {
+  hovering.value = section
+  showImage.value = true
+  offsetImage.x = x
+  offsetImage.y = y
+  animationFrame = requestAnimationFrame(followMouse)
+  animateImage(section)
 }
+const unhover = () => {
+  showImage.value = false
+  cancelAnimationFrame(animationFrame)
+}
+
+// Image
+const { $gsap } = useNuxtApp()
+const mousePos = reactive({ x: 0, y: 0 })
+const imagePos = reactive({ x: 0, y: 0 })
+const followMouse = () => {
+  
+  // 1. find distance X , distance Y
+  const distX = mousePos.x - imagePos.x + offsetImage.x
+  const distY = mousePos.y - imagePos.y + offsetImage.y
+
+  // Easing motion
+  // Progressive reduction of distance
+  imagePos.x = imagePos.x + (distX / 10)
+  imagePos.y = imagePos.y + (distY / 6)
+
+  animationFrame = requestAnimationFrame(followMouse)
+}
+
+let animation
+const animateImage = (section) => {
+  animation && animation.kill()
+  animation = $gsap.fromTo(`#image-${section}`, {
+    scale: .5,
+  }, {
+    scale: 1,
+    opacity: 1,
+    duration: .75,
+    ease: 'Power4.easeOut'
+  })
+}
+
+const setMousePos = ({ clientX, clientY }) => {
+  mousePos.x = clientX
+  mousePos.y = clientY
+}
+
+onMounted(() => {
+  document.addEventListener('mousemove', setMousePos)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('mousemove', setMousePos)
+})
 </script>
 
 <template>
-  <div :class="['menu', `hover-${hover}`]">
-    <div class="menu-section">28M</div>
+  <div :class="['menu', `hover-${hovering}`]">
+    <div class="contained">
+      <div class="menu-section animate">28M</div>
+    </div>
     <ul class="menu-primary list-unstyled" aria-label="Menú principal">
-      <li>
-        <nuxt-link :to="localePath('/')" @mouseenter="hoverOver('home')">
-          {{ $t('menu.home') }}
+      <li v-for="item in primaryMenu" :key="item.id" :class="item.id" class="contained">
+        <nuxt-link
+          :to="localePath(item.to)"
+          @mouseenter="hover(item.id, { x: item.offsetX, y: item.offsetY })"
+          @mouseleave="unhover"
+          @click="unhover"
+          class="animate">
+          {{ $t('menu.' + item.id) }}
         </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link :to="localePath('/programa')" @mouseenter="hoverOver('programa')">
-          {{ $t('menu.programa') }}
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link :to="localePath('/candidatura')" @mouseenter="hoverOver('candidatura')">
-          {{ $t('menu.candidatura') }}
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link :to="localePath('/collabora')" @mouseenter="hoverOver('collabora')">
-          {{ $t('menu.collabora') }}
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link :to="localePath('/actes')"  @mouseenter="hoverOver('actes')">
-          {{ $t('menu.actes') }}
-        </nuxt-link>
+        <div class="d-none d-md-block">
+          <div class="floaty-thumbnail"
+            :id="`image-${item.id}`"
+            v-show="hovering === item.id && showImage"
+            :style="{
+              left: imagePos.x + 'px',
+              top: imagePos.y + 'px'
+            }">
+            <img :src="item.image" alt="" />
+          </div>
+        </div>
       </li>
     </ul>
 
-    <div class="menu-bottom">
-      <div class="menu-bottom-secondary">
+    <div class="menu-bottom contained">
+      <div class="menu-bottom-secondary animate">
         <div class="menu-section">
           <a href="https://compromis.net/?override=1">compromís.net</a>
         </div>
         <ul class="menu-secondary list-unstyled" aria-label="Menú de compromis.net">
-          <li>
-            <a href="https://compromis.net/info">
-              {{ $t('menu.info') }}
-            </a>
-          </li>
-          <li>
-            <a href="https://compromis.net/?override=1">
-              {{ $t('menu.news') }}
-            </a>
-          </li>
-          <li>
-            <a href="https://compromis.net/transparencia">
-              {{ $t('menu.transparency') }}
-            </a>
-          </li>
-          <li>
-            <a href="https://compromis.net/campanyes">
-              {{ $t('menu.campaigns') }}
-            </a>
-          </li>
-          <li>
-            <a href="https://donacions.compromis.net/?override=1">
-              {{ $t('menu.donations') }}
-            </a>
-          </li>
-          <li>
-            <a href="https://compromis.net/espai">
-              {{ $t('menu.espai') }}
+          <li v-for="item in secondaryMenu" :key="item.id">
+            <a :href="item.to">
+              {{ $t('menu.' + item.id) }}
             </a>
           </li>
         </ul>
       </div>
-      <div class="menu-bottom-social-networks">
+      <div class="menu-bottom-social-networks animate">
         <SiteSocial />
       </div>
     </div>
@@ -84,7 +131,7 @@ const hoverOver = (section) => {
 
 <style lang="scss" scoped>
 .menu {
-  padding: var(--site-padding);
+  padding: calc(var(--site-padding) * 1.25);
   padding-top: calc(var(--nav-safe-area) * 2);
   background-color: var(--menu-bg-color, #{$yellow});
   color: $white;
@@ -132,6 +179,20 @@ const hoverOver = (section) => {
       &:hover {
         text-decoration: none;
         color: var(--menu-link-color, #{$white});
+        position: relative;
+        z-index: 200;
+      }
+    }
+
+    .floaty-thumbnail {
+      position: fixed;
+      pointer-events: none;
+      z-index: 100;
+
+      img {
+        max-width: 350px;
+        max-height: 350px;
+        object-fit: contain;
       }
     }
   }
@@ -184,6 +245,12 @@ const hoverOver = (section) => {
     --menu-bg-color: #{$indigo};
     --menu-link-color: #{$yellow};
   }
+}
+
+.contained {
+  overflow: hidden;
+  padding: .5em 0;
+  margin: -.5em 0;
 }
 
 @include media-breakpoint-down(md) {

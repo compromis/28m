@@ -49,7 +49,8 @@ const like = () => {
   if (timesLiked.value === maxLikes) {
     pop.play()
     throwConfetti()
-  } else {
+  } else if (timesLiked.value < maxLikes) {
+    glug.playbackRate = 1 + (timesLiked.value / maxLikes)
     glug.play()
   }
 }
