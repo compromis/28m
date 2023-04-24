@@ -113,17 +113,17 @@ definePageMeta({
     color: $white;
     @include font-size(5rem);
     line-height: 1;
-    margin-bottom: 2rem;
+    margin-bottom: var(--site-padding);
   }
 
   h3 {
     color: $white;
     @include font-size(1.75rem);
-    margin: 2rem 0 1rem;
+    margin: var(--site-padding) 0 1rem;
   }
 
   &-container {
-    padding: 2rem;
+    padding: var(--site-padding);
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -143,7 +143,7 @@ definePageMeta({
   &-proposals {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: var(--site-padding);
 
     li {
       display: flex;
@@ -161,13 +161,8 @@ definePageMeta({
 
 @include media-breakpoint-down(md) {
   .programa-category {
-    &-container {
-      padding: 1.5rem;
-    }
-
     &-proposals {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
     }
   }
 }

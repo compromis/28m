@@ -143,49 +143,51 @@ function onLeaveCategories(el, done) {
 </script>
 
 <template>
-  <main :class="['programa', { 'programa-in-section': inSection }]">
-    <header class="programa-nav">
-      <div class="programa-nav-cover">
-        <Transition @before-enter="beforeEnterCover" @enter="onEnterCover" @leave="onLeaveCover">
-          <img v-if="!inSection" src="~/assets/images/programa/cover.jpg" alt="Foto de la Generalitat" />
-        </Transition>
+  <div>
+    <main :class="['programa', { 'programa-in-section': inSection }]">
+      <header class="programa-nav">
+        <div class="programa-nav-cover">
+          <Transition @before-enter="beforeEnterCover" @enter="onEnterCover" @leave="onLeaveCover">
+            <img v-if="!inSection" src="~/assets/images/programa/cover.jpg" alt="Foto de la Generalitat" />
+          </Transition>
 
-        <Transition @before-enter="beforeEnterTop" @enter="onEnterTop" @leave="onLeaveTop">
-          <a href="#content" v-if="!inSection" class="programa-nav-top d-md-none">
-            <h2>
-              {{ $t('programa.proposals') }}
-              <span class="sticker circle bg-yellow">TOP</span>
-            </h2>
-          </a>
-        </Transition>
-      </div>
-      
-      <div class="programa-nav-container">
-        <Transition @enter="onEnterPrograma" @leave="onLeavePrograma" mode="out-in">
-          <h1 v-if="!inSection" class="programa-nav-title" key="main-title">
-            <nuxt-link :to="localePath('/programa')">
-              <span class="text">{{ $t('programa.title') }}</span>
-              <span class="sticker rounded bg-blue">2023</span>
-            </nuxt-link>
-          </h1>
-          <h1 v-else class="programa-nav-title-inverted" key="nav-title">
-            <nuxt-link :to="localePath('/programa')">
-              <span class="text">{{ $t('programa.title') }}</span>
-              <span class="sticker rounded bg-blue">2023</span>
-            </nuxt-link>
-          </h1>
-        </Transition>
+          <Transition @before-enter="beforeEnterTop" @enter="onEnterTop" @leave="onLeaveTop">
+            <a href="#content" v-if="!inSection" class="programa-nav-top d-md-none">
+              <h2>
+                {{ $t('programa.proposals') }}
+                <span class="sticker circle bg-yellow">TOP</span>
+              </h2>
+            </a>
+          </Transition>
+        </div>
+        
+        <div class="programa-nav-container">
+          <Transition @enter="onEnterPrograma" @leave="onLeavePrograma" mode="out-in">
+            <h1 v-if="!inSection" class="programa-nav-title" key="main-title">
+              <nuxt-link :to="localePath('/programa')">
+                <span class="text">{{ $t('programa.title') }}</span>
+                <span class="sticker rounded bg-blue">2023</span>
+              </nuxt-link>
+            </h1>
+            <h1 v-else class="programa-nav-title-inverted" key="nav-title">
+              <nuxt-link :to="localePath('/programa')">
+                <span class="text">{{ $t('programa.title') }}</span>
+                <span class="sticker rounded bg-blue">2023</span>
+              </nuxt-link>
+            </h1>
+          </Transition>
 
-        <Transition :css="false" @before-enter="beforeEnterCategories" @enter="onEnterCategories" @leave="onLeaveCategories">
-          <ProgramaCategories v-if="!inSection" :sections="sections" />
-        </Transition>
-      </div>
-    </header>
+          <Transition :css="false" @before-enter="beforeEnterCategories" @enter="onEnterCategories" @leave="onLeaveCategories">
+            <ProgramaCategories v-if="!inSection" :sections="sections" />
+          </Transition>
+        </div>
+      </header>
 
-    <section class="programa-content" id="content">
-      <NuxtPage />
-    </section>
-  </main>
+      <section class="programa-content" id="content">
+        <NuxtPage />
+      </section>
+    </main>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -205,9 +207,10 @@ function onLeaveCategories(el, done) {
     background: $yellow;
 
     &-container {
+      position: relative;
       max-width: 1000px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: var(--site-padding);
     }
 
     &-cover {
@@ -240,7 +243,7 @@ function onLeaveCategories(el, done) {
       .sticker {
         position: absolute;
         font-size: .35em;
-        transform: translate(-.7em, var(--translateY, .2em));
+        transform: translate(-.7em, var(--translateY, .25em));
       }
 
       span {
@@ -253,14 +256,21 @@ function onLeaveCategories(el, done) {
       writing-mode: vertical-rl;
       text-orientation: mixed;
       transform: rotate(180deg);
-      position: fixed;
-      bottom: .25em;
-      left: -.25em;
-      @include font-size(5rem);
+      @include font-size(3rem);
       line-height: 1;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: $yellow;
+      width: 100px;
+      padding: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
 
       a {
         color: inherit;
+        transform: translateX(10%);
 
         &:hover {
           text-decoration-color: rgba($white, .25);
@@ -289,7 +299,7 @@ function onLeaveCategories(el, done) {
 
 /* When in a section */
 .programa-in-section {
-  grid-template-columns: minmax(150px, .25fr) 12fr;
+  grid-template-columns: minmax(100px, .25fr) 12fr;
 }
 
 /* Mobile */
@@ -299,7 +309,6 @@ function onLeaveCategories(el, done) {
 
     &-nav {
       &-container {
-        padding: 1.5rem;
         transition: .5s ease;
       }
 

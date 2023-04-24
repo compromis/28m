@@ -86,6 +86,7 @@ definePageMeta({
       margin-left: auto;
       transform: rotate(-25deg);
       margin-top: -.25em;
+      flex-shrink: 0;
     }
   }
 

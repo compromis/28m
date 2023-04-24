@@ -1,23 +1,22 @@
 <script setup>
-const { locale, locales } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
+import BFooter from '@compromis/blobby/components/footer/BFooter.vue'
 </script>
 
 <template>
   <div>
-    <nav class="campaign-nav">
-      Language switcher:
-      <NuxtLink v-for="locale in locales" :key="locale.code" :to="switchLocalePath(locale.code)">
-        {{ locale.name }}
-      </NuxtLink>
-    </nav>
-
-    <NuxtPage />
+    <SiteNav />
+    <div class="page">
+      <NuxtPage />
+    </div>
+    <div class="container">
+      <BFooter />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.campaign-nav {
-  position: fixed;
+.page {
+  min-height: 100vh;
+  background: $red;
 }
 </style>

@@ -31,3 +31,14 @@
 .page-leave-to {
   opacity: 0;
 }
+
+/* Nav transition */
+.nav-enter-active,
+.nav-leave-active {
+  transition: transform 0.5s ease;
+}
+
+.nav-enter-from,
+.nav-leave-to {
+  transform: translateY(-100%);
+}

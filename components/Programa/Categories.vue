@@ -56,7 +56,7 @@ defineProps({
     color: $black;
     border-radius: $border-radius-sm;
     padding: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     @include font-size(2rem);
     line-height: 1;
     letter-spacing: -.03em;

@@ -9,6 +9,20 @@ export default {
     },
   },
 
+  menu: {
+    home: "Tot el que importa",
+    programa: "Programa",
+    candidatura: "Candidatura",
+    collabora: "Col·labora",
+    actes: "Actes",
+    info: "Info",
+    news: "Notícies",
+    transparency: "Transparència",
+    campaigns: "Campanyes",
+    donations: "Donacions",
+    espai: "Espai",
+  },
+
   programa: {
     title: "Programa",
     proposals: "Propostes",
