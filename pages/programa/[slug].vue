@@ -158,4 +158,17 @@ definePageMeta({
     }
   }
 }
+
+@include media-breakpoint-down(md) {
+  .programa-category {
+    &-container {
+      padding: 1.5rem;
+    }
+
+    &-proposals {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+}
 </style>

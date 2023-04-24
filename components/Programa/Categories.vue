@@ -100,4 +100,11 @@ defineProps({
     }
   }
 }
+
+@include media-breakpoint-down(md) {
+  .programa-categories {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
 </style>

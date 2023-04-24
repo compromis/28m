@@ -2,7 +2,7 @@
 const route = useRoute()
 const config = useRuntimeConfig()
 const { $gsap } = useNuxtApp()
-const { data: sections } = await useFetch(config.public.apiBase + 'categories')
+const { data: sections } = await useFetch(config.public.apiBase + 'categories/')
 
 const inSection = computed(() => {
   return !['/programa/', '/programa', '/cas/programa', '/cas/programa/'].includes(route.path)
@@ -30,6 +30,30 @@ function onLeaveCover(el, done) {
     "--cover-height": 0,
     "--cover-min-height": 0,
     duration: .25,
+    onComplete: done
+  })
+}
+
+/* Top mobile */
+function beforeEnterTop(el) {
+  $gsap.set(el, {
+    y: '-100%'
+  })
+}
+
+function onEnterTop(el, done) {
+  $gsap.to(el, {
+    y: 0,
+    duration: .5,
+    delay: 1,
+    onComplete: done
+  })
+}
+
+function onLeaveTop(el, done) {
+  $gsap.to(el, {
+    y: '-100%',
+    duration: 1,
     onComplete: done
   })
 }
@@ -125,6 +149,15 @@ function onLeaveCategories(el, done) {
         <Transition @before-enter="beforeEnterCover" @enter="onEnterCover" @leave="onLeaveCover">
           <img v-if="!inSection" src="~/assets/images/programa/cover.jpg" alt="Foto de la Generalitat" />
         </Transition>
+
+        <Transition @before-enter="beforeEnterTop" @enter="onEnterTop" @leave="onLeaveTop">
+          <a href="#content" v-if="!inSection" class="programa-nav-top d-md-none">
+            <h2>
+              {{ $t('programa.proposals') }}
+              <span class="sticker circle bg-yellow">TOP</span>
+            </h2>
+          </a>
+        </Transition>
       </div>
       
       <div class="programa-nav-container">
@@ -149,7 +182,7 @@ function onLeaveCategories(el, done) {
       </div>
     </header>
 
-    <section class="programa-content">
+    <section class="programa-content" id="content">
       <NuxtPage />
     </section>
   </main>
@@ -178,6 +211,7 @@ function onLeaveCategories(el, done) {
     }
 
     &-cover {
+      position: relative;
       height: var(--cover-height);
       min-height: var(--cover-min-height);
 
@@ -256,5 +290,64 @@ function onLeaveCategories(el, done) {
 /* When in a section */
 .programa-in-section {
   grid-template-columns: minmax(150px, .25fr) 12fr;
+}
+
+/* Mobile */
+@include media-breakpoint-down(md) {
+  .programa {
+    grid-template-columns: 1fr;
+
+    &-nav {
+      &-container {
+        padding: 1.5rem;
+        transition: .5s ease;
+      }
+
+      &-title-inverted {
+        writing-mode: unset;
+        text-orientation: unset;
+        transform: unset;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: unset;
+        background: $yellow;
+        z-index: 1000;
+      }
+
+      &-top {
+        position: absolute;
+        background: $red;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        color: $white;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        padding: 1rem;
+        overflow: hidden;
+        height: var(--cover-height);
+        min-height: var(--cover-min-height);
+
+        h2 {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+
+    &-in-section {
+      .programa-nav-container {
+        padding: 0;
+      }
+
+      .programa-nav-cover {
+        --cover-height: 0;
+        --cover-min-height: 0;
+      }
+    }
+  }
 }
 </style>

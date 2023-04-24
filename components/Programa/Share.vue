@@ -3,15 +3,17 @@ const dialogOpen = ref(false)
 </script>
 
 <template>
-  <button class="proposal-share" @click="dialogOpen = !dialogOpen">
-    <div><FontAwesomeIcon :icon="['far', 'share']" class="icon" /></div>
-    <span class="label">Compartir</span>
-  </button>
-  <Transition name="fade-up">
-    <div v-if="dialogOpen" class="proposal-share-dialog">
-      Share dialog
-    </div>
-  </Transition>
+  <div>
+    <button class="proposal-share" @click="dialogOpen = !dialogOpen">
+      <ClientOnly><FontAwesomeIcon :icon="['far', 'share']" class="icon" /></ClientOnly>
+      <span class="label">Compartir</span>
+    </button>
+    <Transition name="fade-up">
+      <div v-if="dialogOpen" class="proposal-share-dialog">
+        Share dialog
+      </div>
+    </Transition>
+  </div>
 </template>
 
 <style lang="scss" scoped>

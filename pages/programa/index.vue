@@ -105,4 +105,13 @@ definePageMeta({
     margin: 0 auto;
   }
 }
+
+@include media-breakpoint-down(md) {
+  .top-proposals {
+    &-cover {
+      height: 0;
+      min-height: 0;
+    }
+  }
+}
 </style>
