@@ -1,5 +1,5 @@
 <script setup>
-const { $gsap } = useNuxtApp()
+/* Meta tags */
 const { t } = useI18n()
 useServerSeoMeta({
   title: () => t('meta.programa.title'),
@@ -10,9 +10,14 @@ useServerSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+/* Fetch top proposals */
 const config = useRuntimeConfig()
-const { data: top } = await useFetch(config.public.apiBase + 'top')
+const { refresh, data: top } = await useFetch(config.public.apiBase + 'top')
+onMounted(() => {
+  refresh()
+})
 
+/* Page transition */
 definePageMeta({
   pageTransition: {
     css: false,

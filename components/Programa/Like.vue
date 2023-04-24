@@ -2,8 +2,9 @@
 import GlugSound from '~/assets/sounds/glug-b.mp3'
 import PopSound from '~/assets/sounds/pop.mp3'
 import axios from 'axios'
-import { debounce } from 'lodash'
+import lodash from 'lodash'
 import confetti from 'canvas-confetti'
+const { debounce } = lodash
 const config = useRuntimeConfig()
 
 const props = defineProps({

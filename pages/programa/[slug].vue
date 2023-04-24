@@ -1,8 +1,14 @@
 <script setup>
-const { locale } = useI18n()
+/* Fetch content */
 const config = useRuntimeConfig()
 const route = useRoute()
-const { data: category } = await useFetch(config.public.apiBase + 'category/' + route.params.slug)
+const { refresh, data: category } = await useFetch(config.public.apiBase + 'category/' + route.params.slug)
+onMounted(() => {
+  refresh()
+})
+
+/* Meta tags */
+const { locale } = useI18n()
 const { t } = useI18n()
 useServerSeoMeta({
   title: () => `${category.value[`name_${locale.value}`]} - ${t('meta.programa.title')}`,
