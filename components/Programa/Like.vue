@@ -37,7 +37,7 @@ const save = debounce(async () => {
 }, 500)
 
 const like = () => {
-  if (timesLiked.value > stopAt) return
+  if (timesLiked.value >= stopAt) return
   timesLiked.value++
   newLikes.value++
   props.proposal.likes++
@@ -82,7 +82,7 @@ const formattedLikes = computed(() => new Intl.NumberFormat("es-ES").format(prop
 </script>
 
 <template>
-  <button ref="button" @click="like" :class="['proposal-like', { liked: timesLiked > 0 }]">
+  <button ref="button" @click="like" :class="['proposal-like', { liked: timesLiked >= maxLikes }]">
     <div><ProgramaHeart :progress="timesLiked" :max="maxLikes" class="icon" /></div>
     <span class="number">
       {{ formattedLikes }}
@@ -119,6 +119,15 @@ const formattedLikes = computed(() => new Intl.NumberFormat("es-ES").format(prop
   &:active {
     .icon {
       transform: scale(1) rotate(4deg);
+    }
+  }
+
+  &.liked {
+    color: $red;
+
+    &:active .icon,
+    &:hover .icon {
+      transform: none;
     }
   }
 }

@@ -5,7 +5,7 @@ const { $gsap } = useNuxtApp()
 const { data: sections } = await useFetch(config.public.apiBase + 'categories/')
 
 const inSection = computed(() => {
-  return !['/programa/', '/programa', '/cas/programa', '/cas/programa/'].includes(route.path)
+  return route.name.startsWith('programa-slug')
 })
 
 /* Cover animation */
@@ -289,6 +289,7 @@ function onLeaveCategories(el, done) {
   &-content {
     background: $red;
     display: flex;
+    overflow: hidden;
 
     & :deep(> *) {
       height: 100%;
@@ -317,12 +318,21 @@ function onLeaveCategories(el, done) {
         text-orientation: unset;
         transform: unset;
         position: fixed;
-        top: 0;
+        bottom: 0;
         left: 0;
         right: 0;
-        bottom: unset;
+        top: unset;
         background: $yellow;
+        width: 100%;
         z-index: 1000;
+
+        a {
+          margin-left: -1rem;
+
+          .sticker {
+            transform: translate(-0.5em, 0);
+          }
+        }
       }
 
       &-top {

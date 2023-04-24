@@ -75,6 +75,7 @@ definePageMeta({
 .top-proposals {
   background: $red;
   padding: 2rem;
+  overflow: hidden;
 
   h2 {
     display: flex;

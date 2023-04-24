@@ -12,7 +12,6 @@ const showMenu = () => {
   document.body.classList.add('menu-shown')
 }
 const hideMenu = () => {
-  console.log('hook page:Start')
   menuShown.value = false
   document.body.classList.remove('menu-shown')
 }
@@ -23,10 +22,6 @@ const toggleMenu = () => {
     showMenu()
   }
 }
-
-/* Close menu on page navigation */
-const nuxtApp = useNuxtApp()
-nuxtApp.hook('page:start', hideMenu)
 
 /* Set white background when page has scrolled */
 const onScroll = (e) => {
@@ -85,17 +80,24 @@ const onLeaveNav = (el, done) => {
     }
   })
 }
+
+const route = useRoute()
+const onPrograma = computed(() => {
+  return ['programa-slug___val', 'programa-slug___cas'].includes(route.name)
+})
 </script>
 
 <template>
   <nav :class="['site-nav', { 'menu-shown': menuShown, 'menu-scrolled': menuScrolled && !menuShown }]">
     <SiteNavTransition :scrolled="menuScrolled && !menuShown">
       <div class="site-nav-bar">
-        <NuxtLink :to="localePath('/')" aria-label="Compromís (pàgina principal de campanya)">
-          <Transition name="fade" mode="out-in">
-            <CompromisLogo v-if="menuScrolled && !menuShown" />
-            <CompromisLogo mono v-else />
-          </Transition>
+        <NuxtLink :to="localePath('/')" aria-label="Compromís (pàgina principal de campanya)" @click="hideMenu">
+          <div :class="['logo-container', { 'logo-collpased': onPrograma && !menuShown && !menuScrolled }]">
+            <Transition name="fade" mode="out-in">
+              <CompromisLogo v-if="menuScrolled && !menuShown" />
+              <CompromisLogo mono v-else />
+            </Transition>
+          </div>
         </NuxtLink>
         <ul class="site-nav-language">
           <template v-for="lang in locales" :key="lang.code" >
@@ -121,7 +123,7 @@ const onLeaveNav = (el, done) => {
     </SiteNavTransition>
     <Transition @enter="onEnterNav" @leave="onLeaveNav">
       <div id="SiteMenu" class="site-nav-menu" v-if="menuShown">
-        <SiteMenu />
+        <SiteMenu @select="hideMenu" />
       </div>
     </Transition>
   </nav>
@@ -201,6 +203,16 @@ const onLeaveNav = (el, done) => {
   }
 }
 
+.logo-container {
+  overflow: hidden;
+  max-width: 11rem;
+  transition: max-width .25s ease;
+
+  &.logo-collpased {
+    max-width: 2rem;
+  }
+}
+
 /* Language transition */
 .language-enter-active,
 .language-leave-active {
@@ -213,5 +225,13 @@ const onLeaveNav = (el, done) => {
   display: inline-block;
   max-width: 0;
   overflow: hidden;
+}
+
+@include media-breakpoint-down(md) {
+  .site-nav-language {
+    .router-link-active {
+      display: none;
+    }
+  }
 }
 </style>

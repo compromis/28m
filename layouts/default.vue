@@ -1,9 +1,15 @@
 <script setup>
 import BFooter from '@compromis/blobby/components/footer/BFooter.vue'
+
+/* Programa exception */
+const route = useRoute()
+const onPrograma = computed(() => {
+  return route.path.startsWith('/programa') || route.path.startsWith('/cas/programa')
+})
 </script>
 
 <template>
-  <div>
+  <div :class="[`page-${route.name}`, { 'on-programa': onPrograma }]">
     <SiteNav />
     <div class="page">
       <NuxtPage />

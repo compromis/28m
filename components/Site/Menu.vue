@@ -1,4 +1,6 @@
 <script setup>
+defineEmits(['select'])
+
 // Menu
 const primaryMenu = [
   { id: 'home', to: '/', image: 'https://images.unsplash.com/photo-1682249301375-5c7f5a286d8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80', offsetX: 50, offsetY: -100 },
@@ -91,7 +93,7 @@ onUnmounted(() => {
           :to="localePath(item.to)"
           @mouseenter="hover(item.id, { x: item.offsetX, y: item.offsetY })"
           @mouseleave="unhover"
-          @click="unhover"
+          @click="$emit('select')"
           class="animate">
           {{ $t('menu.' + item.id) }}
         </nuxt-link>
@@ -141,6 +143,7 @@ onUnmounted(() => {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  will-change: background-color;
 
   a {
     color: $white;
@@ -188,6 +191,7 @@ onUnmounted(() => {
       position: fixed;
       pointer-events: none;
       z-index: 100;
+      will-change: left top;
 
       img {
         max-width: 350px;

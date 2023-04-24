@@ -4,6 +4,10 @@
   --nav-safe-area: 3.75rem;
 }
 
+html {
+  scroll-padding-top: var(--nav-safe-area);
+}
+
 h1, h2, h3, h4, h5 {
   letter-spacing: -.03em;
 }
