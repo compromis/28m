@@ -1,6 +1,4 @@
 export default {
-  hello: "Hello",
-
   meta: {
     programa: {
       title: "Programa 2023 - Compromís",
@@ -21,6 +19,14 @@ export default {
     campaigns: "Campanyes",
     donations: "Donacions",
     espai: "Espai",
+  },
+
+  home: {
+    claim_top: "Per tot el",
+    claim_bottom: "que importa",
+    claim_mobile_1: "Per tot",
+    claim_mobile_2: "el que",
+    claim_mobile_3: "importa",
   },
 
   programa: {

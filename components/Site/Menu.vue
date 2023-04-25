@@ -1,5 +1,5 @@
 <script setup>
-defineEmits(['select'])
+const emit = defineEmits(['select'])
 
 // Menu
 const primaryMenu = [
@@ -24,6 +24,8 @@ const hovering = ref('none')
 const showImage = ref(false)
 const offsetImage = reactive({ x: 50, y: -100 })
 let animationFrame
+let animation
+
 const hover = (section, { x, y }) => {
   hovering.value = section
   showImage.value = true
@@ -34,6 +36,7 @@ const hover = (section, { x, y }) => {
 }
 const unhover = () => {
   showImage.value = false
+  animation.revert()
   cancelAnimationFrame(animationFrame)
 }
 
@@ -55,7 +58,6 @@ const followMouse = () => {
   animationFrame = requestAnimationFrame(followMouse)
 }
 
-let animation
 const animateImage = (section) => {
   animation && animation.kill()
   animation = $gsap.fromTo(`#image-${section}`, {
@@ -71,6 +73,11 @@ const animateImage = (section) => {
 const setMousePos = ({ clientX, clientY }) => {
   mousePos.x = clientX
   mousePos.y = clientY
+}
+
+const select = () => {
+  unhover()
+  emit('select')
 }
 
 onMounted(() => {
@@ -93,7 +100,7 @@ onUnmounted(() => {
           :to="localePath(item.to)"
           @mouseenter="hover(item.id, { x: item.offsetX, y: item.offsetY })"
           @mouseleave="unhover"
-          @click="$emit('select')"
+          @click="select"
           class="animate">
           {{ $t('menu.' + item.id) }}
         </nuxt-link>
@@ -255,6 +262,7 @@ onUnmounted(() => {
   overflow: hidden;
   padding: .5em 0;
   margin: -.5em 0;
+  flex-shrink: 0;
 }
 
 @include media-breakpoint-down(md) {

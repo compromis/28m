@@ -197,7 +197,7 @@ function onLeaveCategories(el, done) {
   --transition-duration: .5s;
 
   display: grid;
-  grid-template-columns: minmax(120px, 3fr) 1fr;
+  grid-template-columns: minmax(120px, 2.5fr) 1fr;
   transition: all ease-in-out var(--transition-duration);
   transition-delay: var(--transition-duration);
   min-height: 100vh;
