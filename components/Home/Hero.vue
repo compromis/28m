@@ -1,24 +1,20 @@
 <script setup>
-import gsap from 'gsap'
-// const { $gsap } = useNuxtApp()
+const { $gsap } = useNuxtApp()
 
 /* Animtations */
 const main = ref()
 const animations = ref()
 onMounted(() => {
-  console.log('mounted hero')
-  setTimeout(animateClaim, 1000)
+  setTimeout(animateClaim, 500)
 })
 
 onUnmounted(() => {
-  console.log('unmounted hero')
   animations.value.revert()
 })
 
 function animateClaim() {
-  console.log('animate hero', gsap, document.querySelectorAll('.word-within'))
-  animations.value = gsap.context(() => {
-    gsap.timeline()
+  animations.value = $gsap.context(() => {
+    $gsap.timeline()
       .fromTo('.word-within', {
         y: '100%',
         opacity: 0

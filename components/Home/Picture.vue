@@ -17,6 +17,7 @@ const props = defineProps({
 const emit = defineEmits(['hover', 'unhover'])
 
 const { $gsap } = useNuxtApp()
+const loaded = ref(false)
 const main = ref()
 const animation = ref()
 const picture = ref(null)
@@ -36,9 +37,18 @@ const computedPos = computed(() => {
 })
 
 onMounted(() => {
-  console.log('mounted picture')
+  setTimeout(() => {
+    loaded.value = true
+  }, props.proposal.picture.delay * 1000)
+})
+
+onUnmounted(() => {
+  animation.value && animation.value.revert()
+})
+
+function onEnter (el, done) {
   animation.value = $gsap.context(() => {
-    $gsap.fromTo(picture.value, {
+    $gsap.fromTo(el, {
       scale: 0,
       duration: 1,
       opacity: 0,
@@ -47,16 +57,11 @@ onMounted(() => {
       scale: 1,
       opacity: 1,
       duration: 1,
-      delay: props.proposal.picture.delay,
-      onStart: () => textCanBeShown.value = true
+      onStart: () => textCanBeShown.value = true,
+      onComplete: done
     })
   }, main.value)
-})
-
-onUnmounted(() => {
-  console.log('unmounted picture')
-  animation.value.revert()
-})
+}
 
 const showText = ref(false)
 const textCanBeShown = ref(false)
@@ -81,7 +86,9 @@ const unhover = () => {
     @mouseenter="hover"
     @mouseleave="unhover"
   >
-    <img :src="proposal.picture.src" ref="picture" :alt="proposal.tip" class="proposal-picture" :style="{ width: proposal.picture.width + 'vw' }" />
+    <Transition @enter="onEnter" :css="false">
+      <img v-if="loaded" :src="proposal.picture.src" ref="picture" :alt="proposal.tip" class="proposal-picture" :style="{ width: proposal.picture.width + 'vw' }" />
+    </Transition>
     <Transition name="fade">
       <div v-if="showText && textCanBeShown" class="proposal-tip" aria-hidden="true">
         {{ proposal.tip }}

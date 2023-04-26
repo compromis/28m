@@ -29,12 +29,10 @@ const onScroll = (e) => {
 }
 
 onMounted(() => {
-  console.log('mounted nav')
   window.addEventListener('scroll', onScroll)
 })
 
 onUnmounted(() => {
-  console.log('unmounted nav')
   window.removeEventListener('scroll', onScroll, true)
 })
 
