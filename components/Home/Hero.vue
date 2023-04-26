@@ -1,12 +1,24 @@
 <script setup>
-const { $gsap } = useNuxtApp()
+import gsap from 'gsap'
+// const { $gsap } = useNuxtApp()
 
 /* Animtations */
 const main = ref()
 const animations = ref()
 onMounted(() => {
-  animations.value = $gsap.context(() => {
-    $gsap.timeline()
+  console.log('mounted hero')
+  setTimeout(animateClaim, 1000)
+})
+
+onUnmounted(() => {
+  console.log('unmounted hero')
+  animations.value.revert()
+})
+
+function animateClaim() {
+  console.log('animate hero', gsap, document.querySelectorAll('.word-within'))
+  animations.value = gsap.context(() => {
+    gsap.timeline()
       .fromTo('.word-within', {
         y: '100%',
         opacity: 0
@@ -27,11 +39,7 @@ onMounted(() => {
         ease: 'Power4.easeOut'
       })
   }, main.value)
-})
-
-onUnmounted(() => {
-  animations.value.revert()
-})
+}
 </script>
 
 <template>
@@ -65,6 +73,7 @@ onUnmounted(() => {
     flex-direction: column;
     justify-content: center;
     position: relative;
+    overflow: hidden;
 
     &-claim {
       position: relative;
@@ -78,6 +87,8 @@ onUnmounted(() => {
     &-links {
       margin-top: auto;
       opacity: 0;
+      position: relative;
+      z-index: 50;
     }
   }
 

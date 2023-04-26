@@ -34,9 +34,10 @@ const hover = (section, { x, y }) => {
   animationFrame = requestAnimationFrame(followMouse)
   animateImage(section)
 }
+
 const unhover = () => {
   showImage.value = false
-  animation.revert()
+  animation && animation.revert()
   cancelAnimationFrame(animationFrame)
 }
 
@@ -85,6 +86,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  animation && animation.revert()
+  cancelAnimationFrame(animationFrame)
   document.removeEventListener('mousemove', setMousePos)
 })
 </script>

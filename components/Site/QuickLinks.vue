@@ -38,8 +38,7 @@ const menu = [
     color: $white;
     
     &:hover {
-      color: $yellow;
-      text-decoration: none;
+      text-decoration-color: rgba($white, .25);
     }
 
     &:focus {

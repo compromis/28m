@@ -27,12 +27,19 @@ const toggleMenu = () => {
 const onScroll = (e) => {
   menuScrolled.value = window.scrollY > 0
 }
+
 onMounted(() => {
+  console.log('mounted nav')
   window.addEventListener('scroll', onScroll)
 })
 
+onUnmounted(() => {
+  console.log('unmounted nav')
+  window.removeEventListener('scroll', onScroll, true)
+})
+
 /* Nav animation */
-const onEnterNav = (el, done) => {
+const onEnterMenu = (el, done) => {
   $gsap.fromTo(el, {
     y: '-100%'
   }, {
@@ -55,7 +62,7 @@ const onEnterNav = (el, done) => {
   })
 }
 
-const onLeaveNav = (el, done) => {
+const onLeaveMenu = (el, done) => {
   $gsap.fromTo(el, {
     y: 0
   }, {
@@ -121,7 +128,7 @@ const onPrograma = computed(() => {
         </div>
       </div>
     </SiteNavTransition>
-    <Transition @enter="onEnterNav" @leave="onLeaveNav">
+    <Transition :css="false" @enter="onEnterMenu" @leave="onLeaveMenu">
       <div id="SiteMenu" class="site-nav-menu" v-if="menuShown">
         <SiteMenu @select="hideMenu" />
       </div>

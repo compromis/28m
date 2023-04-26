@@ -15,7 +15,6 @@ export default defineNuxtConfig({
   ],
 
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'https://compromis.net/sub/icons/favicon.ico' },
