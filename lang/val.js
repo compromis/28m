@@ -1,5 +1,10 @@
 export default {
   meta: {
+    home: {
+      title: "Compromís - Per tot el que importa",
+      description: "descripció",
+      ogImage: "-",
+    },
     programa: {
       title: "Programa 2023 - Compromís",
       description: "Consulta el programa",

@@ -22,18 +22,20 @@ const main = ref()
 const animation = ref()
 const picture = ref(null)
 
-const holder = ref(null)
 const mousePos = useState('mousePos')
-const movementStrength = props.proposal.picture.strength
+const strength = props.proposal.picture.strength
 const computedPos = computed(() => {
-  if (!holder.value) {
-    return { left: props.proposal.picture.left + '%', top: props.proposal.picture.top + '%' }
+  const left = props.proposal.picture.left + '%'
+  const top = props.proposal.picture.top + '%'
+
+  let transform = {}
+  if (typeof window !== 'undefined') {
+    const x = (window.innerWidth - mousePos.value.x * strength) / 100
+    const y = (window.innerHeight - mousePos.value.y * strength) / 100
+    transform = { transform: `translate(${x}px, ${y}px)`}
   }
 
-  const left = (holder.value.offsetLeft) - (mousePos.value.x / movementStrength)  + 'px'
-  const top = (holder.value.offsetTop) - (mousePos.value.y / movementStrength) + 'px'
-
-  return { left, top }
+  return { left, top, ...transform }
 })
 
 onMounted(() => {
@@ -77,32 +79,47 @@ const unhover = () => {
 
 <template>
   <div
-    ref="holder"
     :class="['proposal', 'image-to-move', `proposal-${id}`, { dimmed }]"
     :style="{
       ...computedPos,
-      width: proposal.picture.width + 'vw'
+      width: proposal.picture.width + 'vw',
+      minWidth: proposal.picture.minWidth || '200px',
+      '--strength': (proposal.picture.strength * 10) + 's'
     }"
     @mouseenter="hover"
     @mouseleave="unhover"
   >
-    <Transition @enter="onEnter" :css="false">
-      <img v-if="loaded" :src="proposal.picture.src" ref="picture" :alt="proposal.tip" class="proposal-picture" :style="{ width: proposal.picture.width + 'vw' }" />
-    </Transition>
-    <Transition name="fade">
-      <div v-if="showText && textCanBeShown" class="proposal-tip" aria-hidden="true">
-        {{ proposal.tip }}
-      </div>
-    </Transition>
+    <div class="proposal-float">
+      <Transition @enter="onEnter" :css="false">
+        <img
+          v-if="loaded"
+          :src="proposal.picture.src"
+          ref="picture"
+          :alt="proposal.tip"
+          class="proposal-picture"
+          :style="{
+            width: proposal.picture.width + 'vw',
+            minWidth: proposal.picture.minWidth || '200px'
+          }"
+        />
+      </Transition>
+      <Transition name="fade">
+        <div v-if="showText && textCanBeShown" class="proposal-tip" aria-hidden="true">
+          {{ proposal.tip }}
+        </div>
+      </Transition>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .proposal {
   position: absolute;
-  transition: opacity .2s ease;
-  background: purple;
-  animation: circle 50s linear infinite;
+  transition: opacity .25s ease;
+
+  &-float {
+    animation: circle var(--strength, 50s) linear infinite;
+  }
 
   &-picture {
     opacity: 0;
@@ -131,13 +148,19 @@ const unhover = () => {
   }
 }
 
+@include media-breakpoint-down(md) {
+  .proposal-tip {
+    display: none;
+  }
+}
+
 @keyframes circle {
   from {
-    transform: rotate(360deg) translate(-50px) rotate(-360deg);
+    transform: rotate(360deg) translate(-10%) rotate(-360deg);
   }
 
   to {
-    transform: rotate(0deg) translate(-30px) rotate(0deg);
+    transform: rotate(0deg) translate(-7%) rotate(0deg);
   }
 }
 </style>

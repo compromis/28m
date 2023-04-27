@@ -4,10 +4,8 @@ const pictures = Object.entries(proposals)
 const hoveredPicture = ref(null)
 
 const mousePos = useState('mousePos', () => ({ x: 0, y: 0 }))
-const prevMousePos = useState('prevMousePos', () => ({ x: 0, y: 0 }))
 const setMousePos = ({ pageX, pageY }) => {
-  mousePos.value = { x: pageX - prevMousePos.value.x, y: pageY - prevMousePos.value.y }
-  prevMousePos.value = { x: pageX, y: pageY }
+  mousePos.value = { x: pageX, y: pageY }
 }
 
 onMounted(() => {
@@ -26,3 +24,24 @@ onMounted(() => {
     :dimmed="hoveredPicture !== id && !!hoveredPicture"
   />
 </template>
+
+<style lang="scss">
+@include media-breakpoint-down(md) {
+  .proposal-prop4 {
+    left: 0 !important;
+  }
+
+  .proposal-prop5 {
+    top: 70% !important;
+    left: 3% !important;
+  }
+
+  .proposal-prop6 {
+    left: 50% !important;
+  }
+
+  .proposal-prop10 {
+    left: 65% !important;
+  }
+}
+</style>

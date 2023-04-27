@@ -5,11 +5,11 @@ const { $gsap } = useNuxtApp()
 const main = ref()
 const animations = ref()
 onMounted(() => {
-  setTimeout(animateClaim, 500)
+  setTimeout(animateClaim, 250)
 })
 
 onUnmounted(() => {
-  animations.value.revert()
+  // animations.value.revert()
 })
 
 function animateClaim() {

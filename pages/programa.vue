@@ -170,7 +170,10 @@ function onLeaveCategories(el, done) {
               </nuxt-link>
             </h1>
             <h1 v-else class="programa-nav-title-inverted" key="nav-title">
-              <nuxt-link :to="localePath('/programa')">
+              <nuxt-link :to="localePath('/programa')" aria-label="Torna a la pàgina principal del Programa">
+                <span class="arrow" aria-hidden="true">
+                  <IconArrow />
+                </span>
                 <span class="text">{{ $t('programa.title') }}</span>
                 <span class="sticker rounded bg-blue">2023</span>
               </nuxt-link>
@@ -263,6 +266,7 @@ function onLeaveCategories(el, done) {
       left: 0;
       background: $yellow;
       width: 100px;
+      height: 100vh;
       padding: 1rem;
       margin: 0;
       display: flex;
@@ -274,6 +278,18 @@ function onLeaveCategories(el, done) {
 
         &:hover {
           text-decoration-color: rgba($white, .25);
+        }
+      }
+
+      .arrow {
+        position: absolute;
+        top: calc(100vh - var(--cover-min-height) - 4rem);
+        left: 5px;
+        width: 35px;
+        
+        svg {
+          width: 100%;
+          transform: rotate(180deg);
         }
       }
 
@@ -325,6 +341,19 @@ function onLeaveCategories(el, done) {
         background: $yellow;
         width: 100%;
         z-index: 1000;
+        height: auto;
+
+        .arrow {
+          position: static;
+          margin-right: 1rem;
+
+          svg {
+            width: 20px;
+            height: 20px;
+            margin-top: -4px;
+            transform: rotate(0deg);
+          }
+        }
 
         a {
           margin-left: -1rem;

@@ -1,5 +1,20 @@
+<script setup>
+/* Meta tags */
+const { t } = useI18n()
+useServerSeoMeta({
+  title: () => t('meta.home.title'),
+  ogTitle: () => t('meta.home.title'),
+  description: () => t('meta.home.description'),
+  ogDescription: () => t('meta.home.description'),
+  ogImage: () => t('meta.home.ogImage'),
+  twitterCard: 'summary_large_image',
+})
+</script>
+
 <template>
-  <div>
+  <main>
     <HomeHero />
-  </div>
+    <HomeProposals />
+    <HomeModal />
+  </main>
 </template>
