@@ -17,6 +17,7 @@ watch(showModal, (modal) => {
   if (modal) {
     document.body.classList.add('menu-shown')
   } else {
+    window.location.hash = ''
     document.body.classList.remove('menu-shown')
   }
 })

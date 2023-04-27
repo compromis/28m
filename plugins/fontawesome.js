@@ -8,6 +8,7 @@ import {
   faFacebook,
   faYoutube,
   faTelegram,
+  faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -19,6 +20,7 @@ library.add(
   faFacebook,
   faTwitter,
   faYoutube,
+  faWhatsapp,
   faTelegram
 );
 config.autoAddCss = false;

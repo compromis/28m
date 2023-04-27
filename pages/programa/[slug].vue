@@ -12,11 +12,14 @@ const { locale } = useI18n()
 const { t } = useI18n()
 useServerSeoMeta({
   title: () => `${category.value[`name_${locale.value}`]} - ${t('meta.programa.title')}`,
-  ogTitle: () => t('meta.programa.title'),
+  ogTitle: () => `${category.value[`name_${locale.value}`]} - ${t('meta.programa.title')}`,
   description: () => t('meta.programa.description'),
   ogDescription: () => t('meta.programa.description'),
   ogImage: () => t('meta.programa.ogImage'),
   twitterCard: 'summary_large_image',
+})
+useHead({
+  title: `${category.value[`name_${locale.value}`]} - ${t('meta.programa.title')}`,
 })
 
 /* Cover animation */
@@ -99,7 +102,7 @@ definePageMeta({
     
         <ol class="programa-category-proposals list-unstyled">
           <li v-for="proposal in subcategory.proposals" :key="proposal.id" :class="{ highlighted: proposal.highlighted }">
-            <ProgramaProposal :proposal="proposal" />
+            <ProgramaProposal :proposal="proposal" :category="category" />
           </li>
         </ol>
       </div>

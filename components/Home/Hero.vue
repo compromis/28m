@@ -84,7 +84,7 @@ function animateClaim() {
       margin-top: auto;
       opacity: 0;
       position: relative;
-      z-index: 50;
+      z-index: 150;
     }
   }
 

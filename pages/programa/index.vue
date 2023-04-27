@@ -9,6 +9,9 @@ useServerSeoMeta({
   ogImage: () => t('meta.programa.ogImage'),
   twitterCard: 'summary_large_image',
 })
+useHead({
+  title: t('meta.programa.title'),
+})
 
 /* Fetch top proposals */
 const config = useRuntimeConfig()

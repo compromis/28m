@@ -46,7 +46,7 @@ const menu = [
     }
 
     &:focus-visible {
-      outline: 3px white solid;
+      outline: 3px $white solid;
       outline-offset: 7px;
       border-radius: .5rem;
     }

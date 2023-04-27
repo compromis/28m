@@ -9,13 +9,17 @@ defineProps({
     required: true
   }
 })
+
+const setHash = (slug) => {
+  window.location.hash = slug
+}
 </script>
 
 <template>
-  <NuxtLink :to="`#${slug}`" class="proposal">
+  <a :href="`#${slug}`" class="proposal" @click.prevent="setHash(slug)">
     <img :src="proposal.picture.src" :alt="proposal.picture.alt" class="proposal-picture" />
     <h3 class="proposal-title">{{ proposal.title }}</h3>
-  </NuxtLink>
+  </a>
 </template>
 
 <style lang="scss" scoped>

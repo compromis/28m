@@ -7,6 +7,11 @@ const props = defineProps({
     required: true
   },
 
+  category: {
+    type: Object,
+    default: () => null
+  },
+
   showCategory: {
     type: Boolean,
     default: false
@@ -23,11 +28,19 @@ const flaires = computed(() => {
   if (!props.proposal.flair) return []
   return props.proposal.flair.split(',')
 })
+
+/* Propsoal id */
+const proposalId = computed(() => {
+  let num = props.proposal.id
+  while (num.length < 3) num = "0" + num
+  return num
+})
 </script>
 
 <template>
   <article :class="['proposal', { highlighted: proposal.highlighted || highlighted, 'with-category': showCategory }]">
     <div class="proposal-content">
+      <span class="proposal-id">#{{ proposalId }}</span>
       <p class="proposal-text">
         {{ proposal[`text_${locale}`] }}
       </p>
@@ -38,7 +51,7 @@ const flaires = computed(() => {
 
     <div class="proposal-actions">
       <ProgramaLike :proposal="proposal" />
-      <ProgramaShare :proposal="proposal" />
+      <ProgramaShare :proposal="proposal" :category="proposal.subcategory?.category || category" />
     </div>
 
     <div class="proposal-flairs">
@@ -69,11 +82,24 @@ const flaires = computed(() => {
     font-size: 1.25rem;
   }
 
+  &-id {
+    background: $black;
+    color: $white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 900;
+    border-radius: .5rem;
+    padding: .25rem .5rem;
+    transform: translate(1.5rem, -50%);
+  }
+
   &-flairs {
     position: absolute;
     right: 0;
     top: 130px;
     transform: translateX(40%);
+    pointer-events: none;
 
     .flair {
       color: $white;

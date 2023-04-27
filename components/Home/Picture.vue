@@ -78,7 +78,8 @@ const unhover = () => {
 </script>
 
 <template>
-  <div
+  <a
+    :href="`#${id}`"
     :class="['proposal', 'image-to-move', `proposal-${id}`, { dimmed }]"
     :style="{
       ...computedPos,
@@ -109,12 +110,13 @@ const unhover = () => {
         </div>
       </Transition>
     </div>
-  </div>
+  </a>
 </template>
 
 <style lang="scss" scoped>
 .proposal {
   position: absolute;
+  display: block;
   transition: opacity .25s ease;
 
   &-float {
@@ -137,6 +139,7 @@ const unhover = () => {
     line-height: 1;
     font-weight: bold;
     min-width: 200px;
+    color: $white;
   }
 
   &:hover {
