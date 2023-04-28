@@ -31,6 +31,7 @@ export default {
 
   programa: {
     title: "Programa",
-    proposals: "Propostes",
+    proposals: "Propuestas",
+    more: "Más propuestas",
   },
 };

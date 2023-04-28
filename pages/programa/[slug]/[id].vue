@@ -4,8 +4,7 @@ const route = useRoute()
 const { data: proposal } = await useFetch(config.public.apiBase + 'proposal/' + route.params.id)
 
 /* Meta tags */
-const { locale } = useI18n()
-const { t } = useI18n()
+const { locale, t } = useI18n()
 useServerSeoMeta({
   title: () => `${proposal.value[`text_${locale.value}`]} - ${t('meta.programa.title')}`,
   ogTitle: () => `${proposal.value[`text_${locale.value}`]} - ${t('meta.programa.title')}`,
@@ -23,7 +22,7 @@ useHead({
   <div class="proposal-single">
     <ProgramaProposal :proposal="proposal" highlighted />
 
-    <h3>Més propostes</h3>
+    <h3>{{ $t('programa.more') }}</h3>
   </div>
 </template>
 

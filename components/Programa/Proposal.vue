@@ -30,8 +30,8 @@ const flaires = computed(() => {
 })
 
 /* Propsoal id */
-const proposalId = computed(() => {
-  let num = props.proposal.id
+const proposalNum = computed(() => {
+  let num = props.proposal.num
   while (num.length < 3) num = "0" + num
   return num
 })
@@ -40,7 +40,7 @@ const proposalId = computed(() => {
 <template>
   <article :class="['proposal', { highlighted: proposal.highlighted || highlighted, 'with-category': showCategory }]">
     <div class="proposal-content">
-      <span class="proposal-id">#{{ proposalId }}</span>
+      <span class="proposal-id">#{{ proposalNum }}</span>
       <p class="proposal-text">
         {{ proposal[`text_${locale}`] }}
       </p>
@@ -55,8 +55,11 @@ const proposalId = computed(() => {
     </div>
 
     <div class="proposal-flairs">
-      <span class="flair flair-joves sticker circle bg-yellow" v-if="flaires.includes('joves')">Joves</span>
-      <span class="flair flair-feminisme" v-if="flaires.includes('feminisme')">Feminisme</span>
+      <span class="flair flair-joves sticker circle bg-yellow" v-if="flaires.includes('youth')">Joves</span>
+      <span class="flair flair-feminisme sticker circle bg-purple" v-if="flaires.includes('feminist')">
+        <ClientOnly><FontAwesomeIcon :icon="['far', 'venus']" class="icon" /></ClientOnly>
+        <span class="visually-hidden">Feminisme</span>
+      </span>
     </div>
   </article>
 </template>
@@ -109,6 +112,10 @@ const proposalId = computed(() => {
       height: 3.25em;
       transform: rotate(15deg);
     }
+
+    .flair-feminisme .icon {
+      font-size: 2rem;
+    }
   }
 
   &-actions {
@@ -153,5 +160,11 @@ const proposalId = computed(() => {
   .proposal {
     gap: 0;
   }
+}
+</style>
+
+<style lang="scss">
+.programa .bg-purple .flair.bg-purple {
+  background: $red;
 }
 </style>

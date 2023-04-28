@@ -8,8 +8,7 @@ onMounted(() => {
 })
 
 /* Meta tags */
-const { locale } = useI18n()
-const { t } = useI18n()
+const { locale, t } = useI18n()
 useServerSeoMeta({
   title: () => `${category.value[`name_${locale.value}`]} - ${t('meta.programa.title')}`,
   ogTitle: () => `${category.value[`name_${locale.value}`]} - ${t('meta.programa.title')}`,
@@ -94,11 +93,13 @@ definePageMeta({
     </div>
     <div class="programa-category-container">
       <h2>{{ category[`name_${locale}`] }}</h2>
+
+      <NuxtPage />
+
+      <ProgramaQuickLinks :category="category" />
       
       <div v-for="subcategory in category.subcategories" :key="subcategory.id">
-        <h3 v-if="!subcategory.hidden">{{ subcategory[`name_${locale}`] }}</h3>
-
-        <NuxtPage />
+        <h3 :id="`subcat-${subcategory.id}`" v-if="!subcategory.hidden">{{ subcategory[`name_${locale}`] }}</h3>
     
         <ol class="programa-category-proposals list-unstyled">
           <li v-for="proposal in subcategory.proposals" :key="proposal.id" :class="{ highlighted: proposal.highlighted }">
@@ -121,8 +122,8 @@ definePageMeta({
 
   h3 {
     color: $white;
-    @include font-size(1.75rem);
-    margin: var(--site-padding) 0 1rem;
+    @include font-size(2rem);
+    margin: 10rem 0 2rem;
   }
 
   &-container {

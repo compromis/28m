@@ -1,6 +1,11 @@
 import { library, config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faShare, faBars, faXmark } from "@fortawesome/pro-regular-svg-icons";
+import {
+  faShare,
+  faBars,
+  faXmark,
+  faVenus,
+} from "@fortawesome/pro-regular-svg-icons";
 import {
   faTiktok,
   faInstagram,
@@ -21,7 +26,8 @@ library.add(
   faTwitter,
   faYoutube,
   faWhatsapp,
-  faTelegram
+  faTelegram,
+  faVenus
 );
 config.autoAddCss = false;
 

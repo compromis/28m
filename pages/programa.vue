@@ -137,7 +137,7 @@ function onLeaveCategories(el, done) {
     duration: .15,
     opacity: 0,
     y: -25,
-    stagger: 0.1
+    stagger: 0.05
   })
 }
 </script>

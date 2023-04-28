@@ -5,7 +5,7 @@
 }
 
 html {
-  scroll-padding-top: var(--nav-safe-area);
+  scroll-padding-top: calc(var(--nav-safe-area) + 1rem);
 }
 
 h1, h2, h3, h4, h5 {

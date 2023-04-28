@@ -15,7 +15,7 @@ defineProps({
       <h2>{{ section[`name_${locale}`] }}</h2>
 
       <ul class="list-unstyled programa-categories">
-        <li v-for="category in section.categories" :key="category.id" :class="['programa-category-card', { 'category-highlighted': category.highlighted }]">
+        <li v-for="category in section.categories" :key="category.id" :class="['programa-category-card', `programa-${category.slug}`, { 'category-highlighted': category.highlighted }]">
           <nuxt-link :to="localePath(`/programa/${category.slug}`)">
             <span class="proposals bg-black">
               {{ category.proposal_count }}
@@ -34,19 +34,23 @@ defineProps({
 .programa-index {
   h2 {
     color: $white;
-    margin: 3.5rem 0 1.5rem;
+    margin: 6rem 0 1.5rem;
     @include font-size(2.25rem);
   }
 }
 
 .programa-categories {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 2rem;
   grid-auto-flow: dense;
 
-  .category-highlighted {
+  .programa-category-card {
     grid-column: span 2;
+  }
+
+  .category-highlighted {
+    grid-column: span 3;
   }
 
   a {
@@ -98,6 +102,12 @@ defineProps({
         transition: .25s ease;
       }
     }
+  }
+
+  .programa-feminismes,
+  .programa-lgtbiq,
+  .programa-bon-govern {
+    grid-column: span 4;
   }
 }
 
