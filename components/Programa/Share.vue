@@ -127,6 +127,7 @@ const telegramUrl = computed(() => `https://t.me/share/url?url=${url}&text=${tex
     flex-direction: column;
     border-radius: 0 $border-radius-sm $border-radius-sm 0;
     padding: 1.5rem;
+    z-index: 20;
 
     a {
       color: $gray-600;

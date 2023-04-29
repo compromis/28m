@@ -89,7 +89,7 @@ definePageMeta({
 <template>
   <div :class="['programa-category', `bg-${category.color}`]">
     <div class="programa-category-cover">
-      <img :src="category.cover" alt="" ref="cover" />
+      <img :src="`/images/programa/${category.cover}`" alt="" ref="cover" />
     </div>
     <div class="programa-category-container">
       <h2>{{ category[`name_${locale}`] }}</h2>

@@ -35,12 +35,18 @@ const proposalNum = computed(() => {
   while (num.length < 3) num = "0" + num
   return num
 })
+
+const proposalCategory = computed(() => {
+  return props.proposal.subcategory?.category || props.category
+})
 </script>
 
 <template>
   <article :class="['proposal', { highlighted: proposal.highlighted || highlighted, 'with-category': showCategory }]">
     <div class="proposal-content">
-      <span class="proposal-id">#{{ proposalNum }}</span>
+      <NuxtLink :to="localePath(`/programa/${proposalCategory.slug}/${proposal.id}`)" class="proposal-id">
+        #{{ proposalNum }}
+      </NuxtLink>
       <p class="proposal-text">
         {{ proposal[`text_${locale}`] }}
       </p>
@@ -51,7 +57,7 @@ const proposalNum = computed(() => {
 
     <div class="proposal-actions">
       <ProgramaLike :proposal="proposal" />
-      <ProgramaShare :proposal="proposal" :category="proposal.subcategory?.category || category" />
+      <ProgramaShare :proposal="proposal" :category="proposalCategory" />
     </div>
 
     <div class="proposal-flairs">
@@ -100,7 +106,7 @@ const proposalNum = computed(() => {
   &-flairs {
     position: absolute;
     right: 0;
-    top: 130px;
+    bottom: 30px;
     transform: translateX(40%);
     pointer-events: none;
 

@@ -7,6 +7,11 @@ defineProps({
     required: true
   }
 })
+
+function preload(image) {
+  const img = new Image();
+  img.src = `/images/programa/${image}`;
+}
 </script>
 
 <template>
@@ -16,7 +21,7 @@ defineProps({
 
       <ul class="list-unstyled programa-categories">
         <li v-for="category in section.categories" :key="category.id" :class="['programa-category-card', `programa-${category.slug}`, { 'category-highlighted': category.highlighted }]">
-          <nuxt-link :to="localePath(`/programa/${category.slug}`)">
+          <nuxt-link :to="localePath(`/programa/${category.slug}`)" @mouseenter="preload(category.cover)">
             <span class="proposals bg-black">
               {{ category.proposal_count }}
               <span class="reveal-text">{{ $t('programa.proposals') }}</span>

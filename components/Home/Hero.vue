@@ -14,26 +14,27 @@ onUnmounted(() => {
 
 function animateClaim() {
   animations.value = $gsap.context(() => {
-    $gsap.timeline()
-      .fromTo('.word-within', {
-        y: '100%',
-        opacity: 0
-      }, {
-        y: 0,
-        opacity: 1,
-        stagger: .1,
-        duration: .25,
-        ease: 'Power4.easeOut'
-      })
-      .fromTo('.hero-links', {
-        y: '100%',
-        opacity: 0,
-      }, {
-        y: 0,
-        opacity: 1,
-        duration: .5,
-        ease: 'Power4.easeOut'
-      })
+    $gsap.fromTo('.word-within', {
+      y: '100%',
+      opacity: 0
+    }, {
+      y: 0,
+      opacity: 1,
+      stagger: .1,
+      duration: .25,
+      ease: 'Power4.easeOut'
+    })
+
+    $gsap.fromTo('.hero-links', {
+      y: '100%',
+      opacity: 0,
+    }, {
+      y: 0,
+      opacity: 1,
+      duration: .5,
+      delay: .5,
+      ease: 'Power4.easeOut'
+    })
   }, main.value)
 }
 </script>
