@@ -1,8 +1,34 @@
 import { library, config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faShare } from "@fortawesome/pro-regular-svg-icons";
+import {
+  faShare,
+  faBars,
+  faXmark,
+  faVenus,
+} from "@fortawesome/pro-regular-svg-icons";
+import {
+  faTiktok,
+  faInstagram,
+  faTwitter,
+  faFacebook,
+  faYoutube,
+  faTelegram,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
 
-library.add(faShare);
+library.add(
+  faShare,
+  faBars,
+  faXmark,
+  faTiktok,
+  faInstagram,
+  faFacebook,
+  faTwitter,
+  faYoutube,
+  faWhatsapp,
+  faTelegram,
+  faVenus
+);
 config.autoAddCss = false;
 
 export default defineNuxtPlugin((nuxtApp) => {

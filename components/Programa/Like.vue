@@ -2,8 +2,9 @@
 import GlugSound from '~/assets/sounds/glug-b.mp3'
 import PopSound from '~/assets/sounds/pop.mp3'
 import axios from 'axios'
-import { debounce } from 'lodash'
+import lodash from 'lodash'
 import confetti from 'canvas-confetti'
+const { debounce } = lodash
 const config = useRuntimeConfig()
 
 const props = defineProps({
@@ -16,7 +17,7 @@ const props = defineProps({
 /* Like functionality */
 const timesLiked = ref(0)
 const newLikes = ref(0)
-const stopAt = 100
+const stopAt = 15
 const maxLikes = 15
 const errored = ref(false)
 
@@ -36,7 +37,7 @@ const save = debounce(async () => {
 }, 500)
 
 const like = () => {
-  if (timesLiked.value > stopAt) return
+  if (timesLiked.value >= stopAt) return
   timesLiked.value++
   newLikes.value++
   props.proposal.likes++
@@ -48,7 +49,8 @@ const like = () => {
   if (timesLiked.value === maxLikes) {
     pop.play()
     throwConfetti()
-  } else {
+  } else if (timesLiked.value < maxLikes) {
+    glug.playbackRate = 1 + (timesLiked.value / maxLikes)
     glug.play()
   }
 }
@@ -80,7 +82,7 @@ const formattedLikes = computed(() => new Intl.NumberFormat("es-ES").format(prop
 </script>
 
 <template>
-  <button ref="button" @click="like" :class="['proposal-like', { liked: timesLiked > 0 }]">
+  <button ref="button" @click="like" :class="['proposal-like', { liked: timesLiked >= maxLikes }]">
     <div><ProgramaHeart :progress="timesLiked" :max="maxLikes" class="icon" /></div>
     <span class="number">
       {{ formattedLikes }}
@@ -117,6 +119,15 @@ const formattedLikes = computed(() => new Intl.NumberFormat("es-ES").format(prop
   &:active {
     .icon {
       transform: scale(1) rotate(4deg);
+    }
+  }
+
+  &.liked {
+    color: $red;
+
+    &:active .icon,
+    &:hover .icon {
+      transform: none;
     }
   }
 }

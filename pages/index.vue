@@ -1,7 +1,20 @@
+<script setup>
+/* Meta tags */
+const { t } = useI18n()
+useServerSeoMeta({
+  title: () => t('meta.home.title'),
+  ogTitle: () => t('meta.home.title'),
+  description: () => t('meta.home.description'),
+  ogDescription: () => t('meta.home.description'),
+  ogImage: () => t('meta.home.ogImage'),
+  twitterCard: 'summary_large_image',
+})
+</script>
+
 <template>
-  <div>
-    Hello {{ $t('hello') }}<br><br><br>
-    <nuxt-link to="/programa">Programa</nuxt-link>
-    <nuxt-link to="/test">Test</nuxt-link>
-  </div>
+  <main>
+    <HomeHero />
+    <HomeProposals />
+    <HomeModal />
+  </main>
 </template>

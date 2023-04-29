@@ -1,0 +1,28 @@
+
+:root {
+  --site-padding: 2rem;
+  --nav-safe-area: 3.75rem;
+}
+
+html {
+  scroll-padding-top: calc(var(--nav-safe-area) + 1rem);
+}
+
+h1, h2, h3, h4, h5 {
+  letter-spacing: -.03em;
+}
+
+.menu-shown {
+  overflow: hidden;
+}
+
+@media (max-width: 1540px) {
+  :root {
+    --site-padding: 1.5rem;
+  }
+  
+  html,
+  body {
+    font-size: 14px;
+  }
+}

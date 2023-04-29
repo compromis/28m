@@ -2,13 +2,15 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://programa2023.compromis.net/api/'
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://programa2023.compromis.net/api/',
+      googleApiKey: process.env.GOOGLE_API_KEY,
+      spreadsheetId: process.env.SPREAD_SHEET_ID
     }
   },
 
   css: [
     '@compromis/blobby/scss/blobby.scss',
-    '~/assets/scss/global.scss',
+    '~/assets/scss/main.scss',
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 

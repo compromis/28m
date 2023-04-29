@@ -2,53 +2,11 @@
 const route = useRoute()
 const config = useRuntimeConfig()
 const { $gsap } = useNuxtApp()
-const { data: sections } = await useFetch(config.public.apiBase + 'categories')
+const { data: sections } = await useFetch(config.public.apiBase + 'categories/')
 
 const inSection = computed(() => {
-  return !['/programa/', '/programa', '/cas/programa', '/cas/programa/'].includes(route.path)
+  return route.name.startsWith('programa-slug')
 })
-
-/*
-  $gsap.fromTo('.programa-nav-cover img', {
-    "--cover-height": 0,
-    "--cover-min-height": 0,
-  },{
-    "--cover-height": "20vh",
-    "--cover-min-height": "300px",
-    duration: .5
-  })
-
-  $gsap.fromTo('.programa-nav-title span', {
-    y: -20,
-    opacity: 0,
-  },{
-    duration: .5,
-    opacity: 1,
-    y: 0,
-    stagger: 0.2,
-    delay: .25,
-  })
-
-  $gsap.fromTo('.programa-index', {
-    opacity: 0
-  }, {
-    duration: .25,
-    opacity: 1,
-    y: 0
-  })
-
-  $gsap.fromTo('.programa-category-card', {
-    y: -20,
-    opacity: 0,
-  },{
-    duration: .15,
-    opacity: 1,
-    y: 0,
-    stagger: 0.1,
-    delay: .5,
-  })
-})
-*/
 
 /* Cover animation */
 function beforeEnterCover(el) {
@@ -72,6 +30,30 @@ function onLeaveCover(el, done) {
     "--cover-height": 0,
     "--cover-min-height": 0,
     duration: .25,
+    onComplete: done
+  })
+}
+
+/* Top mobile */
+function beforeEnterTop(el) {
+  $gsap.set(el, {
+    y: '-100%'
+  })
+}
+
+function onEnterTop(el, done) {
+  $gsap.to(el, {
+    y: 0,
+    duration: .5,
+    delay: 1,
+    onComplete: done
+  })
+}
+
+function onLeaveTop(el, done) {
+  $gsap.to(el, {
+    y: '-100%',
+    duration: 1,
     onComplete: done
   })
 }
@@ -116,14 +98,14 @@ function onLeavePrograma(el, done) {
 }
 
 /* Categories animations */
-function beforeEnter(el) {
+function beforeEnterCategories(el) {
   $gsap.set(el, {
     opacity: 0,
     y: -50
   })
 }
   
-function onEnter(el, done) {
+function onEnterCategories(el, done) {
   $gsap.to(el, {
     duration: .5,
     opacity: 1,
@@ -144,7 +126,7 @@ function onEnter(el, done) {
   })
 }
 
-function onLeave(el, done) {
+function onLeaveCategories(el, done) {
 	$gsap.to(el, {
     duration: .5,
     opacity: 0,
@@ -155,46 +137,60 @@ function onLeave(el, done) {
     duration: .15,
     opacity: 0,
     y: -25,
-    stagger: 0.1
+    stagger: 0.05
   })
 }
 </script>
 
 <template>
-  <main :class="['programa', { 'programa-in-section': inSection }]">
-    <header class="programa-nav">
-      <div class="programa-nav-cover">
-        <Transition @before-enter="beforeEnterCover" @enter="onEnterCover" @leave="onLeaveCover" appear>
-          <img v-if="!inSection" src="~/assets/images/programa/cover.jpg" alt="Foto de la Generalitat" />
-        </Transition>
-      </div>
-      
-      <div class="programa-nav-container">
-        <Transition @enter="onEnterPrograma" @leave="onLeavePrograma" mode="out-in" appear>
-          <h1 v-if="!inSection" class="programa-nav-title" key="main-title">
-            <nuxt-link :to="localePath('/programa')">
-              <span class="text">{{ $t('programa.title') }}</span>
-              <span class="sticker rounded bg-blue">2023</span>
-            </nuxt-link>
-          </h1>
-          <h1 v-else class="programa-nav-title-inverted" key="nav-title">
-            <nuxt-link :to="localePath('/programa')">
-              <span class="text">{{ $t('programa.title') }}</span>
-              <span class="sticker rounded bg-blue">2023</span>
-            </nuxt-link>
-          </h1>
-        </Transition>
+  <div>
+    <main :class="['programa', { 'programa-in-section': inSection }]">
+      <header class="programa-nav">
+        <div class="programa-nav-cover">
+          <Transition @before-enter="beforeEnterCover" @enter="onEnterCover" @leave="onLeaveCover">
+            <img v-if="!inSection" src="~/assets/images/programa/cover.jpg" alt="Foto de la Generalitat" />
+          </Transition>
 
-        <Transition :css="false" @before-enter="beforeEnter" @enter="onEnter" @leave="onLeave" appear>
-          <ProgramaCategories v-if="!inSection" :sections="sections" />
-        </Transition>
-      </div>
-    </header>
+          <Transition @before-enter="beforeEnterTop" @enter="onEnterTop" @leave="onLeaveTop">
+            <a href="#content" v-if="!inSection" class="programa-nav-top d-md-none">
+              <h2>
+                {{ $t('programa.proposals') }}
+                <span class="sticker circle bg-yellow">TOP</span>
+              </h2>
+            </a>
+          </Transition>
+        </div>
+        
+        <div class="programa-nav-container">
+          <Transition @enter="onEnterPrograma" @leave="onLeavePrograma" mode="out-in">
+            <h1 v-if="!inSection" class="programa-nav-title" key="main-title">
+              <nuxt-link :to="localePath('/programa')">
+                <span class="text">{{ $t('programa.title') }}</span>
+                <span class="sticker rounded bg-blue">2023</span>
+              </nuxt-link>
+            </h1>
+            <h1 v-else class="programa-nav-title-inverted" key="nav-title">
+              <nuxt-link :to="localePath('/programa')" aria-label="Torna a la pàgina principal del Programa">
+                <span class="arrow" aria-hidden="true">
+                  <IconArrow />
+                </span>
+                <span class="text">{{ $t('programa.title') }}</span>
+                <span class="sticker rounded bg-blue">2023</span>
+              </nuxt-link>
+            </h1>
+          </Transition>
 
-    <section class="programa-content">
-      <NuxtPage />
-    </section>
-  </main>
+          <Transition :css="false" @before-enter="beforeEnterCategories" @enter="onEnterCategories" @leave="onLeaveCategories">
+            <ProgramaCategories v-if="!inSection" :sections="sections" />
+          </Transition>
+        </div>
+      </header>
+
+      <section class="programa-content" id="content">
+        <NuxtPage />
+      </section>
+    </main>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -204,21 +200,24 @@ function onLeave(el, done) {
   --transition-duration: .5s;
 
   display: grid;
-  grid-template-columns: minmax(100px, 3fr) 1fr;
+  grid-template-columns: minmax(120px, 2.5fr) 1fr;
   transition: all ease-in-out var(--transition-duration);
   transition-delay: var(--transition-duration);
   min-height: 100vh;
+  will-change: grid-template-columns;
 
   &-nav {
     background: $yellow;
 
     &-container {
+      position: relative;
       max-width: 1000px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: var(--site-padding);
     }
 
     &-cover {
+      position: relative;
       height: var(--cover-height);
       min-height: var(--cover-min-height);
 
@@ -247,7 +246,7 @@ function onLeave(el, done) {
       .sticker {
         position: absolute;
         font-size: .35em;
-        transform: translate(-.7em, var(--translateY, .2em));
+        transform: translate(-.7em, var(--translateY, .25em));
       }
 
       span {
@@ -260,17 +259,37 @@ function onLeave(el, done) {
       writing-mode: vertical-rl;
       text-orientation: mixed;
       transform: rotate(180deg);
-      position: fixed;
-      bottom: .25em;
-      left: -.25em;
-      @include font-size(5rem);
+      @include font-size(3rem);
       line-height: 1;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: $yellow;
+      width: 100px;
+      height: 100vh;
+      padding: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
 
       a {
         color: inherit;
+        transform: translateX(10%);
 
         &:hover {
           text-decoration-color: rgba($white, .25);
+        }
+      }
+
+      .arrow {
+        position: absolute;
+        top: calc(100vh - var(--cover-min-height) - 4rem);
+        left: 5px;
+        width: 35px;
+        
+        svg {
+          width: 100%;
+          transform: rotate(180deg);
         }
       }
 
@@ -286,6 +305,7 @@ function onLeave(el, done) {
   &-content {
     background: $red;
     display: flex;
+    overflow: hidden;
 
     & :deep(> *) {
       height: 100%;
@@ -296,6 +316,86 @@ function onLeave(el, done) {
 
 /* When in a section */
 .programa-in-section {
-  grid-template-columns: minmax(150px, .25fr) 12fr;
+  grid-template-columns: minmax(100px, .25fr) 12fr;
+}
+
+/* Mobile */
+@include media-breakpoint-down(md) {
+  .programa {
+    grid-template-columns: 1fr;
+
+    &-nav {
+      &-container {
+        transition: .5s ease;
+      }
+
+      &-title-inverted {
+        writing-mode: unset;
+        text-orientation: unset;
+        transform: unset;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: unset;
+        background: $yellow;
+        width: 100%;
+        z-index: 1000;
+        height: auto;
+
+        .arrow {
+          position: static;
+          margin-right: 1rem;
+
+          svg {
+            width: 20px;
+            height: 20px;
+            margin-top: -4px;
+            transform: rotate(0deg);
+          }
+        }
+
+        a {
+          margin-left: -1rem;
+
+          .sticker {
+            transform: translate(-0.5em, 0);
+          }
+        }
+      }
+
+      &-top {
+        position: absolute;
+        background: $red;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        color: $white;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        padding: 1rem;
+        overflow: hidden;
+        height: var(--cover-height);
+        min-height: var(--cover-min-height);
+
+        h2 {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+
+    &-in-section {
+      .programa-nav-container {
+        padding: 0;
+      }
+
+      .programa-nav-cover {
+        --cover-height: 0;
+        --cover-min-height: 0;
+      }
+    }
+  }
 }
 </style>

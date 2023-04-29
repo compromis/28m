@@ -7,6 +7,11 @@ defineProps({
     required: true
   }
 })
+
+function preload(image) {
+  const img = new Image();
+  img.src = `/images/programa/${image}`;
+}
 </script>
 
 <template>
@@ -15,8 +20,8 @@ defineProps({
       <h2>{{ section[`name_${locale}`] }}</h2>
 
       <ul class="list-unstyled programa-categories">
-        <li v-for="category in section.categories" :key="category.id" :class="['programa-category-card', { 'category-highlighted': category.highlighted }]">
-          <nuxt-link :to="localePath(`/programa/${category.slug}`)">
+        <li v-for="category in section.categories" :key="category.id" :class="['programa-category-card', `programa-${category.slug}`, { 'category-highlighted': category.highlighted }]">
+          <nuxt-link :to="localePath(`/programa/${category.slug}`)" @mouseenter="preload(category.cover)">
             <span class="proposals bg-black">
               {{ category.proposal_count }}
               <span class="reveal-text">{{ $t('programa.proposals') }}</span>
@@ -34,19 +39,23 @@ defineProps({
 .programa-index {
   h2 {
     color: $white;
-    margin: 3.5rem 0 1.5rem;
+    margin: 6rem 0 1.5rem;
     @include font-size(2.25rem);
   }
 }
 
 .programa-categories {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 2rem;
   grid-auto-flow: dense;
 
-  .category-highlighted {
+  .programa-category-card {
     grid-column: span 2;
+  }
+
+  .category-highlighted {
+    grid-column: span 3;
   }
 
   a {
@@ -56,7 +65,7 @@ defineProps({
     color: $black;
     border-radius: $border-radius-sm;
     padding: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     @include font-size(2rem);
     line-height: 1;
     letter-spacing: -.03em;
@@ -98,6 +107,19 @@ defineProps({
         transition: .25s ease;
       }
     }
+  }
+
+  .programa-feminismes,
+  .programa-lgtbiq,
+  .programa-bon-govern {
+    grid-column: span 4;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .programa-categories {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
 }
 </style>
