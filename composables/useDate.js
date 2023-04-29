@@ -1,6 +1,6 @@
 export const useDate = (date) => {
   const { locale } = useI18n();
-  const thisDate = new Date(date);
+  const thisDate = typeof date === "object" ? date : new Date(date);
 
   const months = {
     val: [

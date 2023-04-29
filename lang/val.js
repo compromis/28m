@@ -39,4 +39,15 @@ export default {
     proposals: "Propostes",
     more: "Més propostes",
   },
+
+  candidatura: {
+    local: "Compromís al teu municipi",
+    filter_placeholder: "Troba el teu municipi",
+    top3cities: "Candidats a Alacant, València i Castelló",
+    local_candidates: {
+      mas: "Candidat a l'Alcaldia d'Alacant",
+      ribo: "Candidat a l'Alcaldia de València",
+      ignasi: "Candidat a l'Alcaldia de Castelló",
+    },
+  },
 };
