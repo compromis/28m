@@ -14,7 +14,7 @@ const filteredMunicipalities = computed(() => {
 <template>
   <div class="local-sites">
     <div class="local-container">
-      <input v-model="filter" type="search" name="filter" :placeholder="$t('candidatura.filer_placeholder')" />
+      <input v-model="filter" type="search" name="filter" :placeholder="$t('candidatura.filter_placeholder')" />
     </div>
 
     <div class="local-sites-results">

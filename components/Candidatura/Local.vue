@@ -18,7 +18,7 @@
             full-name="Rafa Mas"
             name="Mas"
             :description="$t('candidatura.local_candidates.mas')"
-            :picture="null"
+            picture="null"
           />
         </li>
         <li>
@@ -26,7 +26,7 @@
             full-name="Joan Ribó"
             name="Ribó"
             :description="$t('candidatura.local_candidates.ribo')"
-            :picture="null"
+            picture="null"
           />
         </li>
         <li>
@@ -34,7 +34,7 @@
             full-name="Ignasi Garcia"
             name="Ignasi"
             :description="$t('candidatura.local_candidates.ignasi')"
-            :picture="null"
+            picture="null"
           />
         </li>
       </ul>

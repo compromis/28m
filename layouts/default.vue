@@ -24,5 +24,10 @@ const onPrograma = computed(() => {
 .page {
   min-height: 100vh;
   background: $red;
+  transition: background .5s ease;
+}
+
+.on-programa .page {
+  background: $yellow;
 }
 </style>

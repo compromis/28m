@@ -1,5 +1,5 @@
 <script setup>
-const { $gsap } = useNuxtApp()
+const { hook, $gsap } = useNuxtApp()
 
 /* Animtations */
 const main = ref()
@@ -7,6 +7,7 @@ const animations = ref()
 onMounted(() => {
   setTimeout(animateClaim, 250)
 })
+hook('page:transition:finish', animateClaim)
 
 onUnmounted(() => {
   // animations.value.revert()

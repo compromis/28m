@@ -1,14 +1,17 @@
 <script setup>
 import CompromisLogo from '@compromis/blobby/components/logos/CompromisLogo.vue'
-const { $gsap } = useNuxtApp()
+const { hook, $gsap } = useNuxtApp()
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
 /* Menu toggler */
 const menuShown = ref(false)
 const menuScrolled = ref(false)
+const pageLoaded = ref(false)
+const pageLoading = ref(false)
 const showMenu = () => {
   menuShown.value = true
+  pageLoaded.value = false
   document.body.classList.add('menu-shown')
 }
 const hideMenu = () => {
@@ -86,10 +89,17 @@ const onLeaveMenu = (el, done) => {
   })
 }
 
+/* Detect if we are on Programa */
 const route = useRoute()
 const onPrograma = computed(() => {
   return ['programa-slug___val', 'programa-slug___cas'].includes(route.name)
 })
+
+/* Hide menu after page has loaded */
+hook('page:finish', hideMenu)
+const onPageSelect = () => {
+  setTimeout(hideMenu, 1000)
+}
 </script>
 
 <template>
@@ -128,7 +138,7 @@ const onPrograma = computed(() => {
     </SiteNavTransition>
     <Transition :css="false" @enter="onEnterMenu" @leave="onLeaveMenu">
       <div id="SiteMenu" class="site-nav-menu" v-if="menuShown">
-        <SiteMenu @select="hideMenu" />
+        <SiteMenu @select="onPageSelect" />
       </div>
     </Transition>
   </nav>

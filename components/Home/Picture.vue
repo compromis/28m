@@ -89,6 +89,7 @@ const unhover = () => {
     }"
     @mouseenter="hover"
     @mouseleave="unhover"
+    :tabindex="loaded ? '0' : '-1'"
   >
     <div class="proposal-float">
       <Transition @enter="onEnter" :css="false">
@@ -144,6 +145,15 @@ const unhover = () => {
 
   &:hover {
     z-index: 100;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: 10px $yellow solid;
+    outline-offset: 20px;
   }
 
   &.dimmed {
