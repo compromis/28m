@@ -18,7 +18,6 @@ const emit = defineEmits(['hover', 'unhover'])
 
 const { $gsap } = useNuxtApp()
 const loaded = ref(false)
-const main = ref()
 const animation = ref()
 const picture = ref(null)
 
@@ -49,20 +48,18 @@ onUnmounted(() => {
 })
 
 function onEnter (el, done) {
-  animation.value = $gsap.context(() => {
-    $gsap.fromTo(el, {
-      scale: 0,
-      duration: 1,
-      opacity: 0,
-      transformOrigin: props.proposal.picture.origin || 'left bottom'
-    }, {
-      scale: 1,
-      opacity: 1,
-      duration: 1,
-      onStart: () => textCanBeShown.value = true,
-      onComplete: done
-    })
-  }, main.value)
+  animation.value = $gsap.fromTo(el, {
+    scale: 0,
+    duration: 1,
+    opacity: 0,
+    transformOrigin: props.proposal.picture.origin || 'left bottom'
+  }, {
+    scale: 1,
+    opacity: 1,
+    duration: 1,
+    onStart: () => textCanBeShown.value = true,
+    onComplete: done
+  })
 }
 
 const showText = ref(false)
@@ -78,8 +75,8 @@ const unhover = () => {
 </script>
 
 <template>
-  <a
-    :href="`#${id}`"
+  <NuxtLink
+    :to="localePath(`/proposta/${id}`)"
     :class="['proposal', 'image-to-move', `proposal-${id}`, { dimmed }]"
     :style="{
       ...computedPos,
@@ -90,7 +87,6 @@ const unhover = () => {
     @mouseenter="hover"
     @mouseleave="unhover"
     :tabindex="loaded ? '0' : '-1'"
-    ref="main"
   >
     <div class="proposal-float">
       <Transition @enter="onEnter" :css="false">
@@ -112,7 +108,7 @@ const unhover = () => {
         </div>
       </Transition>
     </div>
-  </a>
+  </NuxtLink>
 </template>
 
 <style lang="scss" scoped>

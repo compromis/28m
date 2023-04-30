@@ -1,5 +1,5 @@
 <script setup>
-const { hook, $gsap } = useNuxtApp()
+const { $gsap } = useNuxtApp()
 
 /* Animtations */
 const hero = ref()

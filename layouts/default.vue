@@ -6,10 +6,15 @@ const route = useRoute()
 const onPrograma = computed(() => {
   return route.path.startsWith('/programa') || route.path.startsWith('/cas/programa')
 })
+
+const routeName = computed(() => {
+  const name = route.name.split('___')
+  return name[0]
+})
 </script>
 
 <template>
-  <div :class="[`page-${route.name}`, { 'on-programa': onPrograma }]">
+  <div :class="[`page-${routeName}`, { 'on-programa': onPrograma }]">
     <SiteNav />
     <div class="page">
       <NuxtPage />
@@ -26,5 +31,19 @@ const onPrograma = computed(() => {
   min-height: 100vh;
   background: $red;
   transition: background .5s ease;
+  transition-delay: .75s;
+}
+
+.on-programa .page,
+.page-candidatura .page {
+  background: $yellow;
+}
+
+.page-collabora .page {
+  background: $blue;
+}
+
+.page-actes .page {
+  background: $indigo;
 }
 </style>

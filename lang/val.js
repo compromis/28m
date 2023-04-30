@@ -50,4 +50,29 @@ export default {
       ignasi: "Candidat a l'Alcaldia de Castelló",
     },
   },
+
+  collabora: {
+    title: "Col·labora",
+    card1: {
+      title: "Ajunda'ns amb la campanya",
+      cta: "Apunta't com a voluntari/a",
+    },
+    card2: {
+      title: "Sigues garantia democràtica",
+      cta: "Fes-te inverventor/a",
+    },
+    card3: {
+      title: "Difon per xarxes",
+    },
+    card4: {
+      title: "Fes una donació",
+      other: "Més",
+    },
+  },
+
+  actes: {
+    title: "Actes",
+    upcoming: "Propers actes",
+    past: "Actes passats",
+  },
 };
