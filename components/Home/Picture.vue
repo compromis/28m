@@ -90,6 +90,7 @@ const unhover = () => {
     @mouseenter="hover"
     @mouseleave="unhover"
     :tabindex="loaded ? '0' : '-1'"
+    ref="main"
   >
     <div class="proposal-float">
       <Transition @enter="onEnter" :css="false">

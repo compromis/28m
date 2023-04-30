@@ -25,11 +25,13 @@
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s ease;
+  transition-delay: 2s;
 }
 
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
+  transition-delay: 2s;
 }
 
 /* Nav transition */

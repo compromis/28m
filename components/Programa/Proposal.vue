@@ -23,6 +23,27 @@ const props = defineProps({
   }
 })
 
+const flairs = ref(null)
+const { $gsap } = useNuxtApp()
+onMounted(() => {
+  setTimeout(() => {
+    $gsap.fromTo(flairs.value, {
+      scale: 2,
+      opacity: 0,
+    }, {
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+      ease: 'Elastic.easeOut',
+      scrollTrigger: {
+        trigger: flairs.value,
+        start: 'top 80%',
+        toggleActions: "restart none none reverse"
+      }
+    })
+  }, 1000)
+})
+
 /* Flaires */
 const flaires = computed(() => {
   if (!props.proposal.flair) return []
@@ -60,7 +81,7 @@ const proposalCategory = computed(() => {
       <ProgramaShare :proposal="proposal" :category="proposalCategory" />
     </div>
 
-    <div class="proposal-flairs">
+    <div class="proposal-flairs" ref="flairs">
       <span class="flair flair-joves sticker circle bg-yellow" v-if="flaires.includes('youth')">Joves</span>
       <span class="flair flair-feminisme sticker circle bg-purple" v-if="flaires.includes('feminist')">
         <ClientOnly><FontAwesomeIcon :icon="['far', 'venus']" class="icon" /></ClientOnly>

@@ -5,13 +5,26 @@ const menu = [
   { id: 'collabora', to: '/collabora' },
   { id: 'actes', to: '/actes' },
 ]
+
+const { $emit } = useNuxtApp()
+const router = useRouter()
+const route = useRoute()
+const navigateTo = ({ id, to }) => {
+  $emit('curtains', { from: route.name.split('___')[0], to: id })
+  router.push(to)
+}
 </script>
 
 <template>
   <nav class="quick-links">
     <ul aria-label="Menú principal" class="quick-links-items list-unstyled">
       <li v-for="item in menu" :key="item.id">
-        <NuxtLink :to="item.to">{{ $t('menu.' + item.id) }}</NuxtLink>
+        <a
+          :href="item.to"
+          @click.prevent="navigateTo(item)"
+        >
+          {{ $t('menu.' + item.id) }}
+        </a>
       </li>
     </ul>
     <SiteSocial class="quick-links-social" />

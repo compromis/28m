@@ -17,6 +17,7 @@ const onPrograma = computed(() => {
     <div class="container">
       <BFooter />
     </div>
+    <SiteCurtains />
   </div>
 </template>
 
@@ -25,9 +26,5 @@ const onPrograma = computed(() => {
   min-height: 100vh;
   background: $red;
   transition: background .5s ease;
-}
-
-.on-programa .page {
-  background: $yellow;
 }
 </style>

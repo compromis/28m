@@ -2,15 +2,15 @@
 const { hook, $gsap } = useNuxtApp()
 
 /* Animtations */
-const main = ref()
+const hero = ref()
 const animations = ref()
+let timeout
 onMounted(() => {
-  setTimeout(animateClaim, 250)
+  timeout = setTimeout(animateClaim, 250)
 })
-hook('page:transition:finish', animateClaim)
 
 onUnmounted(() => {
-  // animations.value.revert()
+  clearTimeout(timeout)
 })
 
 function animateClaim() {
@@ -36,12 +36,12 @@ function animateClaim() {
       delay: .5,
       ease: 'Power4.easeOut'
     })
-  }, main.value)
+  }, hero.value)
 }
 </script>
 
 <template>
-  <section class="hero">
+  <section class="hero" ref="hero">
     <h1 class="hero-claim d-none d-md-block">
       <div v-for="(line, l) in [$t('home.claim_top'), $t('home.claim_bottom')]" :key="l" class="line">
         <span v-for="(word, w) in line.split(' ')" :key="w" class="word">
