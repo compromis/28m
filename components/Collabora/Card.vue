@@ -1,5 +1,9 @@
 <script setup>
 const props = defineProps({
+  sticker: {
+    type: String,
+    default: 'bullhorn'
+  },
   href: {
     type: String,
     default: null
@@ -22,6 +26,11 @@ const tag = computed(() => props.href ? 'a' : 'div')
     <div v-else class="bottom buttons">
       <slot name="buttons" />
     </div>
+    <div :class="['sticker', `sticker-${sticker}`]">
+      <ClientOnly>
+        <FontAwesomeIcon :icon="['far', sticker]" />
+      </ClientOnly>
+    </div>
   </Component>
 </template>
 
@@ -31,18 +40,26 @@ const tag = computed(() => props.href ? 'a' : 'div')
   border-radius: 1.25rem;
   color: $white;
   min-height: 300px;
-  transition: .25s ease;
+  transition: background .25s ease;
   display: flex;
   flex-direction: column;
+  z-index: 5;
+  position: relative;
 
   &:hover {
     background: $white;
     color: $black;
     text-decoration: none;
+    z-index: 10;
 
     .icon {
       opacity: 1;
       transform: translateX(0);
+    }
+
+    .sticker {
+      opacity: 1;
+      --scale: 1;
     }
 
     :deep(a) {
@@ -110,6 +127,90 @@ const tag = computed(() => props.href ? 'a' : 'div')
     transform: translateX(-1rem);
     transition: .25s ease;
     color: $black;
+  }
+}
+
+.sticker {
+  background: $yellow;
+  position: absolute;
+  font-size: 4rem;
+  border-radius: 100%;
+  height: 1.75em;
+  width: 1.75em;
+  display: grid;
+  place-items: center;
+  z-index: 10;
+  opacity: 0;
+  transition: .25s ease;
+  color: $white;
+  transform: rotate(var(--rotate)) scale(var(--scale, 0));
+
+  
+  &-bullhorn {
+    top: 20%;
+    right: -12%;
+   --rotate: -25deg;
+  }
+
+  &-id-badge {
+    background: $red;
+    top: -7%;
+    right: 10%;
+    --rotate: 15deg;
+  }
+
+  &-arrows-retweet {
+    background: $indigo;
+    top: 20%;
+    right: 10%;
+    --rotate: 5deg;
+    border-radius: 2rem;
+  }
+
+  &-heart {
+    background: $pink;
+    top: 20%;
+    right: -10%;
+    --rotate: 15deg;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .collabora-card {
+    background: $white;
+    color: $black;
+  }
+
+  .buttons :deep(a) {
+    color: $black;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sticker {
+    opacity: 1;
+    --scale: 1;
+
+    &-bullhorn {
+      top: 35%;
+      right: -1.5rem;
+    }
+
+    &-id-badge {
+      top: 40%;
+      left: -1rem;
+      --rotate: -10deg;
+    }
+
+    &-arrows-retweet {
+      top: 30%;
+    }
+
+    &-heart {
+      left: 3rem;
+      top: 30%;
+      --rotate: -20deg;
+    }
   }
 }
 </style>

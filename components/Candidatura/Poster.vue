@@ -22,7 +22,7 @@ defineProps({
 <template>
   <article class="poster">
     <div aria-hidden="true" class="poster-name animated-item">{{ name }}</div>
-    <img class="poster-picture animated-item" :src="picture" :alt="`Foto de ${fullName}`" />
+    <img class="poster-picture animated-poster" :src="picture" :alt="`Foto de ${fullName}`" />
     <div class="poster-details animated-item">
       <h4>{{ fullName }}</h4>
       <p>{{ description }}</p>

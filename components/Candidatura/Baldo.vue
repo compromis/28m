@@ -1,16 +1,16 @@
 <template>
-  <article class="poster">
-    <div class="poster-picture animated-item">
+  <article class="poster baldo">
+    <div class="poster-picture animated-poster">
       <img src="https://images.unsplash.com/photo-1682832919425-6cddd681a283?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80" alt="Foto de Joan Baldoví" />
     </div>
     <div class="poster-name">
       <span class="poster-name-top">Baldoví</span>
       <span class="poster-name-left">Baldoví</span>
     </div>
-    <div class="poster-details animated-item">
-      <h4>Joan Baldoví</h4>
-      <p class="poster-description">{{ $t('candidatura.president.description') }}</p>
-      <div class="poster-text">
+    <div class="poster-details">
+      <h4 class="animated-item">Joan Baldoví</h4>
+      <p class="poster-description animated-item">{{ $t('candidatura.president.description') }}</p>
+      <div class="poster-text animated-item">
         Text
       </div>
     </div>
@@ -35,6 +35,7 @@
       font-weight: 900;
       font-size: 7rem;
       line-height: 1;
+      opacity: 0;
     }
 
     &-top {

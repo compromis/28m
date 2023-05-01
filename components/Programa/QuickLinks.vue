@@ -37,8 +37,9 @@ const subcategories = computed(() => {
     display: block;
     background: $white;
     padding: .25rem .75rem;
-    border-radius: 3rem;
+    border-radius: .5rem;
     color: $black;
+    font-size: 1.1rem;
 
     &:hover {
       background-color: $black;

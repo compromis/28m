@@ -1,11 +1,20 @@
 <script setup>
+const socialNetworks = [
+  { name: 'TikTok', icon: 'tiktok', href: 'https://www.tiktok.com/@compromis_net' },
+  { name: 'Instagram', icon: 'instagram', href: 'https://instagram.com/compromis_net' },
+  { name: 'Twitter', icon: 'twitter', href: 'https://twitter.com/compromis' },
+  { name: 'Facebook', icon: 'facebook', href: 'https://www.facebook.com/coaliciocompromis' },
+  { name: 'YouTube', icon: 'youtube', href: 'https://www.youtube.com/@coaliciocompromis' },
+  { name: 'Telegram', icon: 'telegram', href: 'https://t.me/compromis' },
+]
+
 const { $gsap, $ScrollTrigger } = useNuxtApp()
 
 let timeout
 const animations = ref()
 
 onMounted(() => {
-  timeout = setTimeout(animateCards, 500)
+  timeout = setTimeout(animateCards, 1100)
 })
 
 onUnmounted(() => {
@@ -44,7 +53,7 @@ function animateCards () {
           </h1>
         </AnimatedTitle>
         <div class="collabora-cards">
-          <CollaboraCard href="https://voluntaris.compromis.net">
+          <CollaboraCard href="https://voluntaris.compromis.net" sticker="bullhorn">
             <template #title>
               {{ $t('collabora.card1.title') }}
             </template>
@@ -52,7 +61,7 @@ function animateCards () {
               Apunta't com a voluntari/a
             </template>
           </CollaboraCard>
-          <CollaboraCard href="https://apoderats.compromis.net">
+          <CollaboraCard href="https://apoderats.compromis.net" sticker="id-badge">
             <template #title>
               {{ $t('collabora.card2.title') }}
             </template>
@@ -60,18 +69,22 @@ function animateCards () {
               Fes-te interventor/a
             </template>
           </CollaboraCard>
-          <CollaboraCard>
+          <CollaboraCard sticker="arrows-retweet">
             <template #title>
               {{ $t('collabora.card3.title') }}
             </template>
             <template #buttons>
-              <a href="a">FB</a>
-              <a href="a">FB</a>
-              <a href="a">FB</a>
-              <a href="a">FB</a>
+              <a v-for="(sn, i) in socialNetworks" :href="sn.href" :key="i" target="_blank" rel="noopener noreferer" :title="sn.name">
+                <ClientOnly>
+                  <FontAwesomeIcon :icon="['fab', sn.icon]" />
+                </ClientOnly>
+                <span class="visually-hidden">
+                  {{ sn.name }}
+                </span>
+              </a>
             </template>
           </CollaboraCard>
-          <CollaboraCard>
+          <CollaboraCard sticker="heart">
             <template #title>
               {{ $t('collabora.card4.title') }}
             </template>
@@ -96,7 +109,7 @@ function animateCards () {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-areas: "content cover";
-  padding-bottom: 2rem;
+  overflow: hidden;
 
   &-cover {
     grid-area: cover;
@@ -108,6 +121,7 @@ function animateCards () {
     grid-area: content;
     padding: var(--site-padding);
     padding-top: calc(var(--nav-safe-area) + 5vh);
+    padding-bottom: 4rem;
   }
 
   &-title {
@@ -160,6 +174,14 @@ function animateCards () {
 
     &-cards {
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .collabora {
+    &-cards {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
   }
 }

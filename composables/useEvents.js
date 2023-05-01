@@ -1,5 +1,5 @@
 const candidates = {
-  JB: { name: "Joan Baldoví", class: "blando" },
+  JB: { name: "Joan Baldoví", class: "baldo" },
   AM: { name: "Aitana Mas", class: "aitana" },
   VM: { name: "Vicent Marzà", class: "marza" },
   MJA: { name: "Mª Josep Amigó", class: "amigo" },

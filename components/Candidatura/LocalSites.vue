@@ -18,7 +18,7 @@ const animated = computed(() => !filter.value)
 
 <template>
   <div class="local-sites">
-    <div class="candidatura-container">
+    <div class="candidatura-container local-sites-filter">
       <label class="visually-hidden" for="filter">{{ $t('candidatura.filter_placeholder') }}</label>
       <div class="filter-input">
         <input

@@ -79,8 +79,7 @@ const { upcomingEvents, pastEvents } = useEvents(events.value.values)
     }
 
     &-cards {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 2rem;
     }
 

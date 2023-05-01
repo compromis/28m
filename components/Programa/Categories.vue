@@ -121,5 +121,19 @@ function preload(image) {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
+
+  .programa-category-card {
+    grid-column: span 1 !important;
+  }
+
+  .category-highlighted {
+    grid-column: span 2 !important;
+  }
+
+  .programa-feminismes,
+  .programa-lgtbiq,
+  .programa-bon-govern {
+    grid-column: span 2;
+  }
 }
 </style>

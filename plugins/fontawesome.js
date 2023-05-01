@@ -7,6 +7,10 @@ import {
   faVenus,
   faMagnifyingGlass,
   faArrowRight,
+  faBullhorn,
+  faHeart,
+  faIdBadge,
+  faArrowsRetweet,
 } from "@fortawesome/pro-regular-svg-icons";
 import {
   faTiktok,
@@ -31,7 +35,11 @@ library.add(
   faTelegram,
   faVenus,
   faMagnifyingGlass,
-  faArrowRight
+  faArrowRight,
+  faBullhorn,
+  faHeart,
+  faIdBadge,
+  faArrowsRetweet
 );
 config.autoAddCss = false;
 
