@@ -5,6 +5,8 @@ import {
   faBars,
   faXmark,
   faVenus,
+  faMagnifyingGlass,
+  faArrowRight,
 } from "@fortawesome/pro-regular-svg-icons";
 import {
   faTiktok,
@@ -27,7 +29,9 @@ library.add(
   faYoutube,
   faWhatsapp,
   faTelegram,
-  faVenus
+  faVenus,
+  faMagnifyingGlass,
+  faArrowRight
 );
 config.autoAddCss = false;
 

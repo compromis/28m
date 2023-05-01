@@ -44,10 +44,19 @@ export default {
     local: "Compromís al teu municipi",
     filter_placeholder: "Troba el teu municipi",
     top3cities: "Candidats a Alacant, València i Castelló",
+    regional: "Altres candidats i candidates",
+    president: {
+      description: "Candidat a la Presidència de la Generalitat",
+    },
     local_candidates: {
-      mas: "Candidat a l'Alcaldia d'Alacant",
-      ribo: "Candidat a l'Alcaldia de València",
-      ignasi: "Candidat a l'Alcaldia de Castelló",
+      alacant: "Candidat a l'Alcaldia d'Alacant",
+      valencia: "Candidat a l'Alcaldia de València",
+      castello: "Candidat a l'Alcaldia de Castelló",
+    },
+    regional_candidates: {
+      alacant: "Candidata per Alacant",
+      valencia: "Candidata per València",
+      castello: "Candidat per Castelló",
     },
   },
 
@@ -62,7 +71,7 @@ export default {
       cta: "Fes-te inverventor/a",
     },
     card3: {
-      title: "Difon per xarxes",
+      title: "Fes difussió per xarxes",
     },
     card4: {
       title: "Fes una donació",

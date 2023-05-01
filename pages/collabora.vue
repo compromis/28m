@@ -1,9 +1,8 @@
 <script setup>
-const { $gsap } = useNuxtApp()
+const { $gsap, $ScrollTrigger } = useNuxtApp()
 
 let timeout
-const animations = ref(null)
-const scope = ref(null)
+const animations = ref()
 
 onMounted(() => {
   timeout = setTimeout(animateCards, 500)
@@ -14,26 +13,28 @@ onUnmounted(() => {
 })
 
 function animateCards () {
-  animations.value = $gsap.context(() => {
-    $gsap.set('.collabora-card', {
-      y: 50,
-      opacity: 0
-    })
-
-    $gsap.to('.collabora-card', {
-      y: 0,
-      opacity: 1,
-      duration: .5,
-      stagger: .1,
-      delay: 1.1,
-      ease: 'Power4.easeOut'
-    })
-  }, scope.value)
+  animations.value = $ScrollTrigger.batch(".collabora-card", {
+    onEnter: elements => {
+      $gsap.fromTo(elements, {
+        opacity: 0,
+        y: 50,
+        scale: 0.85,
+      },{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.25,
+        stagger: 0.15,
+        ease: 'Elastic.easeOut'
+      });
+    },
+    once: true
+  })
 }
 </script>
 
 <template>
-  <main class="collabora" ref="scope">
+  <main class="collabora">
     <aside class="collabora-cover" />
     <section class="collabora-content">
       <div class="container-fluid container-xxl">
@@ -43,24 +44,43 @@ function animateCards () {
           </h1>
         </AnimatedTitle>
         <div class="collabora-cards">
-          <CollaboraCard>
+          <CollaboraCard href="https://voluntaris.compromis.net">
             <template #title>
               {{ $t('collabora.card1.title') }}
             </template>
+            <template #button>
+              Apunta't com a voluntari/a
+            </template>
           </CollaboraCard>
-          <CollaboraCard>
+          <CollaboraCard href="https://apoderats.compromis.net">
             <template #title>
               {{ $t('collabora.card2.title') }}
+            </template>
+            <template #button>
+              Fes-te interventor/a
             </template>
           </CollaboraCard>
           <CollaboraCard>
             <template #title>
               {{ $t('collabora.card3.title') }}
             </template>
+            <template #buttons>
+              <a href="a">FB</a>
+              <a href="a">FB</a>
+              <a href="a">FB</a>
+              <a href="a">FB</a>
+            </template>
           </CollaboraCard>
           <CollaboraCard>
             <template #title>
               {{ $t('collabora.card4.title') }}
+            </template>
+            <template #buttons>
+              <a href="a">5€</a>
+              <a href="a">10€</a>
+              <a href="a">20€</a>
+              <a href="a">50€</a>
+              <a href="a">Més</a>
             </template>
           </CollaboraCard>
         </div>
@@ -76,6 +96,7 @@ function animateCards () {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-areas: "content cover";
+  padding-bottom: 2rem;
 
   &-cover {
     grid-area: cover;
@@ -104,7 +125,7 @@ function animateCards () {
   &-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 3rem;
     @include margin-top(2rem);
 
     :deep(.collabora-card) {

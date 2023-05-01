@@ -51,6 +51,7 @@ export default defineNuxtConfig({
             @import "bootstrap/scss/variables";
             @import "bootstrap/scss/maps";
             @import "bootstrap/scss/mixins";
+            @import "~/assets/scss/scrollbar";
           `
         }
       }

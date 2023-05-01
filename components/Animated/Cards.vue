@@ -2,6 +2,7 @@
 const { $gsap, $ScrollTrigger } = useNuxtApp()
 
 let timeout
+const animations = ref()
 
 onMounted(() => {
   timeout = setTimeout(animateCard, 1000)  
@@ -12,7 +13,7 @@ onUnmounted(() => {
 })
 
 function animateCard () {
-  $ScrollTrigger.batch(".animated-card", {
+  animations.value = $ScrollTrigger.batch(".animated-card", {
     onEnter: elements => {
       $gsap.fromTo(elements, {
         opacity: 0,
