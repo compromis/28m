@@ -11,6 +11,8 @@ import {
   faHeart,
   faIdBadge,
   faArrowsRetweet,
+  faFileArrowDown,
+  faPodcast,
 } from "@fortawesome/pro-regular-svg-icons";
 import {
   faTiktok,
@@ -39,7 +41,9 @@ library.add(
   faBullhorn,
   faHeart,
   faIdBadge,
-  faArrowsRetweet
+  faArrowsRetweet,
+  faFileArrowDown,
+  faPodcast
 );
 config.autoAddCss = false;
 

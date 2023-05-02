@@ -10,7 +10,7 @@
           full-name="Aitana Mas"
           name="Aitana"
           :description="$t('candidatura.regional_candidates.alacant')"
-          picture="https://images.unsplash.com/photo-1682852580591-02062ab94543?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+          picture="/images/candidates/amigo.jpg"
         />
       </li>
       <li>
@@ -18,7 +18,7 @@
           full-name="Mª Josep Amigó"
           name="Amigó"
           :description="$t('candidatura.regional_candidates.valencia')"
-          picture="https://images.unsplash.com/photo-1682852580591-02062ab94543?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+          picture="/images/candidates/amigo.jpg"
         />
       </li>
       <li>
@@ -26,7 +26,7 @@
           full-name="Vicent Marzà"
           name="Marzà"
           :description="$t('candidatura.regional_candidates.castello')"
-          picture="https://images.unsplash.com/photo-1682852580591-02062ab94543?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+          picture="/images/candidates/marza.jpg"
         />
       </li>
     </ul>

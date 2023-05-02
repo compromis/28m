@@ -17,7 +17,7 @@
             full-name="Rafa Mas"
             name="Mas"
             :description="$t('candidatura.local_candidates.alacant')"
-            picture="https://images.unsplash.com/photo-1682852580591-02062ab94543?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+            picture="/images/candidates/rafa-mas.jpg"
           />
         </li>
         <li class="ribo">
@@ -25,7 +25,7 @@
             full-name="Joan Ribó"
             name="Ribó"
             :description="$t('candidatura.local_candidates.valencia')"
-            picture="https://images.unsplash.com/photo-1682852580591-02062ab94543?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+            picture="/images/candidates/ribo.jpg"
           />
         </li>
         <li>
@@ -33,7 +33,7 @@
             full-name="Ignasi Garcia"
             name="Ignasi"
             :description="$t('candidatura.local_candidates.castello')"
-            picture="https://images.unsplash.com/photo-1682852580591-02062ab94543?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+            picture="/images/candidates/ribo.jpg"
           />
         </li>
       </ul>

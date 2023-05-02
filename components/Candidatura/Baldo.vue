@@ -1,7 +1,7 @@
 <template>
   <article class="poster baldo">
     <div class="poster-picture animated-poster">
-      <img src="https://images.unsplash.com/photo-1682832919425-6cddd681a283?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80" alt="Foto de Joan Baldoví" />
+      <img src="/images/candidates/baldovi.jpg" alt="Foto de Joan Baldoví" />
     </div>
     <div class="poster-name">
       <span class="poster-name-top">Baldoví</span>
@@ -11,7 +11,9 @@
       <h4 class="animated-item">Joan Baldoví</h4>
       <p class="poster-description animated-item">{{ $t('candidatura.president.description') }}</p>
       <div class="poster-text animated-item">
-        Text
+        <p>Durant els últims anys al Congrés he treballat al Congrés per defensar els interessos valencians: un finançament just per a la nostra terra i unes inversions dignes, especialment en rodalies o transport públic. Però abans d’això, he sigut mestre d’escola pública i alcalde de Sueca, la meua ciutat.</p>
+        <p>Ara, com a candidat a la Presidència de la Generalitat, vull seguir treballant per a millorar la vida dels valencians i valencianes.</p>
+        <p>Amb el govern de coalició del Botànic hem avançat molt lluitant contra corrupció, garantint els drets de la ciutadania i enfortint els serveis públics. Però soc conscient que encara queda molt per fer. Et demane el teu suport per a poder liderar un nou impuls al govern del Botànic. Em compromet a treballar, dia a dia, per tot el que veritablement importa.</p>
       </div>
     </div>
   </article>
@@ -65,6 +67,8 @@
   &-details {
     grid-area: details;
     margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
 
     h4 {
       font-size: 3.25rem;
@@ -75,6 +79,10 @@
     font-size: 1.5rem;
     max-width: 20ch;
     line-height: 1;
+  }
+
+  &-text {
+    margin-top: auto;
   }
 }
 

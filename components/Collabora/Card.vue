@@ -157,6 +157,7 @@ const tag = computed(() => props.href ? 'a' : 'div')
     top: -7%;
     right: 10%;
     --rotate: 15deg;
+    border-radius: 1rem 100% 100% 1rem;
   }
 
   &-arrows-retweet {

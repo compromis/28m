@@ -38,6 +38,9 @@ export default {
     title: "Programa",
     proposals: "Propostes",
     more: "Més propostes",
+    download_pdf: "Descarrega en PDF",
+    podcast: "Escolta el Podcast",
+    downloads: "Descàrregues",
   },
 
   candidatura: {

@@ -71,9 +71,9 @@ const proposalCategory = computed(() => {
       <p class="proposal-text">
         {{ proposal[`text_${locale}`] }}
       </p>
-      <span v-if="showCategory" :class="['proposal-category', `category-${proposal.subcategory.category.slug}`, `color-${proposal.subcategory.category.color}`]">
+      <NuxtLink :to="localePath(`/programa/${proposalCategory.slug}`)" v-if="showCategory" :class="['proposal-category', `category-${proposal.subcategory.category.slug}`, `color-${proposal.subcategory.category.color}`]">
         {{ proposal.subcategory.category[`name_${locale}`] }}
-      </span>
+      </NuxtLink>
     </div>
 
     <div class="proposal-actions">
@@ -101,6 +101,7 @@ const proposalCategory = computed(() => {
   grid-template-columns: 1fr 80px;
   gap: 1rem;
   min-height: 225px;
+  width: 100%;
 
   &-content {
     display: flex;
@@ -167,6 +168,10 @@ const proposalCategory = computed(() => {
       border-radius: 100%;
       background: currentColor;
       flex-shrink: 0;
+    }
+
+    &:hover {
+      color: var(--color);
     }
   }
 

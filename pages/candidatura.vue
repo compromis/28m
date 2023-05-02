@@ -36,7 +36,7 @@ function animateItems () {
     $ScrollTrigger.batch(".animated-poster", {
       onEnter: elements => {
         $gsap.fromTo(elements, {
-          opacity: 1,
+          opacity: 0,
           scale: 0
         },{
           opacity: 1,

@@ -140,6 +140,32 @@ function onLeaveCategories(el, done) {
     stagger: 0.05
   })
 }
+
+/* Downloads */
+function beforeEnterDownloads(el) {
+  $gsap.set(el, {
+    opacity: 0,
+    y: -50
+  })
+}
+  
+function onEnterDownloads(el, done) {
+  $gsap.to(el, {
+    duration: .5,
+    opacity: 1,
+    delay: 1,
+    y: 0,
+    onComplete: done
+  })
+}
+
+function onLeaveDownloads(el, done) {
+	$gsap.to(el, {
+    duration: .5,
+    opacity: 0,
+    onComplete: done
+  })
+}
 </script>
 
 <template>
@@ -180,9 +206,64 @@ function onLeaveCategories(el, done) {
             </h1>
           </Transition>
 
+          <Transition @before-enter="beforeEnterDownloads" @enter="onEnterDownloads" @leave="onLeaveDownloads">
+            <div v-if="!inSection" class="downloads">
+              <a href="#Downloads">
+                <ClientOnly>
+                  <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                </ClientOnly>
+                {{ $t('programa.download_pdf') }}
+              </a>
+              <a href="/" target="_blank">
+                <ClientOnly>
+                  <FontAwesomeIcon :icon="['far', 'podcast']" />
+                </ClientOnly>
+                {{ $t('programa.podcast') }}
+              </a>
+            </div>
+          </Transition>
+
           <Transition :css="false" @before-enter="beforeEnterCategories" @enter="onEnterCategories" @leave="onLeaveCategories">
             <ProgramaCategories v-if="!inSection" :sections="sections" />
           </Transition>
+
+          <div v-if="!inSection" id="Downloads" class="downloads-list">
+            <h4>{{ $t('programa.downloads') }}</h4>
+            <ul class="list-unstyled">
+              <li>
+                <a href="/">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  </ClientOnly>
+                  <span class="underline">Revista de propostes</span> <span class="format">PDF</span>
+                </a>
+              </li>
+              <li>
+                <a href="/">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  </ClientOnly>
+                  <span class="underline">Programa complet</span> <span class="format">PDF</span>
+                </a>
+              </li>
+              <li>
+                <a href="/">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  </ClientOnly>
+                  <span class="underline">Propostes de joventut</span> <span class="format">PDF</span>
+                </a>
+              </li>
+              <li>
+                <a href="/">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  </ClientOnly>
+                  <span class="underline">Propostes de feminisme</span> <span class="format">PDF</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </header>
 
@@ -317,6 +398,63 @@ function onLeaveCategories(el, done) {
 /* When in a section */
 .programa-in-section {
   grid-template-columns: minmax(100px, .25fr) 12fr;
+}
+
+/* Downloads */
+.downloads {
+  display: flex;
+  gap: .5rem;
+  margin-top: 2rem;
+
+  a {
+    display: flex;
+    gap: .5rem;
+    color: $red;
+    padding: .25rem .75rem;
+    border-radius: .5rem;
+    font-size: 1.25rem;
+    align-items: center;
+    font-weight: 900;
+
+    &:hover {
+      text-decoration: none;
+      background: $red;
+      color: $white;
+    }
+  }
+
+  &-list {
+    font-size: 1.75rem;
+
+    h4 {
+      color: $red;
+      margin-top: 4rem;
+      font-size: 1.5rem;
+    }
+
+    .format {
+      background: $red;
+      color: $white;
+      font-size: .6em;
+      padding: .1em .2em;
+      border-radius: .3em;
+      font-weight: 900;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+
+      &:hover {
+        text-decoration: none;
+
+        .underline {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 
 /* Mobile */
