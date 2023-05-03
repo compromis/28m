@@ -1,4 +1,19 @@
 <script setup>
+/* Meta tags */
+const { t } = useI18n()
+useServerSeoMeta({
+  title: () => t('meta.candidatura.title'),
+  ogTitle: () => t('meta.candidatura.title'),
+  description: () => t('meta.candidatura.description'),
+  ogDescription: () => t('meta.candidatura.description'),
+  ogImage: () => t('meta.candidatura.ogImage'),
+  twitterCard: 'summary_large_image',
+})
+useHead({
+  title: t('meta.candidatura.title'),
+})
+
+/* Animations */
 const { $gsap, $ScrollTrigger } = useNuxtApp()
 
 let timeout

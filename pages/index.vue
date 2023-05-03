@@ -9,6 +9,9 @@ useServerSeoMeta({
   ogImage: () => t('meta.home.ogImage'),
   twitterCard: 'summary_large_image',
 })
+useHead({
+  title: t('meta.home.title'),
+})
 </script>
 
 <template>

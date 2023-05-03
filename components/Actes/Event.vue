@@ -21,6 +21,11 @@ const time = computed(() => {
     <h2 class="title">{{ event.title }}</h2>
     <div class="speakers">
       <span v-for="speaker in event.speakers" :key="speaker.name" :class="speaker.class">
+        <img src="~/assets/images/actes/baldo.svg" v-if="speaker.class === 'baldo'" alt="" />
+        <img src="~/assets/images/actes/ribo.svg" v-if="speaker.class === 'ribo'" alt="" />
+        <img src="~/assets/images/actes/aitana.svg" v-if="speaker.class === 'aitana'" alt="" />
+        <img src="~/assets/images/actes/amigo.svg" v-if="speaker.class === 'amigo'" alt="" />
+        <img src="~/assets/images/actes/marza.svg" v-if="speaker.class === 'marza'" alt="" />
         {{ speaker.name }}
       </span>
     </div>
@@ -47,12 +52,13 @@ const time = computed(() => {
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "title title title speakers"
-    "info info info info"
+    "info info info speakers"
     "date time venue venue";
   font-size: 1.25rem;
   gap: 1rem;
   position: relative;
   min-height: 150px;
+  line-height: 1;
 }
 
 .title {
@@ -65,7 +71,8 @@ const time = computed(() => {
 .speakers {
   grid-area: speakers;
   display: flex;
-  gap: .75rem;
+  column-gap: .75rem;
+  row-gap: .25rem;
   justify-content: flex-end;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -79,22 +86,38 @@ const time = computed(() => {
     line-height: 1;
     color: $blue;
 
-    &::before {
-      content: '';
-      display: inline-block;
-      background-color: currentColor;
-      height: .75em;
-      width: .75em;
-      border-radius: 100%;
+    img {
+      height: 1em;
     }
+  }
+
+  .other::before {
+    content: '';
+    display: inline-block;
+    background-color: currentColor;
+    height: .75em;
+    width: .75em;
+    border-radius: 100%;
   }
 
   .baldo {
     color: $red;
   }
 
-  .amigo {
+  .ribo {
     color: $yellow;
+  }
+
+  .aitana {
+    color: $blue;
+  }
+
+  .amigo {
+    color: $indigo;
+  }
+
+  .marza {
+    color: $green;
   }
 }
 
@@ -104,15 +127,18 @@ const time = computed(() => {
 
 .date {
   grid-area: date;
+  align-self: end;
 }
 
 .time {
   grid-area: time;
+  align-self: end;
 }
 
 .venue {
   grid-area: venue;
   text-align: right;
+  align-self: end;
 }
 
 .baldoneta {

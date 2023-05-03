@@ -1,4 +1,19 @@
 <script setup>
+/* Meta tags */
+const { t } = useI18n()
+useServerSeoMeta({
+  title: () => t('meta.collabora.title'),
+  ogTitle: () => t('meta.collabora.title'),
+  description: () => t('meta.collabora.description'),
+  ogDescription: () => t('meta.collabora.description'),
+  ogImage: () => t('meta.collabora.ogImage'),
+  twitterCard: 'summary_large_image',
+})
+useHead({
+  title: t('meta.collabora.title'),
+})
+
+/* Social networks */
 const socialNetworks = [
   { name: 'TikTok', icon: 'tiktok', href: 'https://www.tiktok.com/@compromis_net' },
   { name: 'Instagram', icon: 'instagram', href: 'https://instagram.com/compromis_net' },
@@ -8,6 +23,7 @@ const socialNetworks = [
   { name: 'Telegram', icon: 'telegram', href: 'https://t.me/compromis' },
 ]
 
+/* Animations */
 const { $gsap, $ScrollTrigger } = useNuxtApp()
 
 let timeout

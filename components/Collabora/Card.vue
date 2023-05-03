@@ -141,7 +141,7 @@ const tag = computed(() => props.href ? 'a' : 'div')
   place-items: center;
   z-index: 10;
   opacity: 0;
-  transition: .25s ease;
+  transition: .25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
   color: $white;
   transform: rotate(var(--rotate)) scale(var(--scale, 0));
 

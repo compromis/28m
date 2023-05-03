@@ -1,7 +1,22 @@
 <script setup>
+/* Fetch events */
 import { allRows } from '@/composables/useSheet'
 const { data: events } = await allRows()
 const { upcomingEvents, pastEvents } = useEvents(events.value.values)
+
+/* Meta */
+const { t } = useI18n()
+useServerSeoMeta({
+  title: () => t('meta.actes.title'),
+  ogTitle: () => t('meta.actes.title'),
+  description: () => t('meta.actes.description'),
+  ogDescription: () => t('meta.actes.description'),
+  ogImage: () => t('meta.actes.ogImage'),
+  twitterCard: 'summary_large_image',
+})
+useHead({
+  title: t('meta.actes.title'),
+})
 </script>
 
 <template>
@@ -17,14 +32,15 @@ const { upcomingEvents, pastEvents } = useEvents(events.value.values)
         <div class="actes-central">
           <div class="actes-central-sticky">
             <AnimatedCard>
-              Acte central
+              <ActesCentral />
             </AnimatedCard>
           </div>
         </div>
         <div class="actes-all">
           <AnimatedCards>
             <h2 class="visually-hidden">
-              {{ $t('actes.upcoming') }}</h2>
+              {{ $t('actes.upcoming') }}
+            </h2>
             <ul class="actes-cards list-unstyled">
               <template v-for="(event, id) in upcomingEvents" :key="id">
                 <li>
@@ -57,8 +73,8 @@ const { upcomingEvents, pastEvents } = useEvents(events.value.values)
 <style lang="scss" scoped>
   .actes {
     background: $indigo;
+    padding: var(--site-padding);
     padding-top: calc(var(--nav-safe-area) + 5vh);
-    padding-bottom: var(--site-padding);
 
     &-title {
       color: $white;
@@ -95,11 +111,16 @@ const { upcomingEvents, pastEvents } = useEvents(events.value.values)
     }
   }
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     .actes {
       &-content {
         grid-template-columns: 1fr;
       }
+    }
+
+    .actes-central-sticky {
+      max-width: 450px;
+      margin: 0 auto;
     }
   }
 </style>

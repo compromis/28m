@@ -10,6 +10,21 @@ export default {
       description: "Consulta el programa",
       ogImage: "-",
     },
+    candidatura: {
+      title: "Candidatura 28M - Compromís",
+      description: "Consulta el programa",
+      ogImage: "-",
+    },
+    collabora: {
+      title: "Col·labora amb la campanya - Compromís",
+      description: "Consulta el programa",
+      ogImage: "-",
+    },
+    actes: {
+      title: "Actes - Compromís",
+      description: "Consulta el programa",
+      ogImage: "-",
+    },
   },
 
   menu: {
