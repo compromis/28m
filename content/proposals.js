@@ -1,17 +1,30 @@
 const topWidth = 1728;
 const topHeight = 1477;
 
+import Prop1 from "./prop1.js";
+import Prop2 from "./prop2.js";
+import Prop3 from "./prop3.js";
+import Prop4 from "./prop4.js";
+import Prop5 from "./prop5.js";
+import Prop6 from "./prop6.js";
+import Prop7 from "./prop7.js";
+import Prop8 from "./prop8.js";
+import Prop9 from "./prop9.js";
+import Prop10 from "./prop10.js";
+import Prop11 from "./prop11.js";
+import Prop12 from "./prop12.js";
+import Prop13 from "./prop13.js";
+import Prop14 from "./prop14.js";
+
 export default {
   prop1: {
-    tip: "Proposta 1",
-    title: "Xarxa Llibres",
-    text: "Helloo",
-    category: "done",
+    tip: "Haver construit 102 noves escoles i acabar amb els barracons crònics",
+    content: Prop1,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop1.jpg",
       alt: "",
-      width: (449 * 100) / topWidth,
-      top: (995 * 100) / topWidth,
+      width: (390 * 100) / topWidth,
+      top: (925 * 100) / topWidth,
       left: (616 * 100) / topHeight,
       minWidth: "225px",
       delay: 1,
@@ -20,14 +33,12 @@ export default {
     },
   },
   prop2: {
-    tip: "Proposta 2",
-    title: "Haver construït 103 escoeles",
-    text: "Helloo",
-    category: "to_be_done",
+    tip: "Recuperar hospitals privatitzats i afegir 13.000 sanitaris",
+    content: Prop2,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop2.jpg",
       alt: "",
-      width: (241 * 100) / topWidth,
+      width: (261 * 100) / topWidth,
       top: (234 * 100) / topHeight,
       left: (95 * 100) / topWidth,
       minWidth: "140px",
@@ -36,12 +47,10 @@ export default {
     },
   },
   prop3: {
-    tip: "Proposta 3",
-    title: "Haver construït 103 escoeles",
-    text: "Helloo",
-    category: "done",
+    tip: "Salut mental pública i accessible",
+    content: Prop3,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop3.jpg",
       alt: "",
       width: (241 * 100) / topWidth,
       top: (312 * 100) / topHeight,
@@ -53,12 +62,10 @@ export default {
     },
   },
   prop4: {
-    tip: "Proposta 4",
-    title: "Haver construït 103 escoeles",
-    text: "Helloo",
-    category: "to_be_done",
+    tip: "Centres i residències prop de casa",
+    content: Prop4,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop4.jpg",
       alt: "",
       width: (325 * 100) / topWidth,
       top: (821 * 100) / topHeight,
@@ -69,12 +76,10 @@ export default {
     },
   },
   prop5: {
-    tip: "Proposta 5",
-    title: "Haver construït 103 escoeles",
-    text: "Helloo",
-    category: "done",
+    tip: "Impulsar el transport públic",
+    content: Prop5,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop5.jpg",
       alt: "",
       width: (269 * 100) / topWidth,
       top: (194 * 100) / topHeight,
@@ -85,12 +90,10 @@ export default {
     },
   },
   prop6: {
-    tip: "Proposta 6",
-    title: "Haver construït 103 escoeles",
-    text: "Helloo",
-    category: "to_be_done",
+    tip: "Habitatge digne",
+    content: Prop6,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop6.jpg",
       alt: "",
       width: (190 * 100) / topWidth,
       top: (166 * 100) / topHeight,
@@ -101,12 +104,10 @@ export default {
     },
   },
   prop7: {
-    tip: "Proposta 7",
-    title: "Haver construït 103 escoeles",
-    text: "Helloo",
-    category: "done",
+    tip: "Indústria innovadora",
+    content: Prop7,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop7.jpg",
       alt: "",
       width: (180 * 100) / topWidth,
       top: (423 * 100) / topHeight,
@@ -117,12 +118,10 @@ export default {
     },
   },
   prop8: {
-    tip: "Proposta 8",
-    title: "Haver construït 103 escoeles",
-    text: "Helloo",
-    category: "to_be_done",
+    tip: "Lluitar contra el canvi climàtic",
+    content: Prop8,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop8.jpg",
       alt: "",
       width: (200 * 100) / topWidth,
       top: (1062 * 100) / topHeight,
@@ -133,14 +132,12 @@ export default {
     },
   },
   prop9: {
-    tip: "Proposta 9",
-    title: "Haver construït 103 escoeles",
-    text: "Helloo",
-    category: "done",
+    tip: "Un camp valencià amb futur",
+    content: Prop9,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop9.jpg",
       alt: "",
-      width: (380 * 100) / topWidth,
+      width: (350 * 100) / topWidth,
       top: (362 * 100) / topHeight,
       left: (695 * 100) / topWidth,
       minWidth: "120px",
@@ -149,18 +146,72 @@ export default {
     },
   },
   prop10: {
-    tip: "Proposta 10",
-    title: "Haver construït 103 escoeles",
-    text: "Helloo",
-    category: "to_be_done",
+    tip: "Una administració més propera",
+    content: Prop10,
     picture: {
-      src: "/images/proposals/books.jpg",
+      src: "/images/proposals/prop10.jpg",
       alt: "",
       width: (320 * 100) / topWidth,
       top: (640 * 100) / topHeight,
       left: (1450 * 100) / topWidth,
       minWidth: "80px",
       delay: 21,
+      strength: 8,
+    },
+  },
+  prop11: {
+    tip: "Blindar els drets LGTBIQ+",
+    content: Prop11,
+    picture: {
+      src: "/images/proposals/prop11.jpg",
+      alt: "",
+      width: (220 * 100) / topWidth,
+      top: (120 * 100) / topHeight,
+      left: (450 * 100) / topWidth,
+      minWidth: "80px",
+      delay: 22,
+      strength: 8,
+    },
+  },
+  prop12: {
+    tip: "Avançar cap a la igualtat real",
+    content: Prop12,
+    picture: {
+      src: "/images/proposals/prop12.jpg",
+      alt: "",
+      width: (180 * 100) / topWidth,
+      top: (740 * 100) / topHeight,
+      left: (20 * 100) / topWidth,
+      minWidth: "80px",
+      delay: 23,
+      strength: 8,
+    },
+  },
+  prop13: {
+    tip: "Garantir els drets de la joventut",
+    content: Prop13,
+    picture: {
+      src: "/images/proposals/prop13.jpg",
+      alt: "",
+      width: (220 * 100) / topWidth,
+      top: (740 * 100) / topHeight,
+      left: (1250 * 100) / topWidth,
+      minWidth: "80px",
+      delay: 24,
+      strength: 8,
+    },
+  },
+  prop14: {
+    tip: "Fer fora la corrupció",
+    content: Prop14,
+    picture: {
+      src: "/images/proposals/prop14.jpg",
+      alt: "",
+      width: (220 * 100) / topWidth,
+      top: (140 * 100) / topHeight,
+      left: (950 * 100) / topWidth,
+      minWidth: "80px",
+      delay: 26,
       strength: 8,
     },
   },

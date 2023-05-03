@@ -239,7 +239,7 @@ function onLeaveDownloads(el, done) {
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="/docs/Programa_Electoral_Corts_2023.pdf">
                   <ClientOnly>
                     <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
                   </ClientOnly>
@@ -247,7 +247,7 @@ function onLeaveDownloads(el, done) {
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="/docs/Propostes_Joventuts.pdf">
                   <ClientOnly>
                     <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
                   </ClientOnly>

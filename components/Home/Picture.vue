@@ -137,6 +137,7 @@ const unhover = () => {
     line-height: 1;
     font-weight: bold;
     min-width: 200px;
+    max-width: 400px;
     color: $white;
   }
 
