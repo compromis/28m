@@ -3,11 +3,11 @@ const emit = defineEmits(['select'])
 
 // Menu
 const primaryMenu = [
-  { id: 'home', to: '/', image: 'https://images.unsplash.com/photo-1682249301375-5c7f5a286d8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80', offsetX: 50, offsetY: -100 },
-  { id: 'programa', to: '/programa', image: 'https://images.unsplash.com/photo-1682334399851-9c79b3f415d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2019&q=80', offsetX: -50, offsetY: -100 },
-  { id: 'candidatura', to: '/candidatura', image: 'https://images.unsplash.com/photo-1682315700193-dec8f0ce2c81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80', offsetX: 50, offsetY: -100 },
-  { id: 'collabora', to: '/collabora', image: 'https://images.unsplash.com/photo-1656882821118-a63cb5a698a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80', offsetX: -50, offsetY: -100 },
-  { id: 'actes', to: '/actes', image: 'https://images.unsplash.com/photo-1682251167570-db70af09f7a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80', offsetX: 50, offsetY: -100 },
+  { id: 'home', to: '/', image: '/images/menu/importa.jpg', offsetX: 50, offsetY: -100 },
+  { id: 'programa', to: '/programa', image: '/images/menu/programa.jpg', offsetX: -50, offsetY: -100 },
+  { id: 'candidatura', to: '/candidatura', image: '/images/menu/baldo.jpg', offsetX: 50, offsetY: -200 },
+  { id: 'collabora', to: '/collabora', image: '/images/menu/collabora.jpg', offsetX: -50, offsetY: -100 },
+  { id: 'actes', to: '/actes', image: '/images/menu/actes.jpg', offsetX: -50, offsetY: -100 },
 ]
 
 const secondaryMenu = [
