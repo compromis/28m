@@ -29,11 +29,13 @@ defineProps({
   z-index: 10001;
   color: $white;
   padding: .75rem 1rem;
+  --outline-color: #{$white};
 
   &.scrolled {
     background: $white;
     color: $black;
     z-index: 10002;
+    --outline-color: #{$red};
   }
 }
 </style>

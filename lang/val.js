@@ -3,27 +3,27 @@ export default {
     home: {
       title: "Compromís - Per tot el que importa",
       description: "descripció",
-      ogImage: "-",
+      ogImage: "/images/social/home.png",
     },
     programa: {
       title: "Programa 2023 - Compromís",
       description: "Consulta el programa",
-      ogImage: "-",
+      ogImage: "/images/social/programa.png",
     },
     candidatura: {
       title: "Candidatura 28M - Compromís",
       description: "Consulta el programa",
-      ogImage: "-",
+      ogImage: "/images/social/candidatura.png",
     },
     collabora: {
       title: "Col·labora amb la campanya - Compromís",
       description: "Consulta el programa",
-      ogImage: "-",
+      ogImage: "/images/social/collabora.png",
     },
     actes: {
       title: "Actes - Compromís",
       description: "Consulta el programa",
-      ogImage: "-",
+      ogImage: "/images/social/actes.png",
     },
   },
 

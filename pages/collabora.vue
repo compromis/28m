@@ -87,7 +87,9 @@ function animateCards () {
           </CollaboraCard>
           <CollaboraCard sticker="arrows-retweet">
             <template #title>
-              {{ $t('collabora.card3.title') }}
+              <a href="https://instagram.com/compromis" target="_blank" class="failsafe">
+                {{ $t('collabora.card3.title') }}
+              </a>
             </template>
             <template #buttons>
               <a v-for="(sn, i) in socialNetworks" :href="sn.href" :key="i" target="_blank" rel="noopener noreferer" :title="sn.name">
@@ -102,7 +104,9 @@ function animateCards () {
           </CollaboraCard>
           <CollaboraCard sticker="heart">
             <template #title>
-              {{ $t('collabora.card4.title') }}
+              <a href="https://donacions.compromis.net" target="_blank" class="failsafe">
+                {{ $t('collabora.card4.title') }}
+              </a>
             </template>
             <template #buttons>
               <a href="https://donacions.compromis.net/donate/5" target="_blank">5€</a>
@@ -161,6 +165,16 @@ function animateCards () {
     :deep(.collabora-card) {
       opacity: 0;
     }
+  }
+}
+
+.failsafe {
+  color: inherit;
+  display: block;
+  width: 100%;
+
+  &:hover {
+    text-decoration: none;
   }
 }
 

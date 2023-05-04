@@ -36,20 +36,22 @@ const animated = computed(() => !filter.value)
       <div id="filterDesc" class="visually-hidden">Els pobles es filtraran mentres escrius</div>
     </div>
 
-    <div :class="['local-sites-results', { animated }]" id="sites">
-      <div v-if="filteredMunicipalities.length > 0">
-        <TransitionGroup name="list" tag="ul" aria-label="Webs municipals" class="list-results list-unstyled">
-          <li v-for="municipality in filteredMunicipalities" :key="municipality.id">
-            <a :href="`${municipality.url}`" target="_blank" rel="noopener">
-              {{ municipality.name }}
-            </a>
-          </li>
-        </TransitionGroup>
+    <ClientOnly>
+      <div :class="['local-sites-results', { animated }]" id="sites">
+        <div v-if="filteredMunicipalities.length > 0">
+          <TransitionGroup name="list" tag="ul" aria-label="Webs municipals" class="list-results list-unstyled">
+            <li v-for="municipality in filteredMunicipalities" :key="municipality.id">
+              <a :href="`${municipality.url}`" target="_blank" rel="noopener">
+                {{ municipality.name }}
+              </a>
+            </li>
+          </TransitionGroup>
+        </div>
+        <div v-else class="not-found">
+          No hem trobat el teu municipi :(
+        </div>
       </div>
-      <div v-else class="not-found">
-        No hem trobat el teu municipi :(
-      </div>
-    </div>
+    </ClientOnly>
   </div>
 </template>
 

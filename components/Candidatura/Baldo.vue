@@ -1,5 +1,6 @@
 <script setup>
 const { locale } = useI18n()
+const expanded = ref(false)
 </script>
 
 <template>
@@ -14,15 +15,18 @@ const { locale } = useI18n()
     <div class="poster-details">
       <h4 class="animated-item">Joan Baldoví</h4>
       <p class="poster-description animated-item">{{ $t('candidatura.president.description') }}</p>
-      <div class="poster-text animated-item" v-if="locale === 'val'">
+      <div :class="['poster-text animated-item', { expanded }]" v-if="locale === 'val'">
         <p>Durant els últims anys al Congrés he treballat per defensar els interessos valencians: un finançament just per a la nostra terra i unes inversions dignes, especialment en rodalies o transport públic. Però abans d’això, he sigut mestre d’escola pública i alcalde de Sueca, la meua ciutat.</p>
-        <p>Ara, com a candidat a la Presidència de la Generalitat, vull seguir treballant per a millorar la vida dels valencians i valencianes.</p>
-        <p>Amb el govern de coalició del Botànic hem avançat molt lluitant contra corrupció, garantint els drets de la ciutadania i enfortint els serveis públics. Però soc conscient que encara queda molt per fer. Et demane el teu suport per a poder liderar un nou impuls al govern del Botànic. Em compromet a treballar, dia a dia, per tot el que veritablement importa.</p>
+        <p class="extra">Ara, com a candidat a la Presidència de la Generalitat, vull seguir treballant per a millorar la vida dels valencians i valencianes.</p>
+        <p class="extra">Amb el govern de coalició del Botànic hem avançat molt lluitant contra corrupció, garantint els drets de la ciutadania i enfortint els serveis públics. Però soc conscient que encara queda molt per fer. Et demane el teu suport per a poder liderar un nou impuls al govern del Botànic. Em compromet a treballar, dia a dia, per tot el que veritablement importa.</p>
       </div>
       <div v-else>
         <p>Durante els últims anys al Congrés he treballat per defensar els interessos valencians: un finançament just per a la nostra terra i unes inversions dignes, especialment en rodalies o transport públic. Però abans d’això, he sigut mestre d’escola pública i alcalde de Sueca, la meua ciutat.</p>
-        <p>Ara, com a candidat a la Presidència de la Generalitat, vull seguir treballant per a millorar la vida dels valencians i valencianes.</p>
-        <p>Amb el govern de coalició del Botànic hem avançat molt lluitant contra corrupció, garantint els drets de la ciutadania i enfortint els serveis públics. Però soc conscient que encara queda molt per fer. Et demane el teu suport per a poder liderar un nou impuls al govern del Botànic. Em compromet a treballar, dia a dia, per tot el que veritablement importa.</p>
+        <p class="extra">Ara, com a candidat a la Presidència de la Generalitat, vull seguir treballant per a millorar la vida dels valencians i valencianes.</p>
+        <p class="extra">Amb el govern de coalició del Botànic hem avançat molt lluitant contra corrupció, garantint els drets de la ciutadania i enfortint els serveis públics. Però soc conscient que encara queda molt per fer. Et demane el teu suport per a poder liderar un nou impuls al govern del Botànic. Em compromet a treballar, dia a dia, per tot el que veritablement importa.</p>
+      </div>
+      <div class="d-md-none animated-item">
+        <button class="more" @click="expanded = true" v-if="!expanded">Continua...</button>
       </div>
     </div>
   </article>
@@ -78,6 +82,7 @@ const { locale } = useI18n()
     margin-left: 2rem;
     display: flex;
     flex-direction: column;
+    padding-right: var(--site-padding);
 
     h4 {
       font-size: 3.25rem;
@@ -109,6 +114,26 @@ const { locale } = useI18n()
         font-size: 2.5rem;
       }
     }
+  }
+
+  .extra {
+    display: none;
+  }
+
+  .expanded {
+    .extra {
+      display: block;
+    }
+  }
+
+  .more {
+    appearance: none;
+    background: transparent;
+    padding: 2rem;
+    margin: -2rem;
+    text-decoration: underline;
+    color: $red;
+    border: 0;
   }
 }
 </style>

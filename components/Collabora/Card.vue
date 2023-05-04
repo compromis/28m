@@ -77,8 +77,8 @@ const tag = computed(() => props.href ? 'a' : 'div')
   font-size: 2.25rem;
   font-weight: 500;
   max-width: 15ch;
-  pointer-events: none;
   padding: 1.25rem;
+  width: 100%;
 }
 
 .bottom {
@@ -144,8 +144,8 @@ const tag = computed(() => props.href ? 'a' : 'div')
   transition: .25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
   color: $white;
   transform: rotate(var(--rotate)) scale(var(--scale, 0));
+  pointer-events: none;
 
-  
   &-bullhorn {
     top: 20%;
     right: -12%;

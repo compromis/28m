@@ -183,7 +183,7 @@ const onPageSelect = () => {
       font-size: 1.5rem;
 
       &:focus-visible {
-        outline: 3px solid white;
+        outline: 3px solid var(--outline-color);
         outline-offset: 3px;
       }
     }
@@ -209,7 +209,7 @@ const onPageSelect = () => {
 
     &:focus-visible {
       box-shadow: none;
-      outline: 3px $white solid;
+      outline: 3px var(--outline-color) solid;
     }
   }
 

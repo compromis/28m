@@ -21,17 +21,25 @@ const entries = Object.entries(proposals)
   &-title {
     color: $white;
     @include font-size(2.25rem);
-    margin-top: 5rem;
+    margin-top: 3rem;
     margin-bottom: 1.5rem;
   }
 
   &-list {
     display: flex;
+    flex-flow: row nowrap;
     overflow-x: auto;
     gap: 2rem;
     margin: 0 calc(var(--site-padding) * -1.25);
     padding: 1rem calc(var(--site-padding) * 1.25);
     @include scrollbar($red, $yellow, $yellow, 3px);
+    scroll-snap-type: x mandatory;
+
+    li {
+      scroll-snap-align: start;
+      padding-left: 2rem;
+      margin-left: -2rem;
+    }
   }
 }
 </style>

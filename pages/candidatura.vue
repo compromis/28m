@@ -127,6 +127,11 @@ function animateItems () {
   @include scrollbar(transparent, $red, $red);
   padding: 10rem 0;
   margin: -10rem 0;
+  scroll-snap-type: x mandatory;
+
+  li {
+    scroll-snap-align: start;
+  }
 }
 
 @include media-breakpoint-down(md) {

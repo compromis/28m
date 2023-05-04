@@ -39,20 +39,20 @@ const closeAll = () => {
 
 <style lang="scss">
 @include media-breakpoint-down(md) {
-  .proposal-prop4 {
+  .proposal-residencies {
     left: 0 !important;
   }
 
-  .proposal-prop5 {
+  .proposal-transport-public {
     top: 70% !important;
     left: 3% !important;
   }
 
-  .proposal-prop6 {
+  .proposal-habitatge {
     left: 50% !important;
   }
 
-  .proposal-prop10 {
+  .proposal-administracio-propera {
     left: 65% !important;
   }
 }

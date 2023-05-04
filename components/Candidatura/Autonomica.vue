@@ -1,6 +1,6 @@
 <template>
   <section class="candidatura-container">
-    <h3 class="visually-hidden" id="President">{{ $t('candidatura.president') }}</h3>
+    <h3 class="visually-hidden" id="President">{{ $t('candidatura.president.description') }}</h3>
     <CandidaturaBaldo />
 
     <h3 class="visually-hidden" id="RegionalCandidates">{{ $t('candidatura.regional') }}</h3>
@@ -10,7 +10,7 @@
           full-name="Aitana Mas"
           name="Aitana"
           :description="$t('candidatura.regional_candidates.alacant')"
-          picture="/images/candidates/amigo.jpg"
+          picture="/images/candidates/aitana.jpg"
         />
       </li>
       <li>
@@ -26,7 +26,7 @@
           full-name="Vicent Marzà"
           name="Marzà"
           :description="$t('candidatura.regional_candidates.castello')"
-          picture="/images/candidates/marza.jpg"
+          picture="/images/candidates/ignasi.jpg"
         />
       </li>
     </ul>
