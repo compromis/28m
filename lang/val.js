@@ -51,6 +51,7 @@ export default {
     close: "Tanca modal",
     all_thats_been_done: "Per tot el que s'ha aconseguit",
     all_that_remains_to_be_done: "Per tot el que queda",
+    back: "Torna a la pàgina principal",
   },
 
   programa: {

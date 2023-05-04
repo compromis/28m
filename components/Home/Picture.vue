@@ -50,6 +50,10 @@ onMounted(() => {
       open.value = false
     }
   })
+
+  $on('closeAll', () => {
+    open.value = false
+  })
 })
 
 onUnmounted(() => {

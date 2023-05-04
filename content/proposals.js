@@ -1,6 +1,3 @@
-const topWidth = 1728;
-const topHeight = 1477;
-
 import Prop1 from "./prop1.js";
 import Prop2 from "./prop2.js";
 import Prop3 from "./prop3.js";
@@ -16,8 +13,11 @@ import Prop12 from "./prop12.js";
 import Prop13 from "./prop13.js";
 import Prop14 from "./prop14.js";
 
+const topWidth = 1728;
+const topHeight = 1477;
+
 export default {
-  prop1: {
+  educacio: {
     content: Prop1,
     picture: {
       src: "/images/proposals/prop1.jpg",
@@ -31,7 +31,7 @@ export default {
       origin: "right bottom",
     },
   },
-  prop2: {
+  sanitat: {
     content: Prop2,
     picture: {
       src: "/images/proposals/prop2.jpg",
@@ -44,7 +44,7 @@ export default {
       strength: 8,
     },
   },
-  prop3: {
+  "salut-mental": {
     content: Prop3,
     picture: {
       src: "/images/proposals/prop3.jpg",
@@ -58,7 +58,7 @@ export default {
       origin: "right bottom",
     },
   },
-  prop4: {
+  residencies: {
     content: Prop4,
     picture: {
       src: "/images/proposals/prop4.jpg",
@@ -71,7 +71,7 @@ export default {
       strength: 3.5,
     },
   },
-  prop5: {
+  "transport-public": {
     content: Prop5,
     picture: {
       src: "/images/proposals/prop5.jpg",
@@ -84,7 +84,7 @@ export default {
       strength: 5,
     },
   },
-  prop6: {
+  habitatge: {
     content: Prop6,
     picture: {
       src: "/images/proposals/prop6.jpg",
@@ -97,7 +97,7 @@ export default {
       strength: 5,
     },
   },
-  prop7: {
+  industria: {
     content: Prop7,
     picture: {
       src: "/images/proposals/prop7.jpg",
@@ -110,7 +110,7 @@ export default {
       strength: 3.5,
     },
   },
-  prop8: {
+  "canvi-climatic": {
     content: Prop8,
     picture: {
       src: "/images/proposals/prop8.jpg",
@@ -123,8 +123,7 @@ export default {
       strength: 7,
     },
   },
-  prop9: {
-    tip: "Un camp valencià amb futur",
+  "camp-valencia": {
     content: Prop9,
     picture: {
       src: "/images/proposals/prop9.jpg",
@@ -137,8 +136,7 @@ export default {
       strength: 10,
     },
   },
-  prop10: {
-    tip: "Una administració més propera",
+  "administracio-propera": {
     content: Prop10,
     picture: {
       src: "/images/proposals/prop10.jpg",
@@ -151,8 +149,7 @@ export default {
       strength: 8,
     },
   },
-  prop11: {
-    tip: "Blindar els drets LGTBIQ+",
+  lgtb: {
     content: Prop11,
     picture: {
       src: "/images/proposals/prop11.jpg",
@@ -165,8 +162,7 @@ export default {
       strength: 8,
     },
   },
-  prop12: {
-    tip: "Avançar cap a la igualtat real",
+  igualtat: {
     content: Prop12,
     picture: {
       src: "/images/proposals/prop12.jpg",
@@ -179,8 +175,7 @@ export default {
       strength: 8,
     },
   },
-  prop13: {
-    tip: "Garantir els drets de la joventut",
+  "garantir-drets": {
     content: Prop13,
     picture: {
       src: "/images/proposals/prop13.jpg",
@@ -193,8 +188,7 @@ export default {
       strength: 8,
     },
   },
-  prop14: {
-    tip: "Fer fora la corrupció",
+  corrupcio: {
     content: Prop14,
     picture: {
       src: "/images/proposals/prop14.jpg",
