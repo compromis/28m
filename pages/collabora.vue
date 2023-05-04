@@ -105,11 +105,11 @@ function animateCards () {
               {{ $t('collabora.card4.title') }}
             </template>
             <template #buttons>
-              <a href="a">5€</a>
-              <a href="a">10€</a>
-              <a href="a">20€</a>
-              <a href="a">50€</a>
-              <a href="a">Més</a>
+              <a href="https://donacions.compromis.net/donate/5" target="_blank">5€</a>
+              <a href="https://donacions.compromis.net/donate/10" target="_blank">10€</a>
+              <a href="https://donacions.compromis.net/donate/20" target="_blank">20€</a>
+              <a href="https://donacions.compromis.net/donate/50" target="_blank">50€</a>
+              <a href="https://donacions.compromis.net" target="_blank">Més</a>
             </template>
           </CollaboraCard>
         </div>
