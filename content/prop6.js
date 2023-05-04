@@ -1,5 +1,6 @@
 export default {
   val: {
+    tip: "Habitatge digne",
     title: "Habitatge digne",
     textDone:
       "L’habitatge és una prioritat per a nosaltres. Per aquest motiu, la primera llei que aprovàrem després d’entrar al govern fou la d’Habitatge, gràcies a la qual la Generalitat ha pogut intercedir en vendes de pisos a preu de saldo, i comprar centenars de pisos que s’anaven a vendre a fons estrangers d’especulació, per tal de posar-los a disposició de famílies valencianes.",
@@ -9,6 +10,7 @@ export default {
       `,
   },
   cas: {
+    tip: "Habitatge digne",
     title: "Habitatge digne",
     textDone:
       "L’habitatge és una prioritat per a nosaltres. Per aquest motiu, la primera llei que aprovàrem després d’entrar al govern fou la d’Habitatge, gràcies a la qual la Generalitat ha pogut intercedir en vendes de pisos a preu de saldo, i comprar centenars de pisos que s’anaven a vendre a fons estrangers d’especulació, per tal de posar-los a disposició de famílies valencianes.",

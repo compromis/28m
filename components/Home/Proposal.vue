@@ -9,12 +9,14 @@ defineProps({
     required: true
   }
 })
+
+const { locale } = useI18n()
 </script>
 
 <template>
   <NuxtLink :to="localePath(`/proposta/${slug}`)" class="proposal">
     <img :src="proposal.picture.src" :alt="proposal.picture.alt" class="proposal-picture" />
-    <h3 class="proposal-title">{{ proposal.title }}</h3>
+    <h3 class="proposal-title">{{ proposal.content[locale].tip }}</h3>
   </NuxtLink>
 </template>
 
@@ -39,6 +41,7 @@ defineProps({
       @include font-size(2rem);
       bottom: 1rem;
       left: calc(var(--site-padding) * -.5);
+      max-width: 75%;
     }
   }
 </style>

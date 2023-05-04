@@ -2,6 +2,7 @@
 import proposals from '~/content/proposals'
 const pictures = Object.entries(proposals)
 const hoveredPicture = ref(null)
+const openPicture = ref(null)
 
 const mousePos = useState('mousePos', () => ({ x: 0, y: 0 }))
 const setMousePos = ({ pageX, pageY }) => {
@@ -21,8 +22,13 @@ onMounted(() => {
     :key="id"
     @hover="hoveredPicture = id"
     @unhover="hoveredPicture = null"
-    :dimmed="hoveredPicture !== id && !!hoveredPicture"
+    @show="openPicture = id"
+    @hide="openPicture = null"
+    :dimmed="(hoveredPicture !== id && !!hoveredPicture && openPicture !== id) || (openPicture !== id && !!openPicture)"
   />
+  <Transition name="fade">
+    <div class="backdrop" v-if="openPicture" />
+  </Transition>
 </template>
 
 <style lang="scss">
@@ -43,5 +49,17 @@ onMounted(() => {
   .proposal-prop10 {
     left: 65% !important;
   }
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $red;
+  opacity: .75;
+  pointer-events: none;
+  z-index: 101;
 }
 </style>

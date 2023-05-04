@@ -1,5 +1,6 @@
 export default {
   val: {
+    tip: "Lluitar contra el canvi climàtic",
     title: "Lluitarem contra el canvi climàtic",
     textDone:
       "Durant els darrers anys hem posat la lluita contra el canvi climàtic al capdavant de l’acció de la Generalitat. Ho vam fer declarant l’emergència climàtica al nostre territori, i prioritzant l’aprovació d’una Llei de Canvi Climàtic que done una resposta integral davant aquest repte.",
@@ -9,6 +10,7 @@ export default {
       <p>Protegirem els espais com ara l’Albufera de València, ampliarem la xarxa de parcs naturals i invertirem més recursos en prevenció d’incendis.</p>`,
   },
   cas: {
+    tip: "Lluitar contra el canvi climàtic",
     title: "Lluitarem contra el canvi climàtic",
     textDone:
       "Durant els darrers anys hem posat la lluita contra el canvi climàtic al capdavant de l’acció de la Generalitat. Ho vam fer declarant l’emergència climàtica al nostre territori, i prioritzant l’aprovació d’una Llei de Canvi Climàtic que done una resposta integral davant aquest repte.",

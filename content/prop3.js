@@ -1,5 +1,6 @@
 export default {
   val: {
+    tip: "Salut mental pública i accessible",
     title: "Salut mental pública i accessible",
     textDone: `<p>Els últims anys s’ha vist la importància de cuidar la nostra salut en tots els aspectes, també en l’emocional. Els malestars de la ciutadania s’han vist incrementats degut a la situació socioeconòmica i la incertesa, i han estat agreujats per la pandèmia, afectant també de manera molt especial a adolescents i joves.</p>
 
@@ -10,6 +11,7 @@ export default {
       `,
   },
   cas: {
+    tip: "Salut mental pública i accessible",
     title: "Salut mental pública i accessible",
     textDone: `<p>Els últims anys s’ha vist la importància de cuidar la nostra salut en tots els aspectes, també en l’emocional. Els malestars de la ciutadania s’han vist incrementats degut a la situació socioeconòmica i la incertesa, i han estat agreujats per la pandèmia, afectant també de manera molt especial a adolescents i joves.</p>
 

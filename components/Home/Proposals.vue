@@ -1,23 +1,13 @@
 <script setup>
 import proposals from '~/content/proposals'
 const entries = Object.entries(proposals)
-
-const whatsBeenDone = computed(() => entries.filter(entry => entry[1].category === 'done'))
-const whatRemainsToBeDone = computed(() => entries.filter(entry => entry[1].category === 'to_be_done'))
 </script>
 
 <template>
-  <section class="home-proposals">
-    <h2 class="home-proposals-title">Per tot el que s'ha aconseguit</h2>
+  <section class="home-proposals d-lg-none">
+    <h2 class="home-proposals-title">Per tot el que s'ha aconseguit i per tot el que queda</h2>
     <ul class="home-proposals-list list-unstyled">
-      <li v-for="[slug, proposal] in whatsBeenDone" :key="slug">
-        <HomeProposal :proposal="proposal" :slug="slug" />
-      </li>
-    </ul>
-
-    <h2 class="home-proposals-title">Per tot el que queda per fer</h2>
-    <ul class="home-proposals-list list-unstyled">
-      <li v-for="[slug, proposal] in whatRemainsToBeDone" :key="slug">
+      <li v-for="[slug, proposal] in entries" :key="slug">
         <HomeProposal :proposal="proposal" :slug="slug" />
       </li>
     </ul>
@@ -39,8 +29,9 @@ const whatRemainsToBeDone = computed(() => entries.filter(entry => entry[1].cate
     display: flex;
     overflow-x: auto;
     gap: 2rem;
-    margin: 1rem calc(var(--site-padding) * -1.25);
-    padding: 0 calc(var(--site-padding) * 1.25);
+    margin: 0 calc(var(--site-padding) * -1.25);
+    padding: 1rem calc(var(--site-padding) * 1.25);
+    @include scrollbar($red, $yellow, $yellow, 3px);
   }
 }
 </style>

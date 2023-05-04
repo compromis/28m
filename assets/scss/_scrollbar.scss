@@ -1,6 +1,6 @@
-@mixin scrollbar($background: transparent, $thumb: #{rgba($black, .5)}, $thumb-hover: #{$black}) {
+@mixin scrollbar($background: transparent, $thumb: #{rgba($black, .5)}, $thumb-hover: #{$black}, $thickness: 0) {
   &::-webkit-scrollbar {
-    width: 10px;
+    width: calc(10px + #{$thickness});
   }
 
   /* Track */
@@ -12,6 +12,7 @@
   &::-webkit-scrollbar-thumb {
     background: $thumb;
     border-radius: 2rem;
+    border: $thickness $background solid;
   }
 
   /* Handle on hover */

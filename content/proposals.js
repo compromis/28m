@@ -18,7 +18,6 @@ import Prop14 from "./prop14.js";
 
 export default {
   prop1: {
-    tip: "Haver construit 102 noves escoles i acabar amb els barracons crònics",
     content: Prop1,
     picture: {
       src: "/images/proposals/prop1.jpg",
@@ -33,7 +32,6 @@ export default {
     },
   },
   prop2: {
-    tip: "Recuperar hospitals privatitzats i afegir 13.000 sanitaris",
     content: Prop2,
     picture: {
       src: "/images/proposals/prop2.jpg",
@@ -47,7 +45,6 @@ export default {
     },
   },
   prop3: {
-    tip: "Salut mental pública i accessible",
     content: Prop3,
     picture: {
       src: "/images/proposals/prop3.jpg",
@@ -62,7 +59,6 @@ export default {
     },
   },
   prop4: {
-    tip: "Centres i residències prop de casa",
     content: Prop4,
     picture: {
       src: "/images/proposals/prop4.jpg",
@@ -76,7 +72,6 @@ export default {
     },
   },
   prop5: {
-    tip: "Impulsar el transport públic",
     content: Prop5,
     picture: {
       src: "/images/proposals/prop5.jpg",
@@ -90,7 +85,6 @@ export default {
     },
   },
   prop6: {
-    tip: "Habitatge digne",
     content: Prop6,
     picture: {
       src: "/images/proposals/prop6.jpg",
@@ -104,7 +98,6 @@ export default {
     },
   },
   prop7: {
-    tip: "Indústria innovadora",
     content: Prop7,
     picture: {
       src: "/images/proposals/prop7.jpg",
@@ -118,7 +111,6 @@ export default {
     },
   },
   prop8: {
-    tip: "Lluitar contra el canvi climàtic",
     content: Prop8,
     picture: {
       src: "/images/proposals/prop8.jpg",

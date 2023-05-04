@@ -18,7 +18,6 @@ useHead({
   <main class="home">
     <HomeHero />
     <HomeProposals />
-    <HomeModal />
   </main>
 </template>
 

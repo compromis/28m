@@ -47,6 +47,10 @@ export default {
     claim_mobile_1: "Per tot",
     claim_mobile_2: "el que",
     claim_mobile_3: "importa",
+    click_to_open: "Fes clic per mostrar contingut",
+    close: "Tanca modal",
+    all_thats_been_done: "Per tot el que s'ha aconseguit",
+    all_that_remains_to_be_done: "Per tot el que queda",
   },
 
   programa: {
