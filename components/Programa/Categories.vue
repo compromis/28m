@@ -72,24 +72,6 @@ function preload(image) {
     min-height: 6em;
     transition: .25s ease;
 
-    &:hover {
-      text-decoration: none;
-      transform: scale(1.05);
-
-      .proposals {
-        padding: .25em .65em;
-
-        .reveal-text {
-          max-width: 100px;
-          padding-left: .25em;
-        }
-      }
-    }
-
-    &:active {
-      transform: scale(.95) rotate(-1deg);
-    }
-
     .proposals {
       display: flex;
       font-size: .6em;
@@ -113,6 +95,28 @@ function preload(image) {
   .programa-lgtbiq,
   .programa-bon-govern {
     grid-column: span 4;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .programa-categories a {
+    &:hover {
+      text-decoration: none;
+      transform: scale(1.05);
+
+      .proposals {
+        padding: .25em .65em;
+
+        .reveal-text {
+          max-width: 100px;
+          padding-left: .25em;
+        }
+      }
+    }
+
+    &:active {
+      transform: scale(.95) rotate(-1deg);
+    }
   }
 }
 

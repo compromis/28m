@@ -338,6 +338,7 @@ function onLeaveDownloads(el, done) {
   transition-delay: var(--transition-duration);
   min-height: 100vh;
   will-change: grid-template-columns;
+  touch-action: manipulation;
 
   &-nav {
     background: $yellow;
