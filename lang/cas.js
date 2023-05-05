@@ -66,6 +66,15 @@ export default {
     podcast: "Escuchar el Podcast",
     downloads: "Descargas",
     easy_read: "Lectura fácil",
+    filter: {
+      label: "Encuentra propuestas por palabras clave",
+      placeholder: "Encuentra propuestas por palabras clave",
+      headline: "Propuestas que contienen “{keyword}”",
+    },
+    no_results: "No hemos encontrado ninguna propuesta con esas palabras :(",
+    loading: "Buscando propuestas...",
+    youth: "Propuestas para jóvenes",
+    feminist: "Propuestas feministas",
   },
 
   candidatura: {

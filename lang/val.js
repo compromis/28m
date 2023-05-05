@@ -67,8 +67,8 @@ export default {
     downloads: "Descàrregues",
     easy_read: "Lectura fàcil",
     filter: {
-      label: "Troba propostes per paraula clau",
-      placeholder: "Troba propostes per paraula clau",
+      label: "Troba propostes per paraules clau",
+      placeholder: "Troba propostes per paraules clau",
       headline: "Propostes que contenen “{keyword}”",
     },
     no_results: "No hem trobat cap proposta amb eixes paraules :(",
