@@ -37,7 +37,8 @@ export default defineNuxtConfig({
     ],
     lazy: true,
     langDir: 'lang',
-    defaultLocale: 'val'
+    defaultLocale: 'val',
+    detectBrowserLanguage: false
   },
 
   vite: {
