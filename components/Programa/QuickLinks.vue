@@ -14,20 +14,24 @@ const subcategories = computed(() => {
 </script>
 
 <template>
-  <ul v-if="subcategories.length > 1" class="subcategory-quick-links list-unstyled">
-    <li v-for="subcategory in subcategories" :key="subcategory.id">
-      <a :href="`#subcat-${subcategory.id}`">
-        {{ subcategory[`name_${locale}`] }}
-      </a>
-    </li>
-  </ul>
+  <div class="subcategory-quick-links">
+    <ul v-if="subcategories.length > 1" class="list-unstyled">
+      <li v-for="subcategory in subcategories" :key="subcategory.id">
+        <a :href="`#subcat-${subcategory.id}`">
+          {{ subcategory[`name_${locale}`] }}
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .subcategory-quick-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .75rem;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+  }
 
   li {
     white-space: nowrap;
@@ -51,10 +55,14 @@ const subcategories = computed(() => {
 
 @include media-breakpoint-down(md) {
   .subcategory-quick-links {
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    overflow: auto;
+    width: 100vw;
     margin: 0 calc(var(--site-padding) * -1);
     padding: 0 var(--site-padding);
+
+    ul {
+      flex-wrap: nowrap;
+    }
   }
 }
 </style>

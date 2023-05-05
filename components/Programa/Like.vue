@@ -97,6 +97,7 @@ const formattedLikes = computed(() => new Intl.NumberFormat("es-ES").format(prop
   border: 0;
   background: transparent;
   color: $gray-600;
+  touch-action: manipulation;
 
   .number {
     font-variant-numeric: tabular-nums;

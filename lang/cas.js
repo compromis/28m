@@ -65,7 +65,7 @@ export default {
     download_pdf: "Descargar en PDF",
     podcast: "Escuchar el Podcast",
     downloads: "Descargas",
-    accessible: "Lectura fácil",
+    easy_read: "Lectura fácil",
   },
 
   candidatura: {

@@ -2,6 +2,7 @@
 const route = useRoute()
 const config = useRuntimeConfig()
 const { $gsap } = useNuxtApp()
+const { locale } = useI18n()
 const { data: sections } = await useFetch(config.public.apiBase + 'categories/')
 
 const inSection = computed(() => {
@@ -210,15 +211,23 @@ function onLeaveDownloads(el, done) {
             <div v-if="!inSection" class="downloads">
               <a href="#Downloads">
                 <ClientOnly>
-                  <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  <FontAwesomeIcon :icon="['far', 'file-arrow-down']" fixed-width />
                 </ClientOnly>
                 {{ $t('programa.download_pdf') }}
               </a>
-              <a href="/" target="_blank">
+              <a href="https://open.spotify.com/show/3KOOr6sVhq6Yjt1mptMCvt?si=6yx-ybt4TA-9v26VvJKtPA" target="_blank">
                 <ClientOnly>
-                  <FontAwesomeIcon :icon="['far', 'podcast']" />
+                  <FontAwesomeIcon :icon="['far', 'podcast']" fixed-width />
                 </ClientOnly>
                 {{ $t('programa.podcast') }}
+              </a>
+              <a v-if="locale === 'val'" href="/docs/LF_VAL_Final_ResumenProgramaElectoralCompromis.pdf" target="_blank" class="easy-read">
+                <img src="~/assets/images/icons/easy_read.png" alt="" />
+                {{ $t('programa.easy_read') }}
+              </a>
+              <a v-else href="/docs/LF_CAS_Final_ResumenProgramaElectoralCompromis.pdf" target="_blank" class="easy-read">
+                <img src="~/assets/images/icons/easy_read.png" alt="" />
+                {{ $t('programa.easy_read') }}
               </a>
             </div>
           </Transition>
@@ -230,36 +239,76 @@ function onLeaveDownloads(el, done) {
           <div v-if="!inSection" id="Downloads" class="downloads-list">
             <h4>{{ $t('programa.downloads') }}</h4>
             <ul class="list-unstyled">
-              <li>
+              <!--<li>
                 <a href="/">
                   <ClientOnly>
                     <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
                   </ClientOnly>
                   <span class="underline">Revista de propostes</span> <span class="format">PDF</span>
                 </a>
-              </li>
+              </li>-->
               <li>
-                <a href="/docs/Programa_Electoral_Corts_2023.pdf">
+                <a href="/docs/PROGRAMA_ELECTORAL_2023_VAL.pdf">
                   <ClientOnly>
                     <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
                   </ClientOnly>
-                  <span class="underline">Programa complet</span> <span class="format">PDF</span>
+                  <span class="underline">Programa complet (Valencià)</span> <span class="format">PDF</span>
                 </a>
               </li>
               <li>
-                <a href="/docs/Propostes_Joventuts.pdf">
+                <a href="/docs/PROGRAMA_ELECTORAL_2023_ CAS.pdf">
                   <ClientOnly>
                     <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
                   </ClientOnly>
-                  <span class="underline">Propostes de joventut</span> <span class="format">PDF</span>
+                  <span class="underline">Programa completo (Castellano)</span> <span class="format">PDF</span>
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="/docs/MESURES_JOVENTUT_2023_VAL.pdf">
                   <ClientOnly>
                     <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
                   </ClientOnly>
-                  <span class="underline">Propostes de feminisme</span> <span class="format">PDF</span>
+                  <span class="underline">Propostes de joventut (Valencià)</span> <span class="format">PDF</span>
+                </a>
+              </li>
+              <li>
+                <a href="/docs/MESURES_JOVENTUT_2023_CAS.pdf">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  </ClientOnly>
+                  <span class="underline">Propuestas de juventud (Castellano)</span> <span class="format">PDF</span>
+                </a>
+              </li>
+              <li>
+                <a href="/docs/MESURES_FEMINISMES_2023_VAL.pdf">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  </ClientOnly>
+                  <span class="underline">Propostes de feminisme (Valencià)</span> <span class="format">PDF</span>
+                </a>
+              </li>
+              <li>
+                <a href="/docs/MESURES_FEMINISMES_2023_CAS.pdf">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  </ClientOnly>
+                  <span class="underline">Propuestas de feminismo (Castellano)</span> <span class="format">PDF</span>
+                </a>
+              </li>
+              <li>
+                <a href="/docs/LF_VAL_Final_ResumenProgramaElectoralCompromis.pdf" class="easy-read-download">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  </ClientOnly>
+                  <span class="underline">Programa de lectura fàcil (Valencià)</span> <span class="format">PDF</span>
+                </a>
+              </li>
+              <li>
+                <a href="/docs/LF_CAS_Final_ResumenProgramaElectoralCompromis.pdf" class="easy-read-download">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" />
+                  </ClientOnly>
+                  <span class="underline">Programa de lectura facil (Castellano)</span> <span class="format">PDF</span>
                 </a>
               </li>
             </ul>
@@ -457,6 +506,21 @@ function onLeaveDownloads(el, done) {
   }
 }
 
+a.easy-read,
+a.easy-read-download {
+  color: #010080;
+}
+
+a.easy-read {
+  img {
+    height: 2em;
+  }
+
+  &:hover {
+    background: #010080;
+  }
+}
+
 /* Mobile */
 @include media-breakpoint-down(md) {
   .programa {
@@ -532,6 +596,31 @@ function onLeaveDownloads(el, done) {
       .programa-nav-cover {
         --cover-height: 0;
         --cover-min-height: 0;
+      }
+    }
+  }
+
+  .downloads {
+    flex-direction: column;
+    margin-left: -.75rem;
+    gap: 0;
+
+    a.easy-read {
+      img {
+        height: 1.25em;
+      }
+    }
+
+    &-list {
+      font-size: 1.25rem;
+      line-height: 1;
+
+      li {
+        margin-bottom: .5rem;
+      }
+
+      .format {
+        margin-left: auto;
       }
     }
   }

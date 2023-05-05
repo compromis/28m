@@ -40,6 +40,8 @@ const time = computed(() => {
     </div>
     <div class="venue">
       {{ event.venue === '?' ? 'Per determinar' : event.venue }}
+      <br>
+      <strong>{{ event.municipality }}</strong>
     </div>
     <div class="baldoneta" v-if="event.baldoneta" />
   </article>
@@ -76,6 +78,7 @@ const time = computed(() => {
   justify-content: flex-end;
   align-items: flex-start;
   flex-wrap: wrap;
+  align-self: start;
 
   & > span {
     display: flex;
@@ -139,6 +142,7 @@ const time = computed(() => {
   grid-area: venue;
   text-align: right;
   align-self: end;
+  line-height: 1.1;
 }
 
 .baldoneta {

@@ -36,7 +36,7 @@
 	.st2{fill:$indigo;}
 	.st3{fill:$blue;}
 	.st4{fill:$red;}
-	.st5{fill:$lightblue;}
+	.st5{fill:$white;}
 	.st6{font-family:'Roobert', sans-serif; font-weight: 900;}
 	.st7{font-size:59.2202px;}
 	.st8{font-size:55.5439px;}

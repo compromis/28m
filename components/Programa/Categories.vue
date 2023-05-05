@@ -120,6 +120,11 @@ function preload(image) {
   .programa-categories {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+
+    a {
+      font-size: 1.4rem;
+      min-height: 7em;
+    }
   }
 
   .programa-category-card {
