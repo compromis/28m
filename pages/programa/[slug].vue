@@ -102,7 +102,7 @@ definePageMeta({
         <h3 :id="`subcat-${subcategory.id}`" v-if="!subcategory.hidden">{{ subcategory[`name_${locale}`] }}</h3>
     
         <ol class="programa-category-proposals list-unstyled">
-          <li v-for="proposal in subcategory.proposals" :key="proposal.id" :class="{ highlighted: proposal.highlighted }">
+          <li v-for="proposal in subcategory.proposals" :key="proposal.id" :class="[`proposal-${proposal.num}`, { highlighted: proposal.highlighted }]">
             <ProgramaProposal :proposal="proposal" :category="category" />
           </li>
         </ol>

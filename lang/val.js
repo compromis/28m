@@ -66,6 +66,15 @@ export default {
     podcast: "Escolta el Podcast",
     downloads: "Descàrregues",
     easy_read: "Lectura fàcil",
+    filter: {
+      label: "Troba propostes per paraula clau",
+      placeholder: "Troba propostes per paraula clau",
+      headline: "Propostes que contenen “{keyword}”",
+    },
+    no_results: "No hem trobat cap proposta amb eixes paraules :(",
+    loading: "Cercant propostes...",
+    youth: "Propostes per a joves",
+    feminist: "Propostes feministes",
   },
 
   candidatura: {

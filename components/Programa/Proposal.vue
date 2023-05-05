@@ -17,6 +17,11 @@ const props = defineProps({
     default: false
   },
 
+  noHighlights: {
+    type: Boolean,
+    default: false
+  },
+
   highlighted: {
     type: Boolean,
     default: false
@@ -63,14 +68,15 @@ const proposalCategory = computed(() => {
 </script>
 
 <template>
-  <article :class="['proposal', { highlighted: proposal.highlighted || highlighted, 'with-category': showCategory }]">
+  <article :class="['proposal', { highlighted: proposal.highlighted || highlighted, 'no-highlights': noHighlights }]">
     <div class="proposal-content">
       <NuxtLink :to="localePath(`/programa/${proposalCategory.slug}/${proposal.id}`)" class="proposal-id">
         #{{ proposalNum }}
       </NuxtLink>
-      <p class="proposal-text">
-        {{ proposal[`text_${locale}`] }}
-      </p>
+      <div class="proposal-text">
+        <p>{{ proposal[`text_${locale}`] }}</p>
+        <div v-if="proposal.media" v-html="proposal.media" />
+      </div>
       <NuxtLink :to="localePath(`/programa/${proposalCategory.slug}`)" v-if="showCategory" :class="['proposal-category', `category-${proposal.subcategory.category.slug}`, `color-${proposal.subcategory.category.color}`]">
         {{ proposal.subcategory.category[`name_${locale}`] }}
       </NuxtLink>
@@ -82,11 +88,21 @@ const proposalCategory = computed(() => {
     </div>
 
     <div class="proposal-flairs" ref="flairs">
-      <span class="flair flair-joves sticker circle bg-yellow" v-if="flaires.includes('youth')">Joves</span>
-      <span class="flair flair-feminisme sticker circle bg-purple" v-if="flaires.includes('feminist')">
+      <NuxtLink
+        :to="localePath('/programa/filtre') + '?flair=youth'"
+        class="flair flair-joves sticker circle bg-yellow"
+        v-if="flaires.includes('youth')"
+      >
+        Joves
+      </NuxtLink>
+      <NuxtLink
+        :to="localePath('/programa/filtre/') + '?flair=feminist'"
+        class="flair flair-feminisme sticker circle bg-purple"
+        v-if="flaires.includes('feminist')"
+      >
         <ClientOnly><FontAwesomeIcon :icon="['far', 'venus']" class="icon" /></ClientOnly>
         <span class="visually-hidden">Feminisme</span>
-      </span>
+      </NuxtLink>
     </div>
   </article>
 </template>
@@ -131,7 +147,6 @@ const proposalCategory = computed(() => {
     right: 0;
     bottom: 30px;
     transform: translateX(40%);
-    pointer-events: none;
 
     .flair {
       color: $white;
@@ -182,7 +197,7 @@ const proposalCategory = computed(() => {
     }
   }
 
-  &.with-category {
+  &.no-highlights {
     .proposal-text {
       font-size: 1.35rem !important;
     }

@@ -67,7 +67,7 @@ definePageMeta({
       </h2>
       <ol class="top-proposals-list list-unstyled">
         <li v-for="proposal in top" :key="proposal.id" class="top-proposals-item">
-          <ProgramaProposal :proposal="proposal" show-category />
+          <ProgramaProposal :proposal="proposal" show-category no-highlights />
         </li>
       </ol>
     </div>
@@ -111,7 +111,7 @@ definePageMeta({
   }
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
   .top-proposals {
     &-cover {
       height: 0;

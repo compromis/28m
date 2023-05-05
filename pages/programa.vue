@@ -6,7 +6,7 @@ const { locale } = useI18n()
 const { data: sections } = await useFetch(config.public.apiBase + 'categories/')
 
 const inSection = computed(() => {
-  return route.name.startsWith('programa-slug')
+  return route.name.startsWith('programa-slug') || route.name.startsWith('programa-filtre')
 })
 
 /* Cover animation */
@@ -208,27 +208,30 @@ function onLeaveDownloads(el, done) {
           </Transition>
 
           <Transition @before-enter="beforeEnterDownloads" @enter="onEnterDownloads" @leave="onLeaveDownloads">
-            <div v-if="!inSection" class="downloads">
-              <a href="#Downloads">
-                <ClientOnly>
-                  <FontAwesomeIcon :icon="['far', 'file-arrow-down']" fixed-width />
-                </ClientOnly>
-                {{ $t('programa.download_pdf') }}
-              </a>
-              <a href="https://open.spotify.com/show/3KOOr6sVhq6Yjt1mptMCvt?si=6yx-ybt4TA-9v26VvJKtPA" target="_blank">
-                <ClientOnly>
-                  <FontAwesomeIcon :icon="['far', 'podcast']" fixed-width />
-                </ClientOnly>
-                {{ $t('programa.podcast') }}
-              </a>
-              <a v-if="locale === 'val'" href="/docs/LF_VAL_Final_ResumenProgramaElectoralCompromis.pdf" target="_blank" class="easy-read">
-                <img src="~/assets/images/icons/easy_read.png" alt="" />
-                {{ $t('programa.easy_read') }}
-              </a>
-              <a v-else href="/docs/LF_CAS_Final_ResumenProgramaElectoralCompromis.pdf" target="_blank" class="easy-read">
-                <img src="~/assets/images/icons/easy_read.png" alt="" />
-                {{ $t('programa.easy_read') }}
-              </a>
+            <div v-if="!inSection" class="tools">
+              <div class="downloads">
+                <a href="#Downloads">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'file-arrow-down']" fixed-width />
+                  </ClientOnly>
+                  {{ $t('programa.download_pdf') }}
+                </a>
+                <a href="https://open.spotify.com/show/3KOOr6sVhq6Yjt1mptMCvt?si=6yx-ybt4TA-9v26VvJKtPA" target="_blank">
+                  <ClientOnly>
+                    <FontAwesomeIcon :icon="['far', 'podcast']" fixed-width />
+                  </ClientOnly>
+                  {{ $t('programa.podcast') }}
+                </a>
+                <a v-if="locale === 'val'" href="/docs/LF_VAL_Final_ResumenProgramaElectoralCompromis.pdf" target="_blank" class="easy-read">
+                  <img src="~/assets/images/icons/easy_read.png" alt="" />
+                  {{ $t('programa.easy_read') }}
+                </a>
+                <a v-else href="/docs/LF_CAS_Final_ResumenProgramaElectoralCompromis.pdf" target="_blank" class="easy-read">
+                  <img src="~/assets/images/icons/easy_read.png" alt="" />
+                  {{ $t('programa.easy_read') }}
+                </a>
+              </div>
+              <ProgramaFilter />
             </div>
           </Transition>
 
@@ -454,6 +457,7 @@ function onLeaveDownloads(el, done) {
   display: flex;
   gap: .5rem;
   margin-top: 2rem;
+  margin-left: -.75rem;
 
   a {
     display: flex;
@@ -464,6 +468,7 @@ function onLeaveDownloads(el, done) {
     font-size: 1.25rem;
     align-items: center;
     font-weight: 900;
+    line-height: 1;
 
     &:hover {
       text-decoration: none;
@@ -473,7 +478,7 @@ function onLeaveDownloads(el, done) {
   }
 
   &-list {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
 
     h4 {
       color: $red;
@@ -522,7 +527,7 @@ a.easy-read {
 }
 
 /* Mobile */
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
   .programa {
     grid-template-columns: 1fr;
 
@@ -599,7 +604,9 @@ a.easy-read {
       }
     }
   }
+}
 
+@include media-breakpoint-down(md) {
   .downloads {
     flex-direction: column;
     margin-left: -.75rem;
