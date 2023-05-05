@@ -7,11 +7,11 @@ const { upcomingEvents, pastEvents } = useEvents(events.value.values)
 /* Meta */
 const { t } = useI18n()
 useServerSeoMeta({
-  title: () => t('meta.actes.title'),
-  ogTitle: () => t('meta.actes.title'),
-  description: () => t('meta.actes.description'),
-  ogDescription: () => t('meta.actes.description'),
-  ogImage: () => t('meta.actes.ogImage'),
+  title: 'Actes - Compromís',
+  ogTitle: 'Actes - Compromís',
+  description: 'Vine als actes de campanya de Compromís. Com a partit de proximitat, sempre tenim un acte prop de tu.',
+  ogDescription: 'Vine als actes de campanya de Compromís. Com a partit de proximitat, sempre tenim un acte prop de tu.',
+  ogImage: 'https://28m.compromis.net/images/social/actes.png',
   twitterCard: 'summary_large_image',
 })
 useHead({

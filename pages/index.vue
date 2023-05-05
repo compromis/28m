@@ -2,11 +2,11 @@
 /* Meta tags */
 const { t } = useI18n()
 useServerSeoMeta({
-  title: () => t('meta.home.title'),
-  ogTitle: () => t('meta.home.title'),
-  description: () => t('meta.home.description'),
-  ogDescription: () => t('meta.home.description'),
-  ogImage: () => t('meta.home.ogImage'),
+  title: "Compromís - Per tot el que importa - Eleccions 28M",
+  ogTitle: "Compromís - Per tot el que importa - Eleccions 28M",
+  description: "Web de campamya de Compromís per a les Eleccions a Corts Valencianes de 2023",
+  ogDescription: "Web de campamya de Compromís per a les Eleccions a Corts Valencianes de 2023",
+  ogImage: "https://28m.compromis.net/images/social/home.png",
   twitterCard: 'summary_large_image',
 })
 useHead({

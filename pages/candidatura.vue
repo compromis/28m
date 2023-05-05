@@ -2,11 +2,11 @@
 /* Meta tags */
 const { t } = useI18n()
 useServerSeoMeta({
-  title: () => t('meta.candidatura.title'),
-  ogTitle: () => t('meta.candidatura.title'),
-  description: () => t('meta.candidatura.description'),
-  ogDescription: () => t('meta.candidatura.description'),
-  ogImage: () => t('meta.candidatura.ogImage'),
+  title: "Candidatura 28M - Compromís",
+  ogTitle: "Candidatura 28M - Compromís",
+  description: "Joan Baldoví es presenta com a candidat a la Presidència de la Generalitat Valenciana amb Aitana Mas, Maria Josep Amigó i Vicent Marzà",
+  ogDescription: "Joan Baldoví es presenta com a candidat a la Presidència de la Generalitat Valenciana amb Aitana Mas, Maria Josep Amigó i Vicent Marzà",
+  ogImage: "https://28m.compromis.net/images/social/candidatura.png",
   twitterCard: 'summary_large_image',
 })
 useHead({
