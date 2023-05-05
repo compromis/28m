@@ -102,6 +102,7 @@ const proposalCategory = computed(() => {
   gap: 1rem;
   min-height: 225px;
   width: 100%;
+  touch-action: manipulation;
 
   &-content {
     display: flex;
