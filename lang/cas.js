@@ -4,30 +4,30 @@ export default {
       title: "Compromís - Por todo lo que importa - Elecciones 28M",
       description:
         "Web de campaña de Compromís para las Elecciones a Cortes Valencianas de 2023",
-      ogImage: "/images/social/home.png",
+      ogImage: "https://28m.compromis.net/images/social/home.png",
     },
     programa: {
       title: "Programa 2023 - Compromís",
       description:
         "Consulta el programa de Compromís para las Elecciones a Cortes Valencianas 2023",
-      ogImage: "/images/social/programa.png",
+      ogImage: "https://28m.compromis.net/images/social/programa.png",
     },
     candidatura: {
       title: "Candidatura 28M - Compromís",
       description:
         "Joan Baldoví, candidato a la Presidencia de la Generalitat Valenciana",
-      ogImage: "/images/social/candidatura.png",
+      ogImage: "https://28m.compromis.net/images/social/candidatura.png",
     },
     collabora: {
       title: "Colabora con la campaña - Compromís",
       description:
         "Apúntate como voluntario o interventor, haz difusión por redes, ayúdanos a hacer la campaña.",
-      ogImage: "/images/social/collabora.png",
+      ogImage: "https://28m.compromis.net/images/social/collabora.png",
     },
     actes: {
       title: "Actes - Compromís",
       description: "Vols vindre als actes de Compromís de campanya?",
-      ogImage: "/images/social/actes.png",
+      ogImage: "https://28m.compromis.net/images/social/actes.png",
     },
   },
 
