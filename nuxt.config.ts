@@ -28,6 +28,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/i18n',
+    'nuxt-gtag'
   ],
 
   i18n: {
@@ -39,6 +40,10 @@ export default defineNuxtConfig({
     langDir: 'lang',
     defaultLocale: 'val',
     detectBrowserLanguage: false
+  },
+
+  gtag: {
+    id: 'G-DVVR6CMDWC'
   },
 
   vite: {
