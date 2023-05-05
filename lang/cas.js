@@ -69,7 +69,7 @@ export default {
     filter: {
       label: "Encuentra propuestas por palabras clave",
       placeholder: "Encuentra propuestas por palabras clave",
-      headline: "Propuestas que contienen “{keyword}”",
+      headline: "Propuestas que contienen”",
     },
     no_results: "No hemos encontrado ninguna propuesta con esas palabras :(",
     loading: "Buscando propuestas...",

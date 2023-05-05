@@ -96,7 +96,7 @@ definePageMeta({
 <template>
   <div class="programa-filter">
     <div class="programa-filter-container">
-      <h1 v-if="keyword">{{ $t('programa.filter.headline', { keyword }) }}</h1>
+      <h1 v-if="keyword">{{ $t('programa.filter.headline') }} “{{ keyword }}”</h1>
       <h1 v-else-if="flair === 'youth'">{{ $t('programa.youth') }}</h1>
       <h1 v-else-if="flair === 'feminist'">{{ $t('programa.feminist') }}</h1>
       <h1 v-else>{{ $t('programa.results') }}</h1>

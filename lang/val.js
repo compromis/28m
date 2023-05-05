@@ -69,7 +69,7 @@ export default {
     filter: {
       label: "Troba propostes per paraules clau",
       placeholder: "Troba propostes per paraules clau",
-      headline: "Propostes que contenen “{keyword}”",
+      headline: "Propostes que contenen",
     },
     no_results: "No hem trobat cap proposta amb eixes paraules :(",
     loading: "Cercant propostes...",
