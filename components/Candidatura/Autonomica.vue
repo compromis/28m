@@ -26,7 +26,7 @@
           full-name="Vicent Marzà"
           name="Marzà"
           :description="$t('candidatura.regional_candidates.castello')"
-          picture="/images/candidates/ignasi.jpg"
+          picture="/images/candidates/marza.jpg"
         />
       </li>
     </ul>

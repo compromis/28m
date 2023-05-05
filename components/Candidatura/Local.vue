@@ -33,7 +33,7 @@
             full-name="Ignasi Garcia"
             name="Ignasi"
             :description="$t('candidatura.local_candidates.castello')"
-            picture="/images/candidates/ribo.jpg"
+            picture="/images/candidates/ignasi.jpg"
           />
         </li>
       </ul>
