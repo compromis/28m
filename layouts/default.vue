@@ -4,7 +4,7 @@ import BFooter from '@compromis/blobby/components/footer/BFooter.vue'
 /* Programa exception */
 const route = useRoute()
 const onPrograma = computed(() => {
-  return route.path.startsWith('/programa') || route.path.startsWith('/cas/programa')
+  return route.name.startsWith('programa-slug') || route.name.startsWith('programa-filtre')
 })
 
 const routeName = computed(() => {

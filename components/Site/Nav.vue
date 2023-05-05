@@ -8,7 +8,6 @@ const switchLocalePath = useSwitchLocalePath()
 const menuShown = ref(false)
 const menuScrolled = ref(false)
 const pageLoaded = ref(false)
-const pageLoading = ref(false)
 const showMenu = () => {
   menuShown.value = true
   pageLoaded.value = false
@@ -92,7 +91,7 @@ const onLeaveMenu = (el, done) => {
 /* Detect if we are on Programa */
 const route = useRoute()
 const onPrograma = computed(() => {
-  return ['programa-slug___val', 'programa-slug___cas'].includes(route.name)
+  return route.name.startsWith('programa-slug') || route.name.startsWith('programa-filtre')
 })
 
 /* Hide menu after page has loaded */
