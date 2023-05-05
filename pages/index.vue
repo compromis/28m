@@ -10,7 +10,7 @@ useServerSeoMeta({
   twitterCard: 'summary_large_image',
 })
 useHead({
-  title: t('meta.home.title'),
+  title: "Compromís - Per tot el que importa - Eleccions 28M",
 })
 </script>
 

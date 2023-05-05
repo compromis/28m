@@ -2,15 +2,15 @@
 /* Meta tags */
 const { t } = useI18n()
 useServerSeoMeta({
-  title: () => "Programa 2023 - Compromís",
-  ogTitle: () => "Programa 2023 - Compromís",
+  title: "Programa 2023 - Compromís",
+  ogTitle: "Programa 2023 - Compromís",
   description: "Consulta el programa de Compromís per a les Eleccions a Corts Valencianes 2023",
   ogDescription: "Consulta el programa de Compromís per a les Eleccions a Corts Valencianes 2023",
-  ogImage: () => "https://28m.compromis.net/images/social/programa.png",
+  ogImage: "https://28m.compromis.net/images/social/programa.png",
   twitterCard: 'summary_large_image',
 })
 useHead({
-  title: t('meta.programa.title'),
+  title: "Programa 2023 - Compromís",
 })
 
 /* Fetch top proposals */

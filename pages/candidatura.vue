@@ -10,7 +10,7 @@ useServerSeoMeta({
   twitterCard: 'summary_large_image',
 })
 useHead({
-  title: t('meta.candidatura.title'),
+  title: "Candidatura 28M - Compromís",
 })
 
 /* Animations */

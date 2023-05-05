@@ -11,7 +11,7 @@ useServerSeoMeta({
   twitterCard: 'summary_large_image',
 })
 useHead({
-  title: t('meta.programa.title'),
+  title: "Programa 2023 - Compromís",
 })
 
 const config = useRuntimeConfig()

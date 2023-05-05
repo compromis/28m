@@ -15,7 +15,7 @@ useServerSeoMeta({
   twitterCard: 'summary_large_image',
 })
 useHead({
-  title: t('meta.actes.title'),
+  title: 'Actes - Compromís',
 })
 </script>
 

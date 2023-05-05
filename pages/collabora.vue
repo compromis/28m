@@ -2,15 +2,15 @@
 /* Meta tags */
 const { t } = useI18n()
 useServerSeoMeta({
-  title: () => "Col·labora amb la campanya - Compromís",
-  ogTitle: () => "Col·labora amb la campanya - Compromís",
-  description: () => "Apunta't com a voluntari o interventor, fes difusió per xarxes... ajuda'ns a fer la campanya!",
-  ogDescription: () => "Apunta't com a voluntari o interventor, fes difusió per xarxes... ajuda'ns a fer la campanya!",
-  ogImage: () => "https://28m.compromis.net/images/social/collabora.png",
+  title: "Col·labora amb la campanya - Compromís",
+  ogTitle: "Col·labora amb la campanya - Compromís",
+  description: "Apunta't com a voluntari o interventor, fes difusió per xarxes... ajuda'ns a fer la campanya!",
+  ogDescription: "Apunta't com a voluntari o interventor, fes difusió per xarxes... ajuda'ns a fer la campanya!",
+  ogImage: "https://28m.compromis.net/images/social/collabora.png",
   twitterCard: 'summary_large_image',
 })
 useHead({
-  title: t('meta.collabora.title'),
+  title: "Col·labora amb la campanya - Compromís",
 })
 
 /* Social networks */
