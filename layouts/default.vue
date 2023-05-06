@@ -23,6 +23,7 @@ const routeName = computed(() => {
       <BFooter />
     </div>
     <SiteCurtains />
+    <SiteEasterEgg />
   </div>
 </template>
 
