@@ -148,4 +148,29 @@ const time = computed(() => {
 .baldoneta {
   position: absolute;
 }
+
+@include media-breakpoint-down(md) {
+  .event {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "title title"
+      "speakers speakers"
+      "info info"
+      "venue venue"
+      "date time";
+  }
+
+  .venue {
+    text-align: left;
+  }
+
+  .speakers {
+    justify-content: start;
+    padding-bottom: 2rem;
+  }
+
+  .time {
+    text-align: right;
+  }
+}
 </style>

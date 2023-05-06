@@ -70,10 +70,14 @@
     h2 {
       @include font-size(6rem);
     }
+
+    &-padding {
+      padding-bottom: 0;
+    }
   }
 
   .candidate-posters {
-    margin-top: -12rem;
+    margin-top: 0;
 
     li {
       order: 1;

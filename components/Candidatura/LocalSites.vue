@@ -58,10 +58,12 @@ const animated = computed(() => !filter.value)
 <style lang="scss" scoped>
 .local-sites {
   &-results {
+    position: relative;
     padding-left: calc((100vw - var(--candidatura-container-max-width) - (var(--site-padding) * 2.5)) / 2);
     margin-right: calc(var(--site-padding) * -1);
     overflow: hidden;
-    height: 95px;
+    height: 6rem;
+    z-index: 100;
 
     &.animated {
       padding-left: 0;
@@ -140,7 +142,7 @@ const animated = computed(() => !filter.value)
 .not-found {
   font-size: 1.5rem;
   padding: 1rem 0;
-  height: 95px;
+  height: 6rem;
 }
 
 @include media-breakpoint-down(md) {
