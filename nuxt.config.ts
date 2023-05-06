@@ -17,6 +17,10 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
     head: {
+      meta: [
+        { name: 'theme-color', content: '#de5412' },
+        { name: 'color-scheme', content: 'light only' }
+      ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'https://compromis.net/sub/icons/favicon.ico' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: 'https://compromis.net/sub/icons/favicon32.png' },
