@@ -123,10 +123,9 @@ function animateItems () {
 .candidate-posters {
   display: flex;
   gap: 2rem;
-  overflow: auto;
   @include scrollbar(transparent, $red, $red);
   padding: 2rem 0;
-  margin: -3rem 0;
+  margin: -2rem 0;
   scroll-snap-type: x mandatory;
 
   li {
@@ -136,6 +135,7 @@ function animateItems () {
 
 @include media-breakpoint-down(md) {
   .candidate-posters {
+    overflow: auto;
     padding-right: 4rem;
   }
 }
