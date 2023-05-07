@@ -35,7 +35,7 @@ const { locale } = useI18n()
 
     &-title {
       position: absolute;
-      background: $yellow;
+      background: $blue;
       color: $white;
       padding: .5rem;
       @include font-size(2rem);

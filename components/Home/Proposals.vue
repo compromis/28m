@@ -17,12 +17,12 @@ const entries = Object.entries(proposals)
 <style lang="scss" scoped>
 .home-proposals {
   padding: calc(var(--site-padding) * 1.25);
+  background: $yellow;
 
   &-title {
     color: $white;
-    @include font-size(2.25rem);
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    @include font-size(2.75rem);
+    margin-bottom: 1.25rem;
   }
 
   &-list {
@@ -32,7 +32,7 @@ const entries = Object.entries(proposals)
     gap: 2rem;
     margin: 0 calc(var(--site-padding) * -1.25);
     padding: 1rem calc(var(--site-padding) * 1.25);
-    @include scrollbar($red, $yellow, $yellow, 3px);
+    @include scrollbar($yellow, $red, $red, 3px);
     scroll-snap-type: x mandatory;
 
     li {

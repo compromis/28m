@@ -27,6 +27,8 @@ const navigateTo = ({ id, to }) => {
           {{ $t('menu.' + item.id) }}
         </a>
       </li>
+      <li><a href="https://compromis.net/?override=1">Notícies</a></li>
+      <li><a href="https://compromis.net/transparencia">Transparència</a></li>
     </ul>
     <SiteSocial class="quick-links-social" />
   </nav>

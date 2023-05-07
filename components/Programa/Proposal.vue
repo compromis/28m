@@ -65,12 +65,16 @@ const proposalNum = computed(() => {
 const proposalCategory = computed(() => {
   return props.proposal.subcategory?.category || props.category
 })
+
+const scrollToTop = () => {
+  window.scrollTo(0,0)
+}
 </script>
 
 <template>
   <article :class="['proposal', { highlighted: proposal.highlighted || highlighted, 'no-highlights': noHighlights }]">
     <div class="proposal-content">
-      <NuxtLink :to="localePath(`/programa/${proposalCategory.slug}/${proposal.id}`)" class="proposal-id">
+      <NuxtLink :to="localePath(`/programa/${proposalCategory.slug}/${proposal.id}`)" @click="scrollToTop" class="proposal-id">
         #{{ proposalNum }}
       </NuxtLink>
       <div class="proposal-text">

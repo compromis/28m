@@ -41,11 +41,13 @@ onMounted(() => {
 watch(() => route.query.q, (newKeyword) => {
   keyword.value = newKeyword
   fetchProposals()
+  window.scrollTo(0, 0)
 })
 
 watch(() => route.query.flair, (newFlair) => {
   flair.value = newFlair
   fetchProposals()
+  window.scrollTo(0, 0)
 })
 
 /* Transition */
