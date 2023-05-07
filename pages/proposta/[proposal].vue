@@ -44,6 +44,12 @@ const proposal = Proposals[route.params.proposal]
     padding: var(--site-padding);
   }
 
+  &-cover {
+    img {
+      width: 100%;
+    }
+  }
+
   &-header {
     display: flex;
     background: $yellow;

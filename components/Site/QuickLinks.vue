@@ -9,9 +9,10 @@ const menu = [
 const { $emit } = useNuxtApp()
 const router = useRouter()
 const route = useRoute()
+const localePath = useLocalePath()
 const navigateTo = ({ id, to }) => {
   $emit('curtains', { from: route.name.split('___')[0], to: id })
-  router.push(to)
+  router.push(localePath(to))
 }
 </script>
 
@@ -20,7 +21,7 @@ const navigateTo = ({ id, to }) => {
     <ul aria-label="Menú principal" class="quick-links-items list-unstyled">
       <li v-for="item in menu" :key="item.id">
         <a
-          :href="item.to"
+          :href="localePath(item.to)"
           @click.prevent="navigateTo(item)"
         >
           {{ $t('menu.' + item.id) }}

@@ -14,7 +14,7 @@ const colorCombos = {
     'candidatura': ['blue', 'yellow'],
     'collabora': ['yellow', 'blue'],
     'actes': ['yellow', 'blue'],
-    'proposta': ['yellow', 'blue']
+    'proposal': ['yellow', 'blue']
   }
 }
 

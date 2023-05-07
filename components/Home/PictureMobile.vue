@@ -11,7 +11,7 @@ const props = defineProps({
 })
 
 const { locale } = useI18n()
-const { $gsap } = useNuxtApp()
+const { $gsap, $emit } = useNuxtApp()
 const loaded = ref(false)
 const animation = ref()
 const delay = props.proposal.picture.delayMobile || props.proposal.picture.delay
@@ -52,6 +52,12 @@ function onEnter (el, done) {
     onComplete: done
   })
 }
+
+const router = useRouter()
+const navigateTo = (to) => {
+  $emit('curtains', { from: 'index', to: 'proposal' })
+  router.push(to)
+}
 </script>
 
 <template>
@@ -66,7 +72,8 @@ function onEnter (el, done) {
       '--strength': (proposal.picture.strength * 10) + 's'
     }"
   >
-    <NuxtLink 
+    <a
+      @click.prevent="navigateTo(localePath(`/proposta/${id}`))"
       :href="localePath(`/proposta/${id}`)"
       :tabindex="loaded ? '0' : '-1'"
       :aria-label="`${proposal.content[locale].tip}. ${$t('home.click_to_open')}`"
@@ -85,7 +92,7 @@ function onEnter (el, done) {
           />
         </Transition>
       </div>
-    </NuxtLink>
+    </a>
   </div>
 </template>
 
