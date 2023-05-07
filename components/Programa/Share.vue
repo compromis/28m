@@ -19,7 +19,7 @@ const text = props.proposal[`text_${locale.value}`]
 const url = `https://28m.compromis.net/programa/${props.category.slug}/${props.proposal.id}`
 const share = async () => {
   const shareData = {
-    title: 'Proposta #' + props.proposal.id + ' - ' + props.category[`title_${locale.value}`] + ' - Programa 2023 - Compromís',
+    title: 'Proposta #' + props.proposal.id + ' - ' + props.category[`name_${locale.value}`] + ' - Programa 2023 - Compromís',
     text,
     url,
   }
