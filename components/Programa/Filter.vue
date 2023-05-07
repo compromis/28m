@@ -70,6 +70,19 @@ const search = () => {
     background: transparent;
     border: 0;
     padding: .5rem 1rem;
+    color: $black;
+
+    &:hover,
+    &:focus {
+      background: $gray-100;
+      border-radius: 0 .5rem .5rem 0;
+    }
+
+    &:focus {
+      background: $red;
+      color: $white;
+      outline: 0;
+    }
   }
 }
 </style>
