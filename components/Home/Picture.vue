@@ -318,34 +318,6 @@ const hide = () => {
   .proposal-tip {
     display: none;
   }
-
-  .proposal-educacio {
-  .proposal-float {
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -1em;
-      right: 1em;
-      width: 2em;
-      height: 2em;
-      background: $white;
-      border-radius: 100%;
-      animation: pulse 2s infinite;
-      transform: scale(var(--scale, 0));
-      transition: 1s ease;
-    }
-  }
-
-  &.loaded {
-    .proposal-float {
-      &::after {
-        --scale: 1;
-      }
-    }
-  }
-}
 }
 
 @keyframes circle {

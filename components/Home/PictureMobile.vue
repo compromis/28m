@@ -63,7 +63,7 @@ const navigateTo = (to) => {
 <template>
   <div
     :id="`mproposal-${id}`"
-    :class="['proposal', `proposal-${id}`, { loaded, hideTip }]"
+    :class="['proposal', 'movable-image', `proposal-${id}`, { loaded, hideTip }]"
     :style="{
       left: proposal.picture.left + '%',
       top: proposal.picture.top + '%',
@@ -138,7 +138,7 @@ const navigateTo = (to) => {
         content: '';
         position: absolute;
         bottom: -1em;
-        right: 1em;
+        left: 1em;
         width: 2em;
         height: 2em;
         background: $white;

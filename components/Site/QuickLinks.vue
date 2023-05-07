@@ -34,8 +34,10 @@ const navigateTo = ({ id, to }) => {
 
 <style lang="scss">
 .quick-links {
+  position: relative;
   display: flex;
   @include font-size(1.75rem);
+  z-index: 900;
 
   &-items {
     display: flex;
