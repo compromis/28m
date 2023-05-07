@@ -57,6 +57,7 @@ function animateClaim() {
       </div>
     </h1>
     <HomePictures />
+    <HomePicturesMobile />
     <SiteQuickLinks class="hero-links" />
   </section>
 </template>

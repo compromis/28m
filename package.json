@@ -26,6 +26,7 @@
     "lodash": "^4.17.21",
     "mitt": "^3.0.0",
     "sass": "^1.60.0",
-    "sass-loader": "^13.2.2"
+    "sass-loader": "^13.2.2",
+    "vue3-moveable": "^0.22.2"
   }
 }

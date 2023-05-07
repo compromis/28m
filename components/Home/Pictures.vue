@@ -21,42 +21,25 @@ const closeAll = () => {
 </script>
 
 <template>
-  <HomePicture
-    v-for="[id, proposal] in pictures"
-    :id="id"
-    :proposal="proposal"
-    :key="id"
-    @hover="hoveredPicture = id"
-    @unhover="hoveredPicture = null"
-    @show="openPicture = id"
-    @hide="openPicture = null"
-    :dimmed="(hoveredPicture !== id && !!hoveredPicture && openPicture !== id) || (openPicture !== id && !!openPicture)"
-  />
-  <Transition name="fade">
-    <div class="backdrop" v-if="openPicture" @click="closeAll" />
-  </Transition>
+  <div class="d-none d-lg-block">
+    <HomePicture
+      v-for="[id, proposal] in pictures"
+      :id="id"
+      :proposal="proposal"
+      :key="id"
+      @hover="hoveredPicture = id"
+      @unhover="hoveredPicture = null"
+      @show="openPicture = id"
+      @hide="openPicture = null"
+      :dimmed="(hoveredPicture !== id && !!hoveredPicture && openPicture !== id) || (openPicture !== id && !!openPicture)"
+    />
+    <Transition name="fade">
+      <div class="backdrop" v-if="openPicture" @click="closeAll" />
+    </Transition>
+  </div>
 </template>
 
 <style lang="scss">
-@include media-breakpoint-down(md) {
-  .proposal-residencies {
-    left: 0 !important;
-  }
-
-  .proposal-transport-public {
-    top: 70% !important;
-    left: 3% !important;
-  }
-
-  .proposal-habitatge {
-    left: 50% !important;
-  }
-
-  .proposal-administracio-propera {
-    left: 65% !important;
-  }
-}
-
 .backdrop {
   position: absolute;
   top: 0;

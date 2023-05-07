@@ -17,11 +17,11 @@ const props = defineProps({
 const emit = defineEmits(['hover', 'unhover', 'show', 'hide'])
 
 const { locale } = useI18n()
-
+const router = useRouter()
+const localePath = useLocalePath()
 const { $gsap, $emit, $on } = useNuxtApp()
 const loaded = ref(false)
 const animation = ref()
-const picture = ref(null)
 
 const mousePos = useState('mousePos')
 const strength = props.proposal.picture.strength
@@ -40,8 +40,9 @@ const computedPos = computed(() => {
   return { left, top, ...transform }
 })
 
+let timeout
 onMounted(() => {
-  setTimeout(() => {
+  timeout = setTimeout(() => {
     loaded.value = true
   }, props.proposal.picture.delay * 1000)
 
@@ -58,6 +59,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   animation.value && animation.value.revert()
+  clearTimeout(timeout)
 })
 
 function onEnter (el, done) {
@@ -90,6 +92,14 @@ const unhover = () => {
   showText.value = false
 }
 const show = () => {
+  const onMobile = window.matchMedia("(max-width: 992px)")
+
+  if (onMobile.matches) {
+    $emit('curtains', { from: 'index', to: 'proposta' })
+    router.push(localePath('/proposta/' + props.id))
+    return
+  }
+
   textCanBeShown.value && emit('show')
   open.value = true
   $emit('closeAllExcept', props.id)
@@ -106,7 +116,7 @@ const hide = () => {
 
 <template>
   <div
-    :class="['proposal', 'image-to-move', `proposal-${id}`, { dimmed, open }]"
+    :class="['proposal', `proposal-${id}`, { dimmed, open, loaded }]"
     :style="{
       ...computedPos,
       width: proposal.picture.width + 'vw',
@@ -128,7 +138,6 @@ const hide = () => {
           <img
             v-if="loaded"
             :src="proposal.picture.src"
-            ref="picture"
             :alt="proposal.content[locale].tip"
             class="proposal-picture"
             :style="{
@@ -310,9 +319,33 @@ const hide = () => {
     display: none;
   }
 
-  .proposal {
-    pointer-events: none;
+  .proposal-educacio {
+  .proposal-float {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1em;
+      right: 1em;
+      width: 2em;
+      height: 2em;
+      background: $white;
+      border-radius: 100%;
+      animation: pulse 2s infinite;
+      transform: scale(var(--scale, 0));
+      transition: 1s ease;
+    }
   }
+
+  &.loaded {
+    .proposal-float {
+      &::after {
+        --scale: 1;
+      }
+    }
+  }
+}
 }
 
 @keyframes circle {
@@ -321,7 +354,21 @@ const hide = () => {
   }
 
   to {
-    transform: rotate(0deg) translate(-7%) rotate(0deg);
+    transform: rotate(0deg) translate(-10%) rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba($white, 0.7);
+  }
+  
+  70% {
+    box-shadow: 0 0 0 10px rgba($white, 0);
+  }
+  
+  100% {
+    box-shadow: 0 0 0 0 rgba($white, 0);
   }
 }
 

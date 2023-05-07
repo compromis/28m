@@ -6,27 +6,30 @@ const proposal = Proposals[route.params.proposal]
 </script>
 
 <template>
-  <main class="proposal">
-    <div class="proposal-cover">
-      <img :src="`${proposal.picture.src}`" :alt="proposal.picture.alt" />
-    </div>
-    <div class="proposal-content">
-      <div class="proposal-header">
-        <h1 class="proposal-title">{{ proposal.content[locale].title }}</h1>
-        <NuxtLink :to="localePath('/')">
-          <ClientOnly>
-            <IconArrow />
-          </ClientOnly>
-          <span class="visually-hidden">{{ $t('home.back') }}</span>
-        </NuxtLink>
+  <main>
+    <article class="proposal">
+      <div class="proposal-cover">
+        <img :src="`${proposal.picture.src}`" :alt="proposal.picture.alt" />
       </div>
+      <div class="proposal-content">
+        <div class="proposal-header">
+          <h1 class="proposal-title">{{ proposal.content[locale].title }}</h1>
+          <NuxtLink :to="localePath('/')">
+            <ClientOnly>
+              <IconArrow />
+            </ClientOnly>
+            <span class="visually-hidden">{{ $t('home.back') }}</span>
+          </NuxtLink>
+        </div>
 
-      <h2>{{ $t('home.all_thats_been_done') }}</h2>
-      <div class="text" v-html="proposal.content[locale].textDone" />
+        <h2>{{ $t('home.all_thats_been_done') }}</h2>
+        <div class="text" v-html="proposal.content[locale].textDone" />
 
-      <h2>{{ $t('home.all_that_remains_to_be_done') }}</h2>
-      <div class="text" v-html="proposal.content[locale].toBeDone" />
-    </div>
+        <h2>{{ $t('home.all_that_remains_to_be_done') }}</h2>
+        <div class="text" v-html="proposal.content[locale].toBeDone" />
+      </div>
+    </article>
+    <HomeProposals />
   </main>
 </template>
 

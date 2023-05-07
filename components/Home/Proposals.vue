@@ -4,7 +4,7 @@ const entries = Object.entries(proposals)
 </script>
 
 <template>
-  <section class="home-proposals d-lg-none">
+  <section class="home-proposals d-lg-none" id="Proposals">
     <h2 class="home-proposals-title">Per tot el que s'ha aconseguit i per tot el que queda</h2>
     <ul class="home-proposals-list list-unstyled">
       <li v-for="[slug, proposal] in entries" :key="slug">

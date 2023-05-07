@@ -13,7 +13,8 @@ const colorCombos = {
     'programa': ['indigo', 'yellow'],
     'candidatura': ['blue', 'yellow'],
     'collabora': ['yellow', 'blue'],
-    'actes': ['yellow', 'blue']
+    'actes': ['yellow', 'blue'],
+    'proposta': ['yellow', 'blue']
   }
 }
 
