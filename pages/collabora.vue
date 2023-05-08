@@ -16,7 +16,7 @@ useHead({
 /* Social networks */
 const socialNetworks = [
   { name: 'TikTok', icon: 'tiktok', href: 'https://www.tiktok.com/@compromis_net' },
-  { name: 'Instagram', icon: 'instagram', href: 'https://instagram.com/compromis_net' },
+  { name: 'Instagram', icon: 'instagram', href: 'https://instagram.com/compromis' },
   { name: 'Twitter', icon: 'twitter', href: 'https://twitter.com/compromis' },
   { name: 'Facebook', icon: 'facebook', href: 'https://www.facebook.com/coaliciocompromis' },
   { name: 'YouTube', icon: 'youtube', href: 'https://www.youtube.com/@coaliciocompromis' },

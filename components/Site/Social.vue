@@ -1,7 +1,7 @@
 <script setup>
 const links = [
   { icon: 'tiktok', text: 'TikTok', href: 'https://www.tiktok.com/@compromis_net' },
-  { icon: 'instagram', text: 'Instagram', href: 'https://instagram.com/compromis_net' },
+  { icon: 'instagram', text: 'Instagram', href: 'https://instagram.com/compromis' },
   { icon: 'twitter', text: 'Twitter', href: 'https://twitter.com/compromis' },
   { icon: 'facebook', text: 'Facebook', href: 'https://www.facebook.com/coaliciocompromis' }
 ]
