@@ -4,8 +4,8 @@
     <ActesNames class="names" />
     <div class="details">
       <div class="venue">Lloc per determinar</div>
-      <div class="date">17 de maig</div>
-      <div class="time">10:00</div>
+      <div class="date">21 de maig</div>
+      <div class="time">--</div>
     </div>
   </article>
 </template>
