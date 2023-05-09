@@ -30,14 +30,18 @@ const computedPos = computed(() => {
   const left = props.proposal.picture.left + '%'
   const top = props.proposal.picture.top + '%'
 
+  return { left, top }
+})
+
+const computedParallax = computed(() => {
+  if (open.value) return null
   let transform = {}
   if (typeof window !== 'undefined') {
     const x = (window.innerWidth - mousePos.value.x * strength) / 100
     const y = (window.innerHeight - mousePos.value.y * strength) / 100
     transform = { transform: `translate(${x}px, ${y}px)`}
   }
-
-  return { left, top, ...transform }
+  return {...transform}
 })
 
 let timeout
@@ -117,6 +121,7 @@ const hide = () => {
 <template>
   <div
     :class="['proposal', `proposal-${id}`, { dimmed, open, loaded }]"
+    :id="`dproposal-${id}`"
     :style="{
       ...computedPos,
       width: proposal.picture.width + 'vw',
@@ -132,6 +137,7 @@ const hide = () => {
       :tabindex="loaded ? '0' : '-1'"
       :aria-label="`${proposal.content[locale].tip}. ${$t('home.click_to_open')}`"
       :aria-controls="`${id}Content`"
+      :style="{ ...computedParallax }"
     >
       <div class="proposal-float">
         <Transition @enter="onEnter" :css="false">
@@ -179,7 +185,7 @@ const hide = () => {
 .proposal {
   position: absolute;
   display: flex;
-  transition: opacity .25s ease, left 1s ease, top 1s ease, width 1s ease;
+  transition: opacity .25s ease, left 1s ease, top 1s ease, width 1s ease, transform 1s ease;
 
   a {
     display: block;
@@ -219,7 +225,7 @@ const hide = () => {
   }
 
   &:hover {
-    z-index: 100;
+    z-index: 8000;
   }
 
   &.dimmed:not(.open) {
@@ -228,10 +234,11 @@ const hide = () => {
 
 
   &.open {
-    z-index: 102;
+    z-index: 9000 !important;
     top: 5rem !important;
     left: calc((100vw - 1000px) / 2) !important;
     width: 1000px !important;
+    transform: translate(0,0) !important;
 
     .proposal-float {
       animation: none;

@@ -96,11 +96,11 @@ onUnmounted(() => {
     pointer-events: none;
 
     &-front {
-      z-index: 1501;
+      z-index: 9501;
     }
 
     &-back {
-      z-index: 1500;
+      z-index: 9500;
     }
   }
 }
