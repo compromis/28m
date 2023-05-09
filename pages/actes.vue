@@ -17,6 +17,9 @@ useServerSeoMeta({
 useHead({
   title: t('meta.actes.title'),
 })
+
+/* Toggle past events */
+const showPastEvents = ref(false)
 </script>
 
 <template>
@@ -51,18 +54,23 @@ useHead({
               </template>
             </ul>
 
-            <h2 class="actes-subtitle">
-              {{ $t('actes.past') }}
-            </h2>
-            <ul class="actes-cards actes-past list-unstyled">
-              <template v-for="(event, id) in pastEvents" :key="id">
-                <li>
-                  <AnimatedCard>
-                    <ActesEvent :event="event" />
-                  </AnimatedCard>
-                </li>
-              </template>
-            </ul>
+            <button @click="showPastEvents = !showPastEvents" :aria-pressed="showPastEvents ? 'true' : 'false'" class="actes-subtitle">
+              <h2>
+                {{ $t('actes.past') }}
+              </h2>
+              <FontAwesomeIcon :icon="['far', 'arrow-right']" />
+            </button>
+            <Transition name="slide">
+              <ul v-show="showPastEvents" class="actes-cards actes-past list-unstyled">
+                <template v-for="(event, id) in pastEvents" :key="id">
+                  <li>
+                    <AnimatedCard>
+                      <ActesEvent :event="event" compact />
+                    </AnimatedCard>
+                  </li>
+                </template>
+              </ul>
+            </Transition>
           </AnimatedCards>
         </div>
       </div>
@@ -83,9 +91,35 @@ useHead({
     }
 
     &-subtitle {
+      display: flex;
+      appearance: none;
       color: $white;
-      @include font-size(2.5rem);
+      margin: 0;
+      border: 0;
+      background: transparent;
       @include margin(5rem 0 1.5rem);
+      align-items: center;
+      gap: 1rem;
+
+      h2 {
+        @include font-size(2.5rem);
+      }
+
+      svg {
+        font-size: 1.5rem;
+        transition: .25s ease;
+      }
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: rgba($white, .5);
+      }
+
+      &[aria-pressed='true'] {
+        svg {
+          transform: rotate(90deg);
+        }
+      }
     }
 
     &-content {
@@ -107,7 +141,17 @@ useHead({
     }
 
     &-past {
-      opacity: .5;
+      opacity: .6;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      li {
+        display: flex;
+        
+        :deep(.animated-card) {
+          flex-grow: 1;
+        }
+      }
     }
   }
 

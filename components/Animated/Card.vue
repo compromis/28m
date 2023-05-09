@@ -1,7 +1,7 @@
 <template>
-  <article class="animated-card">
+  <div class="animated-card">
     <slot />
-  </article>
+  </div>
 </template>
 
 <style lang="scss">

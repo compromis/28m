@@ -9,16 +9,28 @@
   opacity: 0;
 }
 
-/* Fade up */
-.fade-up-enter-active,
-.fade-up-leave-active {
-  transition: opacity 0.5s ease;
+/* Slide */
+.slide-enter-active {
+  overflow: hidden;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
 }
 
-.fade-up-enter-from,
-.fade-up-leave-to {
-  opacity: 0;
-  transform: translateY(10%);
+.slide-leave-active {
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slide-enter-to,
+.slide-leave-from {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.slide-leave-to,
+.slide-enter-from {
+  overflow: hidden;
+  max-height: 0;
 }
 
 /* Page */

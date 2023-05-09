@@ -3,6 +3,10 @@ const props = defineProps({
   event: {
     type: Object,
     required: true
+  },
+  compact: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -17,7 +21,7 @@ const time = computed(() => {
 </script>
 
 <template>
-  <article class="event">
+  <article :class="['event', { compact }]">
     <h2 class="title">{{ event.title }}</h2>
     <div class="speakers">
       <span v-for="speaker in event.speakers" :key="speaker.name" :class="speaker.class">
@@ -173,4 +177,29 @@ const time = computed(() => {
     text-align: right;
   }
 }
+
+.event.compact {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "title title"
+    "speakers speakers"
+    "info info"
+    "venue venue"
+    "date time";
+  height: 100%;
+}
+
+.venue {
+  text-align: left;
+}
+
+.speakers {
+  justify-content: start;
+  padding-bottom: 2rem;
+}
+
+.time {
+  text-align: right;
+}
+
 </style>
