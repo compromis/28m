@@ -187,19 +187,18 @@ const time = computed(() => {
     "venue venue"
     "date time";
   height: 100%;
-}
 
-.venue {
-  text-align: left;
-}
+  .venue {
+    text-align: left;
+  }
 
-.speakers {
-  justify-content: start;
-  padding-bottom: 2rem;
-}
+  .speakers {
+    justify-content: start;
+    padding-bottom: 2rem;
+  }
 
-.time {
-  text-align: right;
+  .time {
+    text-align: right;
+  }
 }
-
 </style>
