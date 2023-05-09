@@ -81,8 +81,9 @@ const showPastEvents = ref(false)
 <style lang="scss" scoped>
   .actes {
     background: $indigo;
-    padding: var(--site-padding);
+    padding: .5rem;
     padding-top: calc(var(--nav-safe-area) + 5vh);
+    overflow: hidden;
 
     &-title {
       color: $white;

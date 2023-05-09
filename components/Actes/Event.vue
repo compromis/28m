@@ -21,7 +21,7 @@ const time = computed(() => {
 </script>
 
 <template>
-  <article :class="['event', { compact }]">
+  <article :class="['event', { compact, 'has-baldoneta': event.baldoneta }]">
     <h2 class="title">{{ event.title }}</h2>
     <div class="speakers">
       <span v-for="speaker in event.speakers" :key="speaker.name" :class="speaker.class">
@@ -47,7 +47,9 @@ const time = computed(() => {
       <br>
       <strong>{{ event.municipality }}</strong>
     </div>
-    <div class="baldoneta" v-if="event.baldoneta" />
+    <div class="baldoneta" v-if="event.baldoneta">
+      <img src="~/assets/images/actes/baldoneta.png" alt="Baldoneta" />
+    </div>
   </article>
 </template>
 
@@ -58,7 +60,7 @@ const time = computed(() => {
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "title title title speakers"
-    "info info info speakers"
+    "info info info baldoneta"
     "date time venue venue";
   font-size: 1.25rem;
   gap: 1rem;
@@ -150,7 +152,18 @@ const time = computed(() => {
 }
 
 .baldoneta {
-  position: absolute;
+  grid-area: baldoneta;
+  background: red;
+  padding: 0;
+  overflow: hidden;
+  border-radius: .5rem;
+  transform: rotate(10deg) translateX(35%);
+  width: 75px;
+  margin-left: auto;
+
+  img {
+    width: 75px;
+  }
 }
 
 @include media-breakpoint-down(md) {
@@ -159,6 +172,7 @@ const time = computed(() => {
     grid-template-areas:
       "title title"
       "speakers speakers"
+      "baldoneta baldoneta"
       "info info"
       "venue venue"
       "date time";
@@ -184,6 +198,7 @@ const time = computed(() => {
     "title title"
     "speakers speakers"
     "info info"
+    "baldoneta baldoneta"
     "venue venue"
     "date time";
   height: 100%;
