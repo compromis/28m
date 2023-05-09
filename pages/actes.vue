@@ -160,6 +160,10 @@ const showPastEvents = ref(false)
       &-content {
         grid-template-columns: 1fr;
       }
+
+      &-past {
+        grid-template-columns: 1fr;
+      }
     }
 
     .actes-central-sticky {
