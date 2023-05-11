@@ -3,9 +3,9 @@
     <h2 class="title">Acte central de campanya</h2>
     <ActesNames class="names" />
     <div class="details">
-      <div class="venue">Lloc per determinar</div>
+      <div class="venue">Parc Central</div>
       <div class="date">21 de maig</div>
-      <div class="time">--</div>
+      <div class="time">11:00</div>
     </div>
   </article>
 </template>
