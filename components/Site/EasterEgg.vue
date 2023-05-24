@@ -4,6 +4,7 @@ const keys = ref([])
 const codes = {
   // shake the magic 8 ball at the despatx de comunicació 
   'asktheball': 'https://compromis.net/sub/misc/ball.html',
+  'ask the ball': 'https://compromis.net/sub/misc/ball.html',
   // the veep theme song on every compromís website
   'veep': 'https://youtube.com/embed/g2tk7ethx1Q/?autoplay=1',
   // the dream collab
